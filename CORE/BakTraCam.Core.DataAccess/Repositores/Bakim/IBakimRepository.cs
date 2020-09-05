@@ -1,0 +1,12 @@
+﻿using BakTraCam.Core.DataAccess.Repositores.Base;
+using BakTraCam.Core.Entity;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BakTraCam.Core.DataAccess.Repositores.Bakim
+{
+    public interface IBakimRepository : IBaseRepository<BakimEntity>
+    {
+    }
+}
