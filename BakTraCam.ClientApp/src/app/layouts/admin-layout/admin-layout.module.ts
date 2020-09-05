@@ -17,19 +17,25 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { BakimComponent } from 'app/bakim/bakim.component';
+import { BakimModule } from 'app/bakim/bakim.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
+    BakimModule,
     MatButtonModule,
     MatRippleModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule,
+    MatTooltipModule
+
   ],
   declarations: [
     DashboardComponent,
@@ -39,7 +45,7 @@ import {MatSelectModule} from '@angular/material/select';
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
-    UpgradeComponent,
+    UpgradeComponent
   ]
 })
 

@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using BakTraCam.Service.DataContract;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BakTraCam.Core.Business.Application
 {
@@ -16,6 +17,9 @@ namespace BakTraCam.Core.Business.Application
         {
             _bakimDom = serviceProvider.GetService<IBakimDomain>();
         }
+
+        [Route("[action]")]
+        [HttpGet]
         public Task<IEnumerable<BakimModel>> BakimlistesiGetirAsync()
         {
             return _bakimDom.BakimlariGetirAsync();

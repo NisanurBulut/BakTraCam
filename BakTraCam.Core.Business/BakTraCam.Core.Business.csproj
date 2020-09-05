@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CORE\BakTraCam.Core.DataAccess\BakTraCam.Core.DataAccess.csproj" />
     <ProjectReference Include="..\SERVICE\BakTraCam.Service.DataContract\BakTraCam.Service.DataContract.csproj" />
   </ItemGroup>
