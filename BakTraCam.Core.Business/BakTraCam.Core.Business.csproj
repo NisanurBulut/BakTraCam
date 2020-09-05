@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CORE\BakTraCam.Core.DataAccess\BakTraCam.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\SERVICE\BakTraCam.Service.DataContract\BakTraCam.Service.DataContract.csproj" />
+  </ItemGroup>
+
+</Project>

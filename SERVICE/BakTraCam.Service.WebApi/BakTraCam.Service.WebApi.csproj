@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BakTraCam.Core.Business\BakTraCam.Core.Business.csproj" />
     <ProjectReference Include="..\..\CORE\BakTraCam.Core.IoC\BakTraCam.Core.IoC.csproj" />
   </ItemGroup>
 

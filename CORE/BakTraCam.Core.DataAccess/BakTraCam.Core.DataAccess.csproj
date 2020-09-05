@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
+  <PropertyGroup Label="Globals">
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 

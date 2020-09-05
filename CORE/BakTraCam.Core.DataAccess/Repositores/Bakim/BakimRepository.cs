@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BakTraCam.Core.DataAccess.Repositores.Bakim
+namespace BakTraCam.Core.DataAccess.Repositores
 {
     public sealed class BakimRepository : BaseRepository<BakimEntity>, IBakimRepository
     {
