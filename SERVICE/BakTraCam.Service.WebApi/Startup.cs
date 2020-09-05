@@ -15,6 +15,7 @@ using BakTraCam.Core.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using BakTraCam.Core.IoC;
 using BakTraCam.Common.Helper;
+using BakTraCam.Core.Business.Application;
 
 namespace BakTraCam.Service.WebApi
 {
@@ -31,32 +32,53 @@ namespace BakTraCam.Service.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+
+            services.AddMemoryCache();
+
+
             services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-           
+            
 
             services.AddDependencyInjection(Configuration);
-            
-            services.AddControllers();
+           
+            services.Configure<RequestLocalizationOptions>(opt =>
+            {
+                opt.SetDefaultCulture("tr-TR");
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env )
         {
+            int sirketId = Configuration.GetSection("AppParameters").GetValue<int>("SirketId");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+
+    
+
             app.UseHttpsRedirection();
+            string[] ClientApps = Configuration.GetSection("AppParameters").GetSection("ClientApps").Get<string[]>();
+            //app.UseCors(builder => builder
+            //                .WithOrigins(ClientApps)
+            //                .AllowAnyMethod()
+            //                .AllowAnyHeader()
+            //                .AllowCredentials());
 
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(ep =>
             {
-                endpoints.MapControllers();
+                ep.MapControllers();
             });
+
+
+           
         }
     }
 }

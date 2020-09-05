@@ -1,4 +1,6 @@
-﻿using BakTraCam.Core.DataAccess.Context;
+﻿using BakTraCam.Core.Business.Domain;
+using BakTraCam.Core.DataAccess.Context;
+using BakTraCam.Core.DataAccess.UnitOfWork;
 using BakTraCam.Util.Mapping.Adapter;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,13 +18,22 @@ namespace BakTraCam.Core.IoC
     {
         public static void AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddClassesMatchingInterfacesFrom(
+                Assembly.GetAssembly(typeof(IBakimDomain)),
+                Assembly.GetAssembly(typeof(IDatabaseUnitOfWork)));
+            
             services.AddSingleton<ICustomMapper>(new CustomMapper());
             
             string connectionString = configuration.GetConnectionString("mainDb");
+            
             services.AddDbContextEnsureCreatedMigrate<DatabaseContext>
                 (options => options.UseSqlite(connectionString));
 
            
+        }
+        public static void AddClassesMatchingInterfacesFrom(this IServiceCollection services, params Assembly[] assemblies)
+        {
+            services.RegisterAssemblyPublicNonGenericClasses(assemblies).AsPublicImplementedInterfaces(ServiceLifetime.Scoped);
         }
         public static T GetService<T>(this IServiceCollection services)
         {
