@@ -6,6 +6,6 @@ import { BaseService } from 'app/shared/base.service';
 @Injectable()
 export class BakimService extends BaseService {
     getirBakimListesi(): Observable<BakimModel[]> {
-        return this.getOnly<BakimModel[]>('/Bakim/BakimlistesiGetirAsync/');
+        return this.getOnly<BakimModel[]>('/Bakim/BakimListesiniGetir/');
     }
 }

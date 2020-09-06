@@ -63,11 +63,11 @@ namespace BakTraCam.Service.WebApi
 
             app.UseHttpsRedirection();
             string[] ClientApps = Configuration.GetSection("AppParameters").GetSection("ClientApps").Get<string[]>();
-            //app.UseCors(builder => builder
-            //                .WithOrigins(ClientApps)
-            //                .AllowAnyMethod()
-            //                .AllowAnyHeader()
-            //                .AllowCredentials());
+            app.UseCors(builder => builder
+                            .WithOrigins(ClientApps)
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials());
 
             app.UseRouting();
 

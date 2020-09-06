@@ -13,7 +13,9 @@ namespace BakTraCam.Core.DataAccess.Context
         {
 
         }
-        DbSet<BakimEntity> Bakims { get; set; }
+        DbSet<BakimEntity> tBakim { get; set; }
+        DbSet<BakimciEntity> tBakimci { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly();
