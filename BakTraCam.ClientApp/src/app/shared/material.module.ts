@@ -11,12 +11,16 @@ import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/materia
 import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
     imports: [
+        FlexLayoutModule,
         MatIconModule,
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatToolbarModule,
+        MatDialogModule
     ],
     exports: [
         FlexLayoutModule,

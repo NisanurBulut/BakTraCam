@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { BakimService } from './bakim.service';
 import { BakimModel } from 'app/models';
-import { Subject } from 'rxjs';
-import { takeUntil, tap, map } from 'rxjs/operators';
+import { Subject, fromEvent } from 'rxjs';
+import { takeUntil, tap, map, pluck, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -14,7 +14,7 @@ import { BakimFormPopupComponent } from './popups/bakim-form-popup/bakim-form-po
   templateUrl: './bakim.component.html',
   styleUrls: ['./bakim.component.scss']
 })
-export class BakimComponent implements OnInit, OnDestroy, AfterViewInit {
+export class BakimComponent implements OnInit, OnDestroy {
 
   loading: boolean;
   bakimListe: BakimModel[];
@@ -27,6 +27,9 @@ export class BakimComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('filter', { static: true })
+  filter: ElementRef;
+
   private _unsubscribeAll: Subject<any> = new Subject();
 
   constructor(private _bService: BakimService, private _dialog: MatDialog) {
@@ -35,10 +38,7 @@ export class BakimComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
 
   }
-  ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-  }
+
   ngOnDestroy() {
     this._unsubscribeAll.unsubscribe();
   }
@@ -75,7 +75,9 @@ export class BakimComponent implements OnInit, OnDestroy, AfterViewInit {
     }).afterClosed().pipe(
       takeUntil(this._unsubscribeAll)
     ).subscribe((res) => {
-      this.bakimListesiniGetir();
+      if (res) {
+        this.bakimListesiniGetir();
+      }
     });
   }
 }

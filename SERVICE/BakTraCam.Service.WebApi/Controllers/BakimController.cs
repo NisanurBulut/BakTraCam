@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BakTraCam.Core.Business.Application;
 using BakTraCam.Core.DataAccess.Repositores;
+using BakTraCam.Service.DataContract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 namespace BakTraCam.Service.WebApi.Controllers
@@ -21,6 +22,12 @@ namespace BakTraCam.Service.WebApi.Controllers
         public async Task<IActionResult> BakimListesiniGetir()
         {
             return Ok(await _bakimApp.BakimlistesiGetirAsync());
+        }
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<IActionResult> kaydetBakim(BakimModel bakimModel)
+        {
+            return Ok(await _bakimApp.KaydetBakimAsync(bakimModel));
         }
     }
 }

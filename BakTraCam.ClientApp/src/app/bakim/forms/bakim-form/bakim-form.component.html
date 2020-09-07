@@ -1,69 +1,148 @@
-
-            <form  [formGroup]="form">
-                <div class="row">
-                    <div class="col-md-12">
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Bakım adı">
-                          </mat-form-field>
-                    </div>
-                    <div class="col-md-12">
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Bakım açıklaması">
-                          </mat-form-field>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <mat-form-field class="example-full-width">
-                          <input matInput placeholder="Bakım Tarihi" type="datetime">
-                        </mat-form-field>
-                      </div>
-                      <div class="col-md-6">
-                        <mat-form-field class="example-full-width">
-                          <input matInput placeholder="Bakım Önceliği" type="number">
-                        </mat-form-field>
-                      </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Gerçekleştiren 1" type="text">
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-3">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Gerçekleştiren 2" type="text">
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-3">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Gerçekleştiren 3" type="text">
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-3">
-                        <mat-form-field class="example-full-width">
-                          <input matInput placeholder="Gerçekleştiren 4" type="text">
-                        </mat-form-field>
-                      </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Sorumlu 1" type="text">
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Sorumlu 2" type="text">
-                      </mat-form-field>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                      <label>Bakım açıklaması</label>
-                      <mat-form-field class="example-full-width">
-                         <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
-                       </mat-form-field>
-                    </div>
-                </div>
-            </form>
+<form fxLayout="column" fxFlex class="event-form w-100-p" name="form" [formGroup]="form">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Bakım adı" formControlName="Ad" required/>
+        <mat-error *ngIf="form.get('Ad').hasError('required')">
+          Bakım adı belirtilmelidir
+        </mat-error>
+        <mat-error *ngIf="form.get('Ad').hasError('maxlength')">
+          Bakım adı en çok 50 karakter olabilir.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Bakım Tarihi"
+          type="datetime"
+          formControlName="Tarihi"
+          required
+        />
+        <mat-error *ngIf="form.get('Tarihi').hasError('required')">
+          Bakım tarihi belirtilmelidir
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Bakım Önceliği"
+          type="number"
+          formControlName="Oncelik"
+          required
+        />
+        <mat-error *ngIf="form.get('Oncelik').hasError('required')">
+          Bakım önceliği belirtilmelidir
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Gerçekleştiren 1"
+          type="text"
+          formControlName="Gerceklestiren1"
+          required
+        />
+        <mat-error *ngIf="form.get('Gerceklestiren1').hasError('required')">
+          Bakım gerçekleştireni belirtilmelidir
+        </mat-error>
+        <mat-error *ngIf="form.get('Gerceklestiren1').hasError('maxlength')">
+          Bakım gerçekleştireni en çok 50 karakter olabilir.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Gerçekleştiren 2"
+          type="text"
+          formControlName="Gerceklestiren2"
+          required
+        />
+        <mat-error *ngIf="form.get('Gerceklestiren2').hasError('required')">
+          Bakım gerçekleştireni belirtilmelidir
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Gerçekleştiren 3"
+          type="text"
+          formControlName="Gerceklestiren3"
+          required
+        />
+        <mat-error *ngIf="form.get('Gerceklestiren3').hasError('required')">
+          Bakım gerçekleştireni belirtilmelidir
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Gerçekleştiren 4"
+          type="text"
+          formControlName="Gerceklestiren4"
+          required
+        />
+        <mat-error *ngIf="form.get('Gerceklestiren4').hasError('required')">
+          Bakım gerçekleştireni belirtilmelidir
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Sorumlu 1"
+          type="text"
+          formControlName="Sorumlu1"
+          required
+        />
+        <mat-error *ngIf="form.get('Sorumlu1').hasError('required')">
+          Bakım sorumlusu belirtilmelidir
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width" >
+        <input matInput placeholder="Sorumlu 2" formControlName="Sorumlu2" type="text" required/>
+        <mat-error *ngIf="form.get('Sorumlu2').hasError('required')">
+          Bakım sorumlusu belirtilmelidir
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Bakım açıklaması</label>
+      <mat-form-field class="example-full-width">
+        <textarea
+          matInput
+          placeholder="..."
+          formControlName="Aciklama"
+        ></textarea>
+        <mat-error *ngIf="form.get('Aciklama').hasError('required')">
+          Bakım açıklaması belirtilmelidir
+        </mat-error>
+        <mat-error *ngIf="form.get('Aciklama').hasError('maxlength')">
+          Bakım gerçekleştireni en çok 100 karakter olabilir.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</form>

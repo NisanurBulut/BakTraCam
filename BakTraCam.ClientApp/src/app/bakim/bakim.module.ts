@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { BakimComponent } from './bakim.component';
 import { BakimService } from './bakim.service';
@@ -8,6 +7,7 @@ import { MaterialModule } from 'app/shared/material.module';
 import { BakimFormComponent } from './forms/bakim-form/bakim-form.component';
 import { BakimFormPopupComponent } from './popups/bakim-form-popup/bakim-form-popup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @NgModule({
     imports: [
@@ -23,7 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         BakimFormPopupComponent
     ],
     providers: [
-        BakimService
+        BakimService,
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: [] }
     ]
 })
 
