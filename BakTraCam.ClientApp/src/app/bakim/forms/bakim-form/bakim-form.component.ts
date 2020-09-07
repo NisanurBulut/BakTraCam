@@ -26,13 +26,13 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   @Output() result: EventEmitter<number> = new EventEmitter<number>();
 
   private _bakimId = 0;
-  @Input() set unvanId(value: number) {
+  @Input() set bakimId(value: number) {
     this._bakimId = value;
     if (this._bakimId > 0) {
       this._bakimIdWaiter.next(value);
     }
   }
-  get unvanId(): number {
+  get bakimId(): number {
     return this._bakimId;
   }
 
@@ -44,9 +44,9 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       takeUntil(this._unsubscribeAll),
       filter((id) => id > 0),
       mergeMap((id) => this._bakimService.getirBakim(id))
-    ).subscribe((unvan) => {
-      if (unvan) {
-        this.data = unvan;
+    ).subscribe((bakim) => {
+      if (bakim) {
+        this.data = bakim;
         this.defaultData = deepCopy(this.data);
         this.createForm();
       }
