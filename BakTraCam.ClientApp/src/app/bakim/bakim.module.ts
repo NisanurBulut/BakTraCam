@@ -4,27 +4,23 @@ import { NgModule } from '@angular/core';
 import { BakimComponent } from './bakim.component';
 import { BakimService } from './bakim.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from 'app/shared/material.module';
+import { BakimFormComponent } from './forms/bakim-form/bakim-form.component';
+import { BakimFormPopupComponent } from './popups/bakim-form-popup/bakim-form-popup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         CommonModule,
         HttpClientModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule
-
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule
     ],
     declarations: [
-        BakimComponent
+        BakimComponent,
+        BakimFormComponent,
+        BakimFormPopupComponent
     ],
     providers: [
         BakimService

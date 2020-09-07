@@ -6,6 +6,8 @@ import { takeUntil, tap, map } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { BakimFormPopupComponent } from './popups/bakim-form-popup/bakim-form-popup.component';
 
 @Component({
   selector: 'app-bakim',
@@ -17,14 +19,17 @@ export class BakimComponent implements OnInit, OnDestroy, AfterViewInit {
   loading: boolean;
   bakimListe: BakimModel[];
 
-  displayedColumns: string[] = ['id', 'aciklama', 'actions'];
+  displayedColumns: string[] = ['id', 'ad', 'aciklama', 'tarihi',
+    'sorumlu1', 'sorumlu2', 'gerceklestiren1',
+    'gerceklestiren2', 'gerceklestiren3',
+    'gerceklestiren4', 'actions'];
   dataSource: MatTableDataSource<BakimModel>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   private _unsubscribeAll: Subject<any> = new Subject();
 
-  constructor(private _bService: BakimService) {
+  constructor(private _bService: BakimService, private _dialog: MatDialog) {
     this.bakimListesiniGetir();
   }
   ngOnInit() {
@@ -54,9 +59,23 @@ export class BakimComponent implements OnInit, OnDestroy, AfterViewInit {
         this.bakimListe = (resListe as BakimModel[]);
         console.log(this.bakimListe);
         this.dataSource = new MatTableDataSource(this.bakimListe);
-console.log(this.dataSource.data);
+        console.log(this.dataSource.data);
       }),
       tap(() => this.loading = false),
     ).subscribe()
+  }
+  createNewTask(): void {
+    this.openBakimPopup({ id: 0 });
+  }
+  openBakimPopup(data: any): void {
+    this._dialog.open(BakimFormPopupComponent, {
+      disableClose: true,
+      panelClass: 'form-dialog',
+      data: data
+    }).afterClosed().pipe(
+      takeUntil(this._unsubscribeAll)
+    ).subscribe((res) => {
+      this.bakimListesiniGetir();
+    });
   }
 }

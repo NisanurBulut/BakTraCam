@@ -1,0 +1,19 @@
+
+  <mat-toolbar>
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="title dialog-title">
+            <mat-icon fontSet="fa" fontIcon=""></mat-icon>
+            <h4 class="card-title" *ngIf="!bakimId">Bakım Düzenle</h4>
+            <h4 class="card-title" *ngIf="bakimId">Bakım Ekle</h4>
+        </span>
+        <button mat-icon-button (click)="this.dialogRef.close(false)">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+  <div class="card-body">
+    <app-bakim-form></app-bakim-form>
+    <button mat-raised-button type="submit" class="btn btn-danger pull-right">Kaydet</button>
+    <div class="clearfix"></div>
+  </div>

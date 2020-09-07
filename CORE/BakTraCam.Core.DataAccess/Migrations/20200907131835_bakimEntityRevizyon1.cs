@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BakTraCam.Core.DataAccess.Migrations
 {
-    public partial class bakimciEntity_eklendi_and_bakimentitiy_revize_oldu : Migration
+    public partial class bakimEntityRevizyon1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,6 +16,12 @@ namespace BakTraCam.Core.DataAccess.Migrations
                     Aciklama = table.Column<string>(nullable: true),
                     Ad = table.Column<string>(nullable: true),
                     Tarihi = table.Column<DateTime>(nullable: false),
+                    Gerceklestiren1 = table.Column<string>(nullable: true),
+                    Gerceklestiren2 = table.Column<string>(nullable: true),
+                    Gerceklestiren3 = table.Column<string>(nullable: true),
+                    Gerceklestiren4 = table.Column<string>(nullable: true),
+                    Sorumlu1 = table.Column<string>(nullable: true),
+                    Sorumlu2 = table.Column<string>(nullable: true),
                     Oncelik = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -29,45 +35,21 @@ namespace BakTraCam.Core.DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Ad = table.Column<string>(nullable: true),
-                    BakimEntityId = table.Column<int>(nullable: true),
-                    BakimEntityId1 = table.Column<int>(nullable: true)
+                    Ad = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tBakimci", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_tBakimci_tBakim_BakimEntityId",
-                        column: x => x.BakimEntityId,
-                        principalTable: "tBakim",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_tBakimci_tBakim_BakimEntityId1",
-                        column: x => x.BakimEntityId1,
-                        principalTable: "tBakim",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tBakimci_BakimEntityId",
-                table: "tBakimci",
-                column: "BakimEntityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tBakimci_BakimEntityId1",
-                table: "tBakimci",
-                column: "BakimEntityId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "tBakimci");
+                name: "tBakim");
 
             migrationBuilder.DropTable(
-                name: "tBakim");
+                name: "tBakimci");
         }
     }
 }

@@ -28,8 +28,26 @@ namespace BakTraCam.Core.DataAccess.Migrations
                     b.Property<string>("Ad")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Gerceklestiren1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Gerceklestiren2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Gerceklestiren3")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Gerceklestiren4")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Oncelik")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Sorumlu1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Sorumlu2")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Tarihi")
                         .HasColumnType("TEXT");
@@ -48,30 +66,9 @@ namespace BakTraCam.Core.DataAccess.Migrations
                     b.Property<string>("Ad")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("BakimEntityId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("BakimEntityId1")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("BakimEntityId");
-
-                    b.HasIndex("BakimEntityId1");
-
                     b.ToTable("tBakimci");
-                });
-
-            modelBuilder.Entity("BakTraCam.Core.Entity.BakimciEntity", b =>
-                {
-                    b.HasOne("BakTraCam.Core.Entity.BakimEntity", null)
-                        .WithMany("Gerceklestirenler")
-                        .HasForeignKey("BakimEntityId");
-
-                    b.HasOne("BakTraCam.Core.Entity.BakimEntity", null)
-                        .WithMany("Sorumlular")
-                        .HasForeignKey("BakimEntityId1");
                 });
 #pragma warning restore 612, 618
         }
