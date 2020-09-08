@@ -4,7 +4,7 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header card-header-rose">
-                <h4 class="card-title ">Bakım Tablosu - Bakım Planını Temsil Eder</h4>
+                <h4 class="card-title ">Kullanıcı Tablosu</h4>
                  <div class="card-category">
                   <mat-form-field>
                     <mat-label>Arama</mat-label>
@@ -33,58 +33,17 @@
                       </ng-container>
 
                       <!-- Açıklama Column -->
-                      <ng-container matColumnDef="aciklama">
+                      <ng-container matColumnDef="unvan">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Açıklama</th>
                         <td mat-cell *matCellDef="let row">{{ row.aciklama }}</td>
                       </ng-container>
-                      <!-- Tarihi Column -->
-                      <ng-container matColumnDef="tarihi">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tarihi</th>
-                        <td mat-cell *matCellDef="let row">{{ row.tarihi }}</td>
-                      </ng-container>
-
-                      <!-- kullanici1 Column -->
-                      <ng-container matColumnDef="kullanici1">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>kullanici1</th>
-                        <td mat-cell *matCellDef="let row">{{ row.kullanici1 }}</td>
-                      </ng-container>
-
-                      <!-- kullanici2 Column -->
-                      <ng-container matColumnDef="kullanici2">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>kullanici2</th>
-                        <td mat-cell *matCellDef="let row">{{ row.kullanici2 }}</td>
-                      </ng-container>
-
-                       <!-- gerceklestiren1 Column -->
-                       <ng-container matColumnDef="gerceklestiren1">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
-                        <td mat-cell *matCellDef="let row">{{ row.gerceklestiren1 }}</td>
-                      </ng-container>
-
-                       <!-- gerceklestiren2 Column -->
-                       <ng-container matColumnDef="gerceklestiren2">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren 2</th>
-                        <td mat-cell *matCellDef="let row">{{ row.gerceklestiren2 }}</td>
-                      </ng-container>
-
-                       <!-- gerceklestiren3 Column -->
-                       <ng-container matColumnDef="gerceklestiren3">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren 3</th>
-                        <td mat-cell *matCellDef="let row">{{ row.gerceklestiren3 }}</td>
-                      </ng-container>
-
-                         <!-- gerceklestiren4 Column -->
-                         <ng-container matColumnDef="gerceklestiren4">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren 4</th>
-                          <td mat-cell *matCellDef="let row">{{ row.gerceklestiren4 }}</td>
-                        </ng-container>
 
                          <!-- gerceklestiren4 Column -->
                          <ng-container matColumnDef="actions">
                           <th mat-header-cell *matHeaderCellDef>
 
                             <button mat-raised-button class="btn-success btn-sm"   (click)="createNewTask()">
-                              <mat-icon>add_task</mat-icon>
+                              <mat-icon>person_add</mat-icon>
                             </button>
                           </th>
                           <td mat-cell *matCellDef="let row">

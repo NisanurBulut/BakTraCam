@@ -1,29 +1,25 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { BakimService } from './bakim.service';
-import { BakimModel } from 'app/models';
-import { Subject, fromEvent } from 'rxjs';
-import { takeUntil, tap, map, pluck, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { Subject } from 'rxjs';
+import { takeUntil, tap, map } from 'rxjs/operators';
+import { KullaniciService } from './kullanici.service';
 import { MatDialog } from '@angular/material/dialog';
-import { BakimFormPopupComponent } from './popups/bakim-form-popup/bakim-form-popup.component';
+import { KullaniciFormPopupComponent } from './popups/kullanici-form-popup/kullanici-form-popup.component';
+import { KullaniciModel } from 'app/models/kullanici.model';
 
 @Component({
-  selector: 'app-bakim',
-  templateUrl: './bakim.component.html',
-  styleUrls: ['./bakim.component.scss']
+  selector: 'app-kullanici',
+  templateUrl: './kullanici.component.html',
+  styleUrls: ['./kullanici.component.scss']
 })
-export class BakimComponent implements OnInit, OnDestroy {
-
+export class KullaniciComponent implements OnInit, OnDestroy {
   loading: boolean;
-  bakimListe: BakimModel[];
+  bakimListe: KullaniciModel[];
 
-  displayedColumns: string[] = ['id', 'ad', 'aciklama', 'tarihi',
-    'kullanici1', 'kullanici2', 'gerceklestiren1',
-    'gerceklestiren2', 'gerceklestiren3',
-    'gerceklestiren4', 'actions'];
-  dataSource: MatTableDataSource<BakimModel>;
+  displayedColumns: string[] = ['id', 'ad', 'unvan', 'actions'];
+  dataSource: MatTableDataSource<KullaniciModel>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -31,15 +27,11 @@ export class BakimComponent implements OnInit, OnDestroy {
   filter: ElementRef;
 
   private _unsubscribeAll: Subject<any> = new Subject();
+  constructor(private _kService: KullaniciService, private _dialog: MatDialog) { }
 
-  constructor(private _bService: BakimService, private _dialog: MatDialog) {
-    this.bakimListesiniGetir();
-  }
   ngOnInit() {
-
   }
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this._unsubscribeAll.unsubscribe();
   }
   applyFilter(event: Event) {
@@ -51,12 +43,12 @@ export class BakimComponent implements OnInit, OnDestroy {
     }
   }
 
-  private bakimListesiniGetir() {
-    this._bService.getirBakimListesi().pipe(
+  private kullaniciListesiniGetir() {
+    this._kService.getirKullaniciListesi().pipe(
       takeUntil(this._unsubscribeAll),
       tap(() => this.loading = true),
       map((resListe) => {
-        this.bakimListe = (resListe as BakimModel[]);
+        this.bakimListe = (resListe as KullaniciModel[]);
         console.log(this.bakimListe);
         this.dataSource = new MatTableDataSource(this.bakimListe);
         console.log(this.dataSource.data);
@@ -65,10 +57,10 @@ export class BakimComponent implements OnInit, OnDestroy {
     ).subscribe()
   }
   createNewTask(): void {
-    this.openBakimPopup({ id: 0 });
+    this.openKullaniciPopup({ id: 0 });
   }
-  openBakimPopup(data: any): void {
-    this._dialog.open(BakimFormPopupComponent, {
+  openKullaniciPopup(data: any): void {
+    this._dialog.open(KullaniciFormPopupComponent, {
       disableClose: true,
       panelClass: 'form-dialog',
       data: data
@@ -76,7 +68,7 @@ export class BakimComponent implements OnInit, OnDestroy {
       takeUntil(this._unsubscribeAll)
     ).subscribe((res) => {
       if (res) {
-        this.bakimListesiniGetir();
+        this.kullaniciListesiniGetir();
       }
     });
   }

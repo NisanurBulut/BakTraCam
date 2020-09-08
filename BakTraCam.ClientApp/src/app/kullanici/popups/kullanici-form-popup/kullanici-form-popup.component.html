@@ -1,0 +1,27 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar>
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">
+        <mat-icon fontSet="fa" fontIcon=""></mat-icon>
+        <h4 class="card-title" *ngIf="kullaniciId">Kullanıcı Düzenle</h4>
+        <h4 class="card-title" *ngIf="!kullaniciId">Kullanıcı Ekle</h4>
+      </span>
+      <button mat-icon-button (click)="this.dialogRef.close(false)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="card-body">
+    <app-kullanici-form #kullaniciForm [kullaniciId]="kullaniciId"></app-kullanici-form>
+  </div>
+  <div class="clearfix"></div>
+    <button
+      mat-raised-button
+      type="submit"
+      (click)="save()"
+      class="btn btn-danger pull-right"
+    >
+      Kaydet
+    </button>
+</div>

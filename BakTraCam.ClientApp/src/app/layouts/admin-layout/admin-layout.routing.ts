@@ -10,6 +10,7 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { HomeComponent } from 'app/home/home.component';
 import { BakimComponent } from 'app/bakim/bakim.component';
+import { KullaniciComponent } from 'app/kullanici/kullanici.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -56,6 +57,7 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'home',           component: HomeComponent },
     { path: 'bakim',          component: BakimComponent },
+    { path: 'kullanici',      component: KullaniciComponent },
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },

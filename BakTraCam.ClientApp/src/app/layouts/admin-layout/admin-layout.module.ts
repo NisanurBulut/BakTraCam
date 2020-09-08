@@ -17,10 +17,10 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
-import { BakimComponent } from 'app/bakim/bakim.component';
 import { BakimModule } from 'app/bakim/bakim.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { KullaniciModule } from 'app/kullanici/kullanici.module';
+import {TranslateModule} from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
@@ -29,13 +29,14 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ReactiveFormsModule,
     BakimModule,
+    KullaniciModule,
     MatButtonModule,
     MatRippleModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule
-
+    MatTooltipModule,
+    TranslateModule.forRoot()
   ],
   declarations: [
     DashboardComponent,

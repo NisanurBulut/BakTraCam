@@ -1,0 +1,26 @@
+<form fxLayout="column" fxFlex class="event-form w-100-p" name="form" [formGroup]="form">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Kullanıcı adı" formControlName="Ad" required/>
+        <mat-error *ngIf="form.get('Ad').hasError('required')">
+          Kullanıcı adı belirtilmelidir
+        </mat-error>
+        <mat-error *ngIf="form.get('Ad').hasError('maxlength')">
+          Kullanıcı adı en çok 50 karakter olabilir.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" fxLayout="row"  fxFill>
+        <mat-select [compareWith]="compareEnumKeys" fxFill formControlName="Unvan">
+            <mat-option *ngFor="let item of Unvan | enumkeys" [value]="item.key">
+                {{item.value | enumtranslate: EnumCategory.Unvan }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    </div>
+  </div>
+</form>

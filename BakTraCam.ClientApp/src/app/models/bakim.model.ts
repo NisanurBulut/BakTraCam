@@ -6,8 +6,8 @@ export interface BakimModel {
     Gerceklestiren2: string,
     Gerceklestiren3: string,
     Gerceklestiren4: string,
-    Sorumlu1: string,
-    Sorumlu2: string,
+    kullanici1: string,
+    kullanici2: string,
     Tarihi: Date,
     Oncelik: number
 }

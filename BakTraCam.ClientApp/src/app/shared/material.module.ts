@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
     imports: [
         FlexLayoutModule,
@@ -20,7 +21,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         MatButtonModule,
         MatButtonToggleModule,
         MatToolbarModule,
-        MatDialogModule
+        MatDialogModule,
+        MatSelectModule
     ],
     exports: [
         FlexLayoutModule,
@@ -32,7 +34,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         MatButtonModule,
         MatButtonToggleModule,
         MatToolbarModule,
-        MatDialogModule]
+        MatDialogModule,
+        MatSelectModule]
 })
 export class MaterialModule {
 }

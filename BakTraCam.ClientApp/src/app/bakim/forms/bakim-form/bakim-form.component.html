@@ -108,21 +108,21 @@
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Sorumlu 1"
+          placeholder="kullanici 1"
           type="text"
-          formControlName="Sorumlu1"
+          formControlName="kullanici1"
           required
         />
-        <mat-error *ngIf="form.get('Sorumlu1').hasError('required')">
-          Bakım sorumlusu belirtilmelidir
+        <mat-error *ngIf="form.get('kullanici1').hasError('required')">
+          Bakım kullanicisu belirtilmelidir
         </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-6">
       <mat-form-field class="example-full-width" >
-        <input matInput placeholder="Sorumlu 2" formControlName="Sorumlu2" type="text" required/>
-        <mat-error *ngIf="form.get('Sorumlu2').hasError('required')">
-          Bakım sorumlusu belirtilmelidir
+        <input matInput placeholder="kullanici 2" formControlName="kullanici2" type="text" required/>
+        <mat-error *ngIf="form.get('kullanici2').hasError('required')">
+          Bakım kullanicisu belirtilmelidir
         </mat-error>
       </mat-form-field>
     </div>
