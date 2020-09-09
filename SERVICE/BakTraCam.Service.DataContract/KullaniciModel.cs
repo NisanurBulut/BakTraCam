@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BakTraCam.Core.Entity
+namespace BakTraCam.Service.DataContract
 {
-    public class KullaniciEntity : BaseEntity
+    public class KullaniciModel
     {
+        public int Id { get; set; }
         public string Ad { get; set; }
         public int UnvanId { get; set; }
-
-        // 1 sorumlu
-        // 2 bakımcı
+      
     }
 }

@@ -79,7 +79,7 @@ export class KullaniciFormComponent implements OnInit, AfterViewInit {
     if (!this.isClean()) {
       this.form.reset({
         Ad: this.defaultData.Ad,
-        Unvan: this.data.UnvanId
+        UnvanId: this.data.UnvanId
       });
       // veri out edilerek parentine verilir
       this.result.emit(this.form.getRawValue());
@@ -88,7 +88,7 @@ export class KullaniciFormComponent implements OnInit, AfterViewInit {
   createForm(): void {
     this.form = this.formBuilder.group({
       Ad: [this.data.Ad, [Validators.required, Validators.maxLength(50)]],
-      Unvan: [this.data.UnvanId, [Validators.min(1)]]
+      UnvanId: [this.data.UnvanId, [Validators.min(1)]]
     });
 
     // Kullanıcıları Yükle
@@ -97,7 +97,11 @@ export class KullaniciFormComponent implements OnInit, AfterViewInit {
   }
   save(): void {
     if (this.validateForm()) {
-      const kullanici = { Id: this.kullaniciId, ...this.form.getRawValue() } as KullaniciModel;
+      const kullanici: KullaniciModel = {
+        Id: this.kullaniciId,
+        Ad: this.form.get('Ad').value,
+        UnvanId: parseInt(this.form.get('UnvanId').value)
+      };
       console.log(kullanici);
       this._kService.kaydetKullanici(kullanici).pipe(
         takeUntil(this._unsubscribeAll),
