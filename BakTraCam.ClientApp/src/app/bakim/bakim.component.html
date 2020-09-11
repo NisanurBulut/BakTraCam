@@ -40,7 +40,7 @@
                       <!-- Tarihi Column -->
                       <ng-container matColumnDef="tarihi">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Tarihi</th>
-                        <td mat-cell *matCellDef="let row">{{ row.tarihi }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.tarihi | date: 'dd.MM.yyyy'}}</td>
                       </ng-container>
 
                       <!-- kullanici1 Column -->
