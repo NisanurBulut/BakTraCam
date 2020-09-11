@@ -14,7 +14,24 @@ namespace BakTraCam.Util.Mapping.Config
         protected override void Configure()
         {
             MapBakim();
+            MapOrtak();
         }
+
+        private void MapOrtak()
+        {
+            WhenMapping
+                .From<KullaniciEntity>()
+                .To<SelectModel>()
+                .Map((e, dto) => e.Ad)
+                .To(dto => dto.Name)
+                .And
+                .Map((e, dto) => e.Id)
+                .To(dto => dto.Key)
+                ;
+
+            GetPlansFor<KullaniciEntity>().To<SelectModel>();
+        }
+
         private void MapBakim()
         {
             WhenMapping
@@ -23,5 +40,6 @@ namespace BakTraCam.Util.Mapping.Config
                     .IgnoreTargetMembersWhere(m => m.HasAttribute<IgnoreMappingAttribute>());
             GetPlansFor<BakimEntity>().To<BakimModel>();
         }
+        
     }
 }

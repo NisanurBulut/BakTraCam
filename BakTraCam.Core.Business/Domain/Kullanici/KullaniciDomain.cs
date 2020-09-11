@@ -36,5 +36,6 @@ namespace BakTraCam.Core.Business.Domain.Kullanici
             return Mapper.Map<KullaniciEntity, KullaniciModel>(Kullanici);
 
         }
+      
     }
 }

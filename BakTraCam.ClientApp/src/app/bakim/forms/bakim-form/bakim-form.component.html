@@ -45,13 +45,14 @@
   <div class="row">
     <div class="col-md-3">
       <mat-form-field class="example-full-width">
-        <input
+       <app-kullanici-select></app-kullanici-select>
+        <!-- <input
           matInput
           placeholder="Gerçekleştiren 1"
           type="text"
           formControlName="Gerceklestiren1"
           required
-        />
+        /> -->
         <mat-error *ngIf="form.get('Gerceklestiren1').hasError('required')">
           Bakım gerçekleştireni belirtilmelidir
         </mat-error>

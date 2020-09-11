@@ -1,5 +1,6 @@
 ﻿using BakTraCam.Core.DataAccess.Repositores;
 using BakTraCam.Core.Entity;
+using BakTraCam.Service.DataContract;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace BakTraCam.Core.DataAccess.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly();
-           
+            modelBuilder.Entity<SelectModel>().HasNoKey().ToView("SelectModel");
         }
     }
 }

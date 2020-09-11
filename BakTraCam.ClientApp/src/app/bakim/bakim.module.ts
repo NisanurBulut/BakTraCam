@@ -8,14 +8,17 @@ import { BakimFormComponent } from './forms/bakim-form/bakim-form.component';
 import { BakimFormPopupComponent } from './popups/bakim-form-popup/bakim-form-popup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { KullaniciSelectComponent } from 'app/components/kullanici-select/kullanici-select.component';
+import { ComponentsModule } from 'app/components/components.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        ComponentsModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule
+        MaterialModule,
     ],
     declarations: [
         BakimComponent,

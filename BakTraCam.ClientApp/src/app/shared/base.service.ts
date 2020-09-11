@@ -107,6 +107,4 @@ export class BaseService {
     protected baseUrlUpdate(url: string): string {
         return (url.startsWith('/')) ? this.baseUrl + url : url;
     }
-
-
 }
