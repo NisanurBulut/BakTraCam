@@ -56,7 +56,7 @@ export class KullaniciListComponent implements OnInit, OnDestroy {
         this.bakimListe = (resListe as KullaniciModel[]);
         console.log(this.bakimListe);
         this.dataSource = new MatTableDataSource(this.bakimListe);
-        console.log(this.dataSource.data);
+
       }),
       tap(() => this.loading = false),
     ).subscribe()
@@ -72,9 +72,8 @@ export class KullaniciListComponent implements OnInit, OnDestroy {
     }).afterClosed().pipe(
       takeUntil(this._unsubscribeAll)
     ).subscribe((res) => {
-      if (res) {
-        this.kullaniciListesiniGetir();
-      }
+
+      this.kullaniciListesiniGetir();
     });
   }
 }

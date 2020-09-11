@@ -102,7 +102,7 @@ export class KullaniciFormComponent implements OnInit, AfterViewInit {
         Ad: this.form.get('Ad').value,
         UnvanId: parseInt(this.form.get('UnvanId').value)
       };
-      console.log(kullanici);
+
       this._kService.kaydetKullanici(kullanici).pipe(
         takeUntil(this._unsubscribeAll),
         filter((res) => res.success),
