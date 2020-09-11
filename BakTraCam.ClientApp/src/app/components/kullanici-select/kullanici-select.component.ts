@@ -1,5 +1,7 @@
-import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { MatOption } from '@angular/material/core';
+import { MatSelectChange } from '@angular/material/select';
 import { compareEnumKeys } from 'app/common';
 import { Select } from 'app/models';
 import { Observable, Subject } from 'rxjs';
@@ -13,8 +15,12 @@ import { ComponentService } from '../component.service';
 
 export class KullaniciSelectComponent implements OnInit, OnDestroy {
 
-    @Input() parentFormGroup: FormGroup;
-    @Input() controlName: string;
+    @Output() kullaniciChange = new EventEmitter();
+    selectedKullanici: Select = {
+        Key: 0,
+        Group: '',
+        Name: ''
+    };
     private _unsubscribeAll = new Subject();
     _kullanicilar: Select[] = [];
 
@@ -36,5 +42,11 @@ export class KullaniciSelectComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+    public onChangeKullaniciSelect(_event: MatSelectChange): void {
+        this.selectedKullanici.Name = (_event.source.selected as MatOption).viewValue;
+        this.selectedKullanici.Key = _event.source.value;
+        this.kullaniciChange.emit(this.selectedKullanici);
+
     }
 }

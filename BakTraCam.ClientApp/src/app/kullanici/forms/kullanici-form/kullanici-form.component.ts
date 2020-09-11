@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { deepCopy, markAsTouched, compareEnumKeys } from '../../../common';
 import { takeUntil, filter, tap, mergeMap } from 'rxjs/operators';
-import { KullaniciService } from '../../../kullanici';
+import { KullaniciService } from '../../';
 import { KullaniciModel, Unvan, EnumCategory } from '../../../models';
 
 

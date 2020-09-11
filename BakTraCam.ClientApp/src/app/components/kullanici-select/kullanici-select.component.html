@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" fxLayout="row"  fxFill>
     <mat-label>Kullanıcı</mat-label>
-    <mat-select fxFill #kullaniciSelect>
+    <mat-select fxFill #kullaniciSelect  (selectionChange)="onChangeKullaniciSelect($event)">
         <mat-option *ngFor="let item of this._kullanicilar" [value]="item.key">
             {{item.name }}
         </mat-option>

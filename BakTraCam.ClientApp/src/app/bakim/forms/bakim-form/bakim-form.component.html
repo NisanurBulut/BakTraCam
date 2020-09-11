@@ -44,24 +44,24 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <app-kullanici-select></app-kullanici-select>
+      <app-kullanici-select (kullaniciChange)="GerceklestirenBir($event)"></app-kullanici-select>
     </div>
     <div class="col-md-3">
-      <app-kullanici-select></app-kullanici-select>
+      <app-kullanici-select (kullaniciChange)="GerceklestirenIki($event)"></app-kullanici-select>
     </div>
     <div class="col-md-3">
-      <app-kullanici-select></app-kullanici-select>
+      <app-kullanici-select (kullaniciChange)="GerceklestirenUc($event)"></app-kullanici-select>
     </div>
     <div class="col-md-3">
-      <app-kullanici-select></app-kullanici-select>
+      <app-kullanici-select (kullaniciChange)="GerceklestirenDort($event)"></app-kullanici-select>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <app-kullanici-select></app-kullanici-select>
+      <app-kullanici-select (kullaniciChange)="SelectSorumluBir($event)"></app-kullanici-select>
     </div>
     <div class="col-md-6">
-      <app-kullanici-select></app-kullanici-select>
+      <app-kullanici-select (kullaniciChange)="SelectSorumluIki($event)"></app-kullanici-select>
     </div>
   </div>
   <div class="row">

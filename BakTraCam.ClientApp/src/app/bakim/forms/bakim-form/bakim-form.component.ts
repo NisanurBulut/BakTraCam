@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, Afte
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { BakimModel } from 'app/models';
+import { BakimModel, Select } from 'app/models';
 import { BakimService } from 'app/bakim/bakim.service';
 import { deepCopy, markAsTouched } from 'app/common/generic-functions';
 import { takeUntil, filter, tap, mergeMap } from 'rxjs/operators';
@@ -113,6 +113,37 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         tap((res) => this.bakimId = res.key),
         tap((res) => this.result.emit(res.key))
       ).subscribe();
+    }
+  }
+  SelectSorumluBir(sorumlu: Select): void {
+    if (sorumlu) {
+      this.defaultData.kullanici1 = sorumlu.Key;
+      console.log(this.defaultData);
+    }
+  }
+  SelectSorumluIki(sorumlu: Select): void {
+    if (sorumlu) {
+      this.defaultData.kullanici2 = sorumlu.Key;
+    }
+  }
+  GerceklestirenBir(sorumlu: Select): void {
+    if (sorumlu) {
+      this.defaultData.Gerceklestiren1 = sorumlu.Key;
+    }
+  }
+  GerceklestirenIki(sorumlu: Select): void {
+    if (sorumlu) {
+      this.defaultData.Gerceklestiren2 = sorumlu.Key;
+    }
+  }
+  GerceklestirenUc(sorumlu: Select): void {
+    if (sorumlu) {
+      this.defaultData.Gerceklestiren3 = sorumlu.Key;
+    }
+  }
+  GerceklestirenDort(sorumlu: Select): void {
+    if (sorumlu) {
+      this.defaultData.Gerceklestiren4 = sorumlu.Key;
     }
   }
 }
