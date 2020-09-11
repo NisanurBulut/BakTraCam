@@ -7,7 +7,6 @@ import { Select } from 'app/models';
 export class ComponentService extends BaseService {
 
     getirKullaniciListesi(): Observable<Select[]> {
-
         return this.getOnly<Select[]>('/Ortak/KullaniciListesiniGetir/');
     }
 

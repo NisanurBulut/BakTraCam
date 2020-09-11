@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular
 import { FormGroup } from '@angular/forms';
 import { compareEnumKeys } from 'app/common';
 import { Select } from 'app/models';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil, tap, map } from 'rxjs/operators';
 import { ComponentService } from '../component.service';
 
@@ -29,8 +29,8 @@ export class KullaniciSelectComponent implements OnInit, OnDestroy {
         this._cService.getirKullaniciListesi().pipe(
             takeUntil(this._unsubscribeAll)
         ).subscribe(data => {
-            console.log(this._kullanicilar);
             this._kullanicilar = data;
+            console.log(this._kullanicilar);
         });
     }
     ngOnDestroy() {

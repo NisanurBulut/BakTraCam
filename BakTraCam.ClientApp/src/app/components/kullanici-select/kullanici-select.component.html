@@ -1,12 +1,8 @@
-<ng-container >
-    <mat-form-field fxFill appearance="outline">
-        <mat-label>Kullanıcı</mat-label>
-        <mat-select  #kullaniciSelect>
-
-            <mat-option *ngFor="let item of _kullanicilar | async" [value]="item.Key">
-                {{item.Name}}
-            </mat-option>
-        </mat-select>
-
-    </mat-form-field>
-</ng-container>
+<mat-form-field appearance="outline" fxLayout="row"  fxFill>
+    <mat-label>Kullanıcı</mat-label>
+    <mat-select fxFill #kullaniciSelect>
+        <mat-option *ngFor="let item of this._kullanicilar" [value]="item.key">
+            {{item.name }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

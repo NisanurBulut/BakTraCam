@@ -93,12 +93,6 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       Ad: [this.data.Ad, [Validators.required, Validators.maxLength(50)]],
       Aciklama: [this.data.Aciklama, [Validators.maxLength(100)]],
       Tarihi: [this.data.Tarihi, [Validators.required]],
-      kullanici1: [null, [Validators.required, Validators.maxLength(50)]],
-      kullanici2: [null, [Validators.required, Validators.maxLength(50)]],
-      Gerceklestiren1: [null, [Validators.required, Validators.maxLength(50)]],
-      Gerceklestiren2: [null, [Validators.required, Validators.maxLength(50)]],
-      Gerceklestiren3: [null, [Validators.required, Validators.maxLength(50)]],
-      Gerceklestiren4: [null, [Validators.required, Validators.maxLength(50)]],
       Oncelik: [this.data.Oncelik, [Validators.required, Validators.min(1)]]
     });
 
