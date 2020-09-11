@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-*.db-wal
+*.db
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -338,5 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+SERVICE/BakTraCam.Service.WebApi/BakTraCam.db-wal
 SERVICE/BakTraCam.Service.WebApi/BakTraCam.db-wal
 SERVICE/BakTraCam.Service.WebApi/BakTraCam.db-wal

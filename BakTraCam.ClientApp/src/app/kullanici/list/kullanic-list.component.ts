@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -15,7 +15,7 @@ import { EnumCategory, Unvan } from 'app/models';
   templateUrl: './kullanici-list.component.html',
   styleUrls: ['./kullanici-list.component.scss']
 })
-export class KullaniciListComponent implements OnInit, OnDestroy {
+export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit {
   loading: boolean;
   bakimListe: KullaniciModel[];
 
@@ -35,6 +35,9 @@ export class KullaniciListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.kullaniciListesiniGetir();
+  }
+  ngAfterViewInit() {
+
   }
   ngOnDestroy(): void {
     this._unsubscribeAll.unsubscribe();
@@ -56,7 +59,8 @@ export class KullaniciListComponent implements OnInit, OnDestroy {
         this.bakimListe = (resListe as KullaniciModel[]);
         console.log(this.bakimListe);
         this.dataSource = new MatTableDataSource(this.bakimListe);
-
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }),
       tap(() => this.loading = false),
     ).subscribe()
