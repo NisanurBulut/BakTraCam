@@ -9,8 +9,8 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { HomeComponent } from 'app/home/home.component';
-import { BakimComponent } from 'app/bakim/bakim.component';
-import { KullaniciListComponent } from 'app/kullanici/list/kullanic-list.component';
+import { KullaniciListComponent } from 'app/kullanici/list/kullanici-list.component';
+import { BakimListComponent } from 'app/bakim';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -56,7 +56,7 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'home',           component: HomeComponent },
-    { path: 'bakim',          component: BakimComponent },
+    { path: 'bakim',          component: BakimListComponent },
     { path: 'kullanici',      component: KullaniciListComponent },
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },

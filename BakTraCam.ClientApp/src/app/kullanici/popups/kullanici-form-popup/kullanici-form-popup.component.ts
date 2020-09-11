@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, ViewChild, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { KullaniciFormComponent } from 'app/kullanici';
 import { Subject } from 'rxjs';
-import { KullaniciFormComponent } from '../../../kullanici';
 
 
 @Component({

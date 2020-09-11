@@ -14,6 +14,7 @@ export class KullaniciService extends BaseService {
     getirKullaniciListesi(): Observable<KullaniciModel[]> {
         return this.getOnly<KullaniciModel[]>('/Kullanici/KullaniciListesiniGetir/');
     }
+
     kaydetKullanici(kullaniciParam: KullaniciModel): Observable<PostResult> {
         return this.postValue('/Kullanici/KaydetKullanici', kullaniciParam).
         pipe(

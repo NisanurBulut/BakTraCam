@@ -6,9 +6,9 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap, map } from 'rxjs/operators';
 import { KullaniciService } from '../kullanici.service';
 import { MatDialog } from '@angular/material/dialog';
-import { KullaniciFormPopupComponent } from '../popups/kullanici-form-popup/kullanici-form-popup.component';
 import { KullaniciModel } from 'app/models/kullanici.model';
 import { EnumCategory, Unvan } from 'app/models';
+import { KullaniciFormPopupComponent } from '..';
 
 @Component({
   selector: 'app-kullanici-list',

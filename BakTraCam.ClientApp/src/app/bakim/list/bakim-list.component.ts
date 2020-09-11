@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { BakimService } from './bakim.service';
+import { BakimService } from '../bakim.service';
 import { BakimModel } from 'app/models';
 import { Subject, fromEvent } from 'rxjs';
 import { takeUntil, tap, map, pluck, debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -7,14 +7,14 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { BakimFormPopupComponent } from './popups/bakim-form-popup/bakim-form-popup.component';
+import { BakimFormPopupComponent } from '../popups/bakim-form-popup/bakim-form-popup.component';
 
 @Component({
-  selector: 'app-bakim',
-  templateUrl: './bakim.component.html',
-  styleUrls: ['./bakim.component.scss']
+  selector: 'app-bakim-list',
+  templateUrl: './bakim-list.component.html',
+  styleUrls: ['./bakim-list.component.scss']
 })
-export class BakimComponent implements OnInit, OnDestroy {
+export class BakimListComponent implements OnInit, OnDestroy {
 
   loading: boolean;
   bakimListe: BakimModel[];

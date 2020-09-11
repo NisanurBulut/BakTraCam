@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { BakimFormComponent } from 'app/bakim/forms/bakim-form/bakim-form.component';
+import { BakimFormComponent } from 'app/bakim';
 import { Subject } from 'rxjs';
 
 

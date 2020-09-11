@@ -1,7 +1,7 @@
-<ng-container [formGroup]="parentFormGroup">
+<ng-container >
     <mat-form-field fxFill appearance="outline">
         <mat-label>Kullanıcı</mat-label>
-        <mat-select  #kullaniciSelect [formControlName]="controlName">
+        <mat-select  #kullaniciSelect>
 
             <mat-option *ngFor="let item of _kullanicilar | async" [value]="item.Key">
                 {{item.Name}}

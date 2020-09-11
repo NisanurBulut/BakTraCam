@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ComponentService } from './component.service';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +19,7 @@ import { ComponentService } from './component.service';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatInputModule,
     MatSelectModule,
     FlexLayoutModule
   ],

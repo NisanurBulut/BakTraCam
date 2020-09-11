@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { compareEnumKeys } from 'app/common';
 import { Select } from 'app/models';
 import { Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { takeUntil, tap, map } from 'rxjs/operators';
 import { ComponentService } from '../component.service';
 
 @Component({
@@ -15,23 +15,23 @@ export class KullaniciSelectComponent implements OnInit, OnDestroy {
 
     @Input() parentFormGroup: FormGroup;
     @Input() controlName: string;
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll = new Subject();
     _kullanicilar: Select[] = [];
 
     compareKullanici = compareEnumKeys;
     constructor(private _cService: ComponentService, private _cd: ChangeDetectorRef) {
-        this._cService.getirKullaniciListesi().pipe(
-            takeUntil(this._unsubscribeAll),
-            tap((kullaniciList: Select[]) => {
-                this._kullanicilar = [...kullaniciList];
-                this._cd.detectChanges();
-            }),
-        ).subscribe();
     }
 
     ngOnInit() {
-
-
+        this.loadKullaniciSelect();
+    }
+    loadKullaniciSelect(): void {
+        this._cService.getirKullaniciListesi().pipe(
+            takeUntil(this._unsubscribeAll)
+        ).subscribe(data => {
+            console.log(this._kullanicilar);
+            this._kullanicilar = data;
+        });
     }
     ngOnDestroy() {
         this._unsubscribeAll.next();

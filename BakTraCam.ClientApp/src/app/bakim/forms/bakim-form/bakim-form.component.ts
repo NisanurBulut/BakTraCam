@@ -93,12 +93,12 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       Ad: [this.data.Ad, [Validators.required, Validators.maxLength(50)]],
       Aciklama: [this.data.Aciklama, [Validators.maxLength(100)]],
       Tarihi: [this.data.Tarihi, [Validators.required]],
-      kullanici1: [this.data.kullanici1, [Validators.required, Validators.maxLength(50)]],
-      kullanici2: [this.data.kullanici2, [Validators.required, Validators.maxLength(50)]],
-      Gerceklestiren1: [this.data.Gerceklestiren1, [Validators.required, Validators.maxLength(50)]],
-      Gerceklestiren2: [this.data.Gerceklestiren2, [Validators.required, Validators.maxLength(50)]],
-      Gerceklestiren3: [this.data.Gerceklestiren3, [Validators.required, Validators.maxLength(50)]],
-      Gerceklestiren4: [this.data.Gerceklestiren4, [Validators.required, Validators.maxLength(50)]],
+      kullanici1: [null, [Validators.required, Validators.maxLength(50)]],
+      kullanici2: [null, [Validators.required, Validators.maxLength(50)]],
+      Gerceklestiren1: [null, [Validators.required, Validators.maxLength(50)]],
+      Gerceklestiren2: [null, [Validators.required, Validators.maxLength(50)]],
+      Gerceklestiren3: [null, [Validators.required, Validators.maxLength(50)]],
+      Gerceklestiren4: [null, [Validators.required, Validators.maxLength(50)]],
       Oncelik: [this.data.Oncelik, [Validators.required, Validators.min(1)]]
     });
 

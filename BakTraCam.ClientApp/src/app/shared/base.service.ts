@@ -31,6 +31,7 @@ export class BaseService {
     }
 
     protected getOnly<T>(url: string, params = new HttpParams()): Observable<T> {
+        console.log('getonly');
         return this.http.get<T>(this.baseUrlUpdate(url), { params: params }).pipe(
             map((response: T) => {
                 return response;
