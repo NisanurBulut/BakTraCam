@@ -2,9 +2,9 @@ import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, Afte
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { deepCopy, markAsTouched, compareEnumKeys } from 'app/common/generic-functions';
+import { deepCopy, markAsTouched, compareEnumKeys } from '../../../common';
 import { takeUntil, filter, tap, mergeMap } from 'rxjs/operators';
-import { KullaniciService } from 'app/kullanici/kullanici.service';
+import { KullaniciService } from '../../../kullanici';
 import { KullaniciModel, Unvan, EnumCategory } from '../../../models';
 
 

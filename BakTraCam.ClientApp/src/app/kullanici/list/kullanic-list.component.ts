@@ -4,22 +4,26 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
 import { takeUntil, tap, map } from 'rxjs/operators';
-import { KullaniciService } from './kullanici.service';
+import { KullaniciService } from '../kullanici.service';
 import { MatDialog } from '@angular/material/dialog';
-import { KullaniciFormPopupComponent } from './popups/kullanici-form-popup/kullanici-form-popup.component';
+import { KullaniciFormPopupComponent } from '../popups/kullanici-form-popup/kullanici-form-popup.component';
 import { KullaniciModel } from 'app/models/kullanici.model';
+import { EnumCategory, Unvan } from 'app/models';
 
 @Component({
-  selector: 'app-kullanici',
-  templateUrl: './kullanici.component.html',
-  styleUrls: ['./kullanici.component.scss']
+  selector: 'app-kullanici-list',
+  templateUrl: './kullanici-list.component.html',
+  styleUrls: ['./kullanici-list.component.scss']
 })
-export class KullaniciComponent implements OnInit, OnDestroy {
+export class KullaniciListComponent implements OnInit, OnDestroy {
   loading: boolean;
   bakimListe: KullaniciModel[];
 
-  displayedColumns: string[] = ['id', 'ad', 'unvan', 'actions'];
+  displayedColumns: string[] = ['id', 'ad', 'unvanId', 'actions'];
   dataSource: MatTableDataSource<KullaniciModel>;
+
+  Unvan = Unvan;
+  EnumCategory = EnumCategory;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -30,6 +34,7 @@ export class KullaniciComponent implements OnInit, OnDestroy {
   constructor(private _kService: KullaniciService, private _dialog: MatDialog) { }
 
   ngOnInit() {
+    this.kullaniciListesiniGetir();
   }
   ngOnDestroy(): void {
     this._unsubscribeAll.unsubscribe();

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
-import { EnumKeysPipe, EnumTranslatePipe } from '../common';
+import { EnumKeysPipe, EnumTranslatePipe, NullStringPipe } from '../common';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
         EnumKeysPipe,
         EnumTranslatePipe,
+        NullStringPipe
     ],
     imports: [
         CommonModule,
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
     exports: [
         EnumKeysPipe,
         EnumTranslatePipe,
+        NullStringPipe
     ],
     providers: [
 

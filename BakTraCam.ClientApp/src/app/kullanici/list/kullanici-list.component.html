@@ -32,10 +32,12 @@
                         <td mat-cell *matCellDef="let row">{{ row.ad }}</td>
                       </ng-container>
 
-                      <!-- Açıklama Column -->
-                      <ng-container matColumnDef="unvan">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Açıklama</th>
-                        <td mat-cell *matCellDef="let row">{{ row.aciklama }}</td>
+                      <!-- Üvan Column -->
+                      <ng-container matColumnDef="unvanId">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ünvan</th>
+                        <td mat-cell *matCellDef="let row">
+                          {{Unvan[ row.unvanId ] | enumtranslate : EnumCategory.Unvan | nullstring}}
+                          </td>
                       </ng-container>
 
                          <!-- gerceklestiren4 Column -->
