@@ -102,7 +102,16 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   }
   save(): void {
     if (this.validateForm()) {
-      const bakim = { Id: this.bakimId, ...this.form.getRawValue() } as BakimModel;
+      const bakim = {
+        Id: this.bakimId,
+        Gerceklestiren1: this.defaultData.Gerceklestiren1,
+        Gerceklestiren2: this.defaultData.Gerceklestiren2,
+        Gerceklestiren3: this.defaultData.Gerceklestiren3,
+        Gerceklestiren4: this.GerceklestirenDort,
+        kullanici1: this.defaultData.kullanici1,
+        kullanici2: this.defaultData.kullanici2,
+        ...this.form.getRawValue()
+      } as BakimModel;
       console.log(bakim);
       this._bakimService.kaydetBakim(bakim).pipe(
         takeUntil(this._unsubscribeAll),
