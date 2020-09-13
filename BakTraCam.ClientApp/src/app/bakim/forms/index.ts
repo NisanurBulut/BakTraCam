@@ -1,0 +1,1 @@
+export * from './bakim-form/bakim-form.component';

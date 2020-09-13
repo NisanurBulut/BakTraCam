@@ -41,7 +41,6 @@ export class BakimListComponent implements OnInit, OnDestroy {
     this._bakimSilAction.pipe(
       takeUntil(this._unsubscribeAll),
       mergeMap((bakimId) => this._bService.silBakim(bakimId)),
-      filter((res) => res.success),
       tap((res) => {
         console.log(res);
         this.bakimListesiniGetir();
@@ -79,9 +78,7 @@ export class BakimListComponent implements OnInit, OnDestroy {
   }
   editTask(row: any) { }
   deleteTask(bakimId: number) {
-
     this._bakimSilAction.next(bakimId);
-
   }
   openBakimPopup(data: any): void {
     this._dialog.open(BakimFormPopupComponent, {
@@ -91,9 +88,7 @@ export class BakimListComponent implements OnInit, OnDestroy {
     }).afterClosed().pipe(
       takeUntil(this._unsubscribeAll)
     ).subscribe((res) => {
-      if (res) {
-        this.bakimListesiniGetir();
-      }
+      this.bakimListesiniGetir();
     });
   }
 }

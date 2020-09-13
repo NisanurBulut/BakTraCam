@@ -8,7 +8,7 @@ import { KullaniciService } from '../kullanici.service';
 import { MatDialog } from '@angular/material/dialog';
 import { KullaniciModel } from 'app/models/kullanici.model';
 import { EnumCategory, Unvan } from 'app/models';
-import { KullaniciFormPopupComponent } from '..';
+import { KullaniciFormPopupComponent } from '../popups/kullanici-form-popup/kullanici-form-popup.component';
 
 @Component({
   selector: 'app-kullanici-list',

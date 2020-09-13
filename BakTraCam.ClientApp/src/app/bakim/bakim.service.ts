@@ -14,7 +14,7 @@ export class BakimService extends BaseService {
     silBakim(bakimId: number): Observable<PostResult> {
         return this.deleteValue('/Bakim/SilBakim?id=' + bakimId).pipe(
             map((response: PostResult) => {
-                console.log(response)
+
                 return response;
             }),
             catchError((error) => {
@@ -26,14 +26,16 @@ export class BakimService extends BaseService {
         return this.getOnly<BakimModelBasic[]>('/Bakim/BakimListesiniGetir/');
     }
     kaydetBakim(bakimParam: BakimModel): Observable<PostResult> {
-        return this.postValue('/Bakim/KaydetBakim', bakimParam).pipe(
-            map((response: PostResult) => {
+        return this.postValue('/Bakim/KaydetBakim', bakimParam).
+        pipe(
+            map(response => {
                 return response;
             }),
             catchError((error) => {
                 return of({ success: false } as PostResult);
             }),
         );
+
     }
 
 }

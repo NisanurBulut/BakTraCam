@@ -5,10 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseCommonModule } from 'app/shared/baseCommon.module';
 import { MaterialModule } from 'app/shared/material.module';
-import { KullaniciListComponent,
-         KullaniciFormComponent,
-         KullaniciFormPopupComponent,
-         KullaniciService } from '../kullanici';
+import { KullaniciListComponent } from './list/kullanici-list.component';
+import { KullaniciFormComponent } from './forms/kullanici-form/kullanici-form.component';
+import { KullaniciFormPopupComponent } from './popups/kullanici-form-popup/kullanici-form-popup.component';
+import { KullaniciService } from './kullanici.service';
 
 @NgModule({
     imports: [

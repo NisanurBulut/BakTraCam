@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <mat-form-field appearance="outlined">
+      <mat-form-field appearance="outline">
         <mat-label>Bakım tarihi</mat-label>
         <input type="datetime" matInput [matDatepicker]="Tarihi"  formControlName="Tarihi" required>
         <mat-datepicker-toggle matSuffix [for]="Tarihi"></mat-datepicker-toggle>
@@ -57,6 +57,14 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-md-6">
+      <app-kullanici-select (kullaniciChange)="SelectSorumluBir($event)"></app-kullanici-select>
+    </div>
+    <div class="col-md-6">
+      <app-kullanici-select (kullaniciChange)="SelectSorumluIki($event)"></app-kullanici-select>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-3">
       <app-kullanici-select (kullaniciChange)="GerceklestirenBir($event)"></app-kullanici-select>
     </div>
@@ -68,14 +76,6 @@
     </div>
     <div class="col-md-3">
       <app-kullanici-select (kullaniciChange)="GerceklestirenDort($event)"></app-kullanici-select>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <app-kullanici-select (kullaniciChange)="SelectSorumluBir($event)"></app-kullanici-select>
-    </div>
-    <div class="col-md-6">
-      <app-kullanici-select (kullaniciChange)="SelectSorumluIki($event)"></app-kullanici-select>
     </div>
   </div>
   <div class="row">

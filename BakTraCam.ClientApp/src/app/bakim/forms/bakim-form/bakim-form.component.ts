@@ -117,7 +117,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
 
       const bakim = {
         Id: this.bakimId,
-        Ad:this.form.get('Ad').value,
+        Ad: this.form.get('Ad').value,
         Gerceklestiren1: this.defaultData.Gerceklestiren1,
         Gerceklestiren2: this.defaultData.Gerceklestiren2,
         Gerceklestiren3: this.defaultData.Gerceklestiren3,
@@ -130,7 +130,6 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         Aciklama: this.form.get('Aciklama').value,
         Tarihi: this.form.get('Tarihi').value,
       } as BakimModel;
-      console.log(bakim);
       this._bakimService.kaydetBakim(bakim).pipe(
         takeUntil(this._unsubscribeAll),
         filter((res) => res.success),
@@ -140,6 +139,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         tap((res) => this.bakimId = res.key),
         tap((res) => this.result.emit(res.key))
       ).subscribe();
+
     }
   }
   SelectSorumluBir(sorumlu: Select): void {
