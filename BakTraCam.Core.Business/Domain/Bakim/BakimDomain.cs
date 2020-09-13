@@ -50,5 +50,12 @@ namespace BakTraCam.Core.Business.Domain.Bakim
             return Mapper.Map<BakimEntity, BakimModel>(bakim);
 
         }
+
+        public async Task<int> SilBakimAsync(int id)
+        {
+            await this._bakimRep.DeleteAsync(m=>m.Id==id);
+            await _uow.SaveChangesAsync();
+            return id;
+        }
     }
 }

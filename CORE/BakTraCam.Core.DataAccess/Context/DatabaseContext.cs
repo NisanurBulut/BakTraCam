@@ -4,6 +4,7 @@ using BakTraCam.Service.DataContract;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace BakTraCam.Core.DataAccess.Context
@@ -16,8 +17,11 @@ namespace BakTraCam.Core.DataAccess.Context
         }
 
         DbSet<BakimEntity> tBakim { get; set; }
-        DbSet<BakimModelBasic> Bakims { get; set; }
         DbSet<KullaniciEntity> tKullanici { get; set; }
+
+        [IgnoreDataMember]
+        DbSet<BakimModelBasic> Bakims { get; set; }
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

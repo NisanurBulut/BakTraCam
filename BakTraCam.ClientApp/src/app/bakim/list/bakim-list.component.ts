@@ -2,12 +2,13 @@ import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef } fr
 import { BakimService } from '../bakim.service';
 import { BakimModel, BakimModelBasic } from 'app/models';
 import { Subject, fromEvent } from 'rxjs';
-import { takeUntil, tap, map, pluck, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { takeUntil, tap, map, mergeMap, filter } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { BakimFormPopupComponent } from '../popups/bakim-form-popup/bakim-form-popup.component';
+
 
 @Component({
   selector: 'app-bakim-list',
@@ -31,12 +32,21 @@ export class BakimListComponent implements OnInit, OnDestroy {
   filter: ElementRef;
 
   private _unsubscribeAll: Subject<any> = new Subject();
+  private _bakimSilAction = new Subject<number>();
 
   constructor(private _bService: BakimService, private _dialog: MatDialog) {
     this.bakimListesiniGetir();
   }
   ngOnInit() {
-
+    this._bakimSilAction.pipe(
+      takeUntil(this._unsubscribeAll),
+      mergeMap((bakimId) => this._bService.silBakim(bakimId)),
+      filter((res) => res.success),
+      tap((res) => {
+        console.log(res);
+        this.bakimListesiniGetir();
+      })
+    ).subscribe();
   }
 
   ngOnDestroy() {
@@ -57,15 +67,21 @@ export class BakimListComponent implements OnInit, OnDestroy {
       tap(() => this.loading = true),
       map((resListe) => {
         this.bakimListe = (resListe as BakimModelBasic[]);
-        console.log(this.bakimListe);
         this.dataSource = new MatTableDataSource(this.bakimListe);
-        console.log(this.dataSource.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }),
       tap(() => this.loading = false),
     ).subscribe()
   }
   createNewTask(): void {
     this.openBakimPopup({ id: 0 });
+  }
+  editTask(row: any) { }
+  deleteTask(bakimId: number) {
+
+    this._bakimSilAction.next(bakimId);
+
   }
   openBakimPopup(data: any): void {
     this._dialog.open(BakimFormPopupComponent, {

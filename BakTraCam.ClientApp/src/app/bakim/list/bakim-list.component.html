@@ -45,13 +45,13 @@
 
                       <!-- kullanici1 Column -->
                       <ng-container matColumnDef="sorumlu1">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu 1</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu</th>
                         <td mat-cell *matCellDef="let row">{{ row.sorumlu1 }}</td>
                       </ng-container>
 
                       <!-- kullanici2 Column -->
                       <ng-container matColumnDef="sorumlu2">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu 2</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu</th>
                         <td mat-cell *matCellDef="let row">{{ row.sorumlu2 }}</td>
                       </ng-container>
 
@@ -63,19 +63,19 @@
 
                        <!-- gerceklestiren2 Column -->
                        <ng-container matColumnDef="gerceklestiren2">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren 2</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
                         <td mat-cell *matCellDef="let row">{{ row.gerceklestiren2 }}</td>
                       </ng-container>
 
                        <!-- gerceklestiren3 Column -->
                        <ng-container matColumnDef="gerceklestiren3">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren 3</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
                         <td mat-cell *matCellDef="let row">{{ row.gerceklestiren3 }}</td>
                       </ng-container>
 
                          <!-- gerceklestiren4 Column -->
                          <ng-container matColumnDef="gerceklestiren4">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren 4</th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
                           <td mat-cell *matCellDef="let row">{{ row.gerceklestiren4 }}</td>
                         </ng-container>
 
@@ -89,8 +89,8 @@
                           </th>
                           <td mat-cell *matCellDef="let row">
                             <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
-                              <mat-button-toggle><mat-icon>edit_task</mat-icon></mat-button-toggle>
-                              <mat-button-toggle class="button-danger"><mat-icon>delete_task</mat-icon></mat-button-toggle>
+                              <mat-button-toggle (change)="editTask(row)"><mat-icon>edit_task</mat-icon></mat-button-toggle>
+                              <mat-button-toggle (change)="deleteTask(row.id)" class="button-danger"><mat-icon>delete_task</mat-icon></mat-button-toggle>
                             </mat-button-toggle-group>
                           </td>
                         </ng-container>

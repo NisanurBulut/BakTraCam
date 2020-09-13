@@ -27,6 +27,10 @@ namespace BakTraCam.Core.Business.Application
         {
             return _bakimDom.KaydetBakimAsync(bakimModel);
         }
+        public Task<int> SilBakimAsync(int id)
+        {
+            return _bakimDom.SilBakimAsync(id);
+        }
        
     }
 }

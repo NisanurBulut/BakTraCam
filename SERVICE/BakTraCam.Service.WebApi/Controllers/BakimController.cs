@@ -29,5 +29,11 @@ namespace BakTraCam.Service.WebApi.Controllers
         {
             return Ok(await _bakimApp.KaydetBakimAsync(bakimModel));
         }
+        [Route("[action]")]
+        [HttpDelete]
+        public async Task<IActionResult> SilBakim(int id)
+        {
+            return Ok(await _bakimApp.SilBakimAsync(id));
+        }
     }
 }
