@@ -8,7 +8,7 @@ namespace BakTraCam.Core.Business.Domain
 {
     public interface IBakimDomain
     {
-        Task<IEnumerable<BakimModel>> BakimlariGetirAsync();
+        Task<IEnumerable<BakimModelBasic>> BakimlariGetirAsync();
         Task<BakimModel> KaydetBakimAsync(BakimModel model);
     }
 }

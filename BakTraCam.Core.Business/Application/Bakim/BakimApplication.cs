@@ -19,7 +19,7 @@ namespace BakTraCam.Core.Business.Application
         }
 
      
-        public Task<IEnumerable<BakimModel>> BakimlistesiGetirAsync()
+        public Task<IEnumerable<BakimModelBasic>> BakimlistesiGetirAsync()
         {
             return _bakimDom.BakimlariGetirAsync();
         }

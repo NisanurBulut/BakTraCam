@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { BakimService } from '../bakim.service';
-import { BakimModel } from 'app/models';
+import { BakimModel, BakimModelBasic } from 'app/models';
 import { Subject, fromEvent } from 'rxjs';
 import { takeUntil, tap, map, pluck, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,13 +17,13 @@ import { BakimFormPopupComponent } from '../popups/bakim-form-popup/bakim-form-p
 export class BakimListComponent implements OnInit, OnDestroy {
 
   loading: boolean;
-  bakimListe: BakimModel[];
+  bakimListe: BakimModelBasic[];
 
   displayedColumns: string[] = ['id', 'ad', 'aciklama', 'tarihi',
-    'kullanici1', 'kullanici2', 'gerceklestiren1',
+    'sorumlu1', 'sorumlu2', 'gerceklestiren1',
     'gerceklestiren2', 'gerceklestiren3',
     'gerceklestiren4', 'actions'];
-  dataSource: MatTableDataSource<BakimModel>;
+  dataSource: MatTableDataSource<BakimModelBasic>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -56,7 +56,7 @@ export class BakimListComponent implements OnInit, OnDestroy {
       takeUntil(this._unsubscribeAll),
       tap(() => this.loading = true),
       map((resListe) => {
-        this.bakimListe = (resListe as BakimModel[]);
+        this.bakimListe = (resListe as BakimModelBasic[]);
         console.log(this.bakimListe);
         this.dataSource = new MatTableDataSource(this.bakimListe);
         console.log(this.dataSource.data);

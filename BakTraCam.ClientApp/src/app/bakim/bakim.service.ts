@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BakimModel, PostResult } from 'app/models';
+import { BakimModel, BakimModelBasic, PostResult } from 'app/models';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs/Observable';
@@ -11,8 +11,8 @@ export class BakimService extends BaseService {
     getirBakim(bakimId: number): Observable<BakimModel> {
         return this.getOnly<BakimModel>('/Bakim/BakimGetir/');
     }
-    getirBakimListesi(): Observable<BakimModel[]> {
-        return this.getOnly<BakimModel[]>('/Bakim/BakimListesiniGetir/');
+    getirBakimListesi(): Observable<BakimModelBasic[]> {
+        return this.getOnly<BakimModelBasic[]>('/Bakim/BakimListesiniGetir/');
     }
     kaydetBakim(bakimParam: BakimModel): Observable<PostResult> {
         return this.postValue('/Bakim/KaydetBakim', bakimParam).pipe(

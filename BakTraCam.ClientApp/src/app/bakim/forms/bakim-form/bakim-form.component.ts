@@ -83,8 +83,8 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         Ad: this.defaultData.Ad,
         Aciklama: this.data.Aciklama,
         Tarihi: this.data.Tarihi,
-        kullanici1: this.data.kullanici1,
-        kullanici2: this.data.kullanici2,
+        kullanici1: this.data.Sorumlu1,
+        kullanici2: this.data.Sorumlu2,
         Gerceklestiren1: this.data.Gerceklestiren1,
         Gerceklestiren2: this.data.Gerceklestiren2,
         Gerceklestiren3: this.data.Gerceklestiren3,
@@ -117,12 +117,13 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
 
       const bakim = {
         Id: this.bakimId,
+        Ad:this.form.get('Ad').value,
         Gerceklestiren1: this.defaultData.Gerceklestiren1,
         Gerceklestiren2: this.defaultData.Gerceklestiren2,
         Gerceklestiren3: this.defaultData.Gerceklestiren3,
         Gerceklestiren4: this.defaultData.Gerceklestiren4,
-        kullanici1: this.defaultData.kullanici1,
-        kullanici2: this.defaultData.kullanici2,
+        Sorumlu1: this.defaultData.Sorumlu1,
+        Sorumlu2: this.defaultData.Sorumlu2,
         Durum: parseInt(this.form.get('Durum').value),
         Tip: parseInt(this.form.get('Tip').value),
         Period: parseInt(this.form.get('Period').value),
@@ -143,12 +144,12 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   }
   SelectSorumluBir(sorumlu: Select): void {
     if (sorumlu) {
-      this.defaultData.kullanici1 = sorumlu.Key;
+      this.defaultData.Sorumlu1 = sorumlu.Key;
     }
   }
   SelectSorumluIki(sorumlu: Select): void {
     if (sorumlu) {
-      this.defaultData.kullanici2 = sorumlu.Key;
+      this.defaultData.Sorumlu2 = sorumlu.Key;
     }
   }
   GerceklestirenBir(sorumlu: Select): void {
