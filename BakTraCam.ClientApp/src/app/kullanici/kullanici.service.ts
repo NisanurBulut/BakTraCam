@@ -14,7 +14,16 @@ export class KullaniciService extends BaseService {
     getirKullaniciListesi(): Observable<KullaniciModel[]> {
         return this.getOnly<KullaniciModel[]>('/Kullanici/KullaniciListesiniGetir/');
     }
-
+    silKullanici(kullaniciId: number): Observable<PostResult> {
+        return this.deleteValue('/Kullanici/SilKullanici?id=' + kullaniciId).pipe(
+            map((response: PostResult) => {
+                return response;
+            }),
+            catchError((error) => {
+                return of({ success: false } as PostResult);
+            }),
+        );
+    }
     kaydetKullanici(kullaniciParam: KullaniciModel): Observable<PostResult> {
         return this.postValue('/Kullanici/KaydetKullanici', kullaniciParam).
         pipe(

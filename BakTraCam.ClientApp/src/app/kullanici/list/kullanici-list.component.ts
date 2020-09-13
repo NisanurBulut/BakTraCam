@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
-import { takeUntil, tap, map } from 'rxjs/operators';
+import { takeUntil, tap, map, mergeMap } from 'rxjs/operators';
 import { KullaniciService } from '../kullanici.service';
 import { MatDialog } from '@angular/material/dialog';
 import { KullaniciModel } from 'app/models/kullanici.model';
@@ -30,11 +30,21 @@ export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit 
   @ViewChild('filter', { static: true })
   filter: ElementRef;
 
+  private _kullaniciSilAction = new Subject<number>();
   private _unsubscribeAll: Subject<any> = new Subject();
+
   constructor(private _kService: KullaniciService, private _dialog: MatDialog) { }
 
   ngOnInit() {
     this.kullaniciListesiniGetir();
+    this._kullaniciSilAction.pipe(
+      takeUntil(this._unsubscribeAll),
+      mergeMap((bakimId) => this._kService.silKullanici(bakimId)),
+      tap((res) => {
+        console.log(res);
+        this.kullaniciListesiniGetir();
+      })
+    ).subscribe();
   }
   ngAfterViewInit() {
 
@@ -50,7 +60,9 @@ export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit 
       this.dataSource.paginator.firstPage();
     }
   }
-
+  deleteKullanici(kullaniciId: number) {
+    this._kullaniciSilAction.next(kullaniciId);
+  }
   private kullaniciListesiniGetir() {
     this._kService.getirKullaniciListesi().pipe(
       takeUntil(this._unsubscribeAll),
