@@ -38,6 +38,24 @@ namespace BakTraCam.Core.Business.Domain.Bakim
    
             return bakimlar;
         }
+
+        public async Task<BakimModel> GetirBakimAsync(int id)
+        {
+            BakimEntity bakim = new BakimEntity();
+            BakimModel bakimModel = new BakimModel();
+            bakim = await _bakimRep.FirstOrDefaultAsync(a => a.Id == id);
+            return  Mapper.Map<BakimEntity,BakimModel>(bakim);        
+        }
+
+        public async Task<IEnumerable<BakimModelBasic>> getirBakimListesiTipFiltreliAsync(int tip)
+        {
+            return await _bakimRep.ListAsync<BakimModelBasic>(a=>a.Tip==tip);
+        }
+        public async Task<IEnumerable<BakimModelBasic>> getirBakimListesiDurumFiltreliAsync(int durum)
+        {
+            return await _bakimRep.ListAsync<BakimModelBasic>(a => a.Durum == durum);
+        }
+
         public async Task<BakimModel> KaydetBakimAsync(BakimModel model)
         {
 
@@ -47,7 +65,7 @@ namespace BakTraCam.Core.Business.Domain.Bakim
             await _bakimRep.AddAsync(bakim);
             await _uow.SaveChangesAsync();
 
-            return Mapper.Map<BakimEntity, BakimModel>(bakim);
+            return Mapper.Map<BakimEntity,BakimModel>(bakim);
 
         }
 

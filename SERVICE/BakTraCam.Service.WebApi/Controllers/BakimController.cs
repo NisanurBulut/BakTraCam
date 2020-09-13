@@ -35,5 +35,23 @@ namespace BakTraCam.Service.WebApi.Controllers
         {
             return Ok(await _bakimApp.SilBakimAsync(id));
         }
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<IActionResult> GetirBakim(int id)
+        {
+            return Ok(await _bakimApp.GetirBakimAsync(id));
+        }
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<IActionResult> getirBakimListesiTipFiltreli(int tip)
+        {
+            return Ok(await _bakimApp.getirBakimListesiTipFiltreliAsync(tip));
+        }
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<IActionResult> getirBakimListesiDurumFiltreli(int tip)
+        {
+            return Ok(await _bakimApp.getirBakimListesiDurumFiltreliAsync(tip));
+        }
     }
 }

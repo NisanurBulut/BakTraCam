@@ -59,7 +59,67 @@ export class BakimListComponent implements OnInit, OnDestroy {
       this.dataSource.paginator.firstPage();
     }
   }
-
+  filterTableByTip(tip: number) {
+    switch (tip) {
+      case 1:
+        this.bakimListesiniTipFiltreliGetir(1);
+        break;
+      case 2:
+        this.bakimListesiniTipFiltreliGetir(2);
+        break;
+      case 3:
+        this.bakimListesiniTipFiltreliGetir(3);
+        break;
+      case 4:
+        this.bakimListesiniTipFiltreliGetir(4);
+        break;
+    }
+  }
+  filterTableByDurum(tip: number) {
+    switch (tip) {
+      case 0:
+        this.bakimListesiniGetir();
+        break;
+      case 1:
+        this.bakimListesiniDurumFiltreliGetir(1);
+        break;
+      case 2:
+        this.bakimListesiniDurumFiltreliGetir(2);
+        break;
+      case 3:
+        this.bakimListesiniDurumFiltreliGetir(3);
+        break;
+      case 4:
+        this.bakimListesiniDurumFiltreliGetir(4);
+        break;
+    }
+  }
+  private bakimListesiniDurumFiltreliGetir(durum: number) {
+    this._bService.getirBakimListesiDurumFiltreli(durum).pipe(
+      takeUntil(this._unsubscribeAll),
+      tap(() => this.loading = true),
+      map((resListe) => {
+        this.bakimListe = (resListe as BakimModelBasic[]);
+        this.dataSource = new MatTableDataSource(this.bakimListe);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }),
+      tap(() => this.loading = false),
+    ).subscribe()
+  }
+  private bakimListesiniTipFiltreliGetir(tip: number) {
+    this._bService.getirBakimListesiTipFiltreli(tip).pipe(
+      takeUntil(this._unsubscribeAll),
+      tap(() => this.loading = true),
+      map((resListe) => {
+        this.bakimListe = (resListe as BakimModelBasic[]);
+        this.dataSource = new MatTableDataSource(this.bakimListe);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }),
+      tap(() => this.loading = false),
+    ).subscribe()
+  }
   private bakimListesiniGetir() {
     this._bService.getirBakimListesi().pipe(
       takeUntil(this._unsubscribeAll),
@@ -76,7 +136,9 @@ export class BakimListComponent implements OnInit, OnDestroy {
   createNewTask(): void {
     this.openBakimPopup({ id: 0 });
   }
-  editTask(row: any) { }
+  editTask(bakimId: number) {
+    this.openBakimPopup({ id: bakimId });
+  }
   deleteTask(bakimId: number) {
     this._bakimSilAction.next(bakimId);
   }

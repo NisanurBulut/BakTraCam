@@ -47,17 +47,19 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     private _cd: ChangeDetectorRef,
     private _dialog: MatDialog,
     private _bakimService: BakimService) {
-    this._bakimIdWaiter.pipe(
-      takeUntil(this._unsubscribeAll),
-      filter((id) => id > 0),
-      mergeMap((id) => this._bakimService.getirBakim(id))
-    ).subscribe((bakim) => {
-      if (bakim) {
-        this.data = bakim;
-        this.defaultData = deepCopy(this.data);
-        this.createForm();
-      }
-    });
+
+      this._bakimIdWaiter.pipe(
+        takeUntil(this._unsubscribeAll),
+        filter((id) => id > 0),
+        mergeMap((id) => this._bakimService.getirBakim(id))
+      ).subscribe((bakim) => {
+        if (bakim) {
+          console.log(bakim);
+          this.data = bakim;
+          this.defaultData = deepCopy(this.data);
+          this.createForm();
+        }
+      });
   }
 
 
@@ -99,12 +101,12 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   }
   createForm(): void {
     this.form = this.formBuilder.group({
-      Ad: [this.data.Ad, [Validators.required, Validators.maxLength(50)]],
-      Aciklama: [this.data.Aciklama, [Validators.maxLength(100)]],
-      Tarihi: [this.data.Tarihi, [Validators.required]],
-      Durum: [this.data.Durum, [Validators.required, Validators.min(1)]],
-      Tip: [this.data.Tip, [Validators.required, Validators.min(1)]],
-      Period: [this.data.Period, [Validators.required, Validators.min(1)]]
+      Ad: [this.defaultData.Ad, [Validators.required, Validators.maxLength(50)]],
+      Aciklama: [this.defaultData.Aciklama, [Validators.maxLength(100)]],
+      Tarihi: [this.defaultData.Tarihi, [Validators.required]],
+      Durum: [this.defaultData.Durum, [Validators.required, Validators.min(1)]],
+      Tip: [this.defaultData.Tip, [Validators.required, Validators.min(1)]],
+      Period: [this.defaultData.Period, [Validators.required, Validators.min(1)]]
     });
 
     // Kullanıcıları Yükle

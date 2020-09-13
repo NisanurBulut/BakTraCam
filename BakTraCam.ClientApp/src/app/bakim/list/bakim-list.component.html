@@ -1,5 +1,48 @@
 <div class="main-content">
   <div class="container-fluid">
+    <div class='some-page-wrapper'>
+      <div class='row'>
+        <div class='column' fxLayoutAlign="flex-start">
+          <mat-button-toggle-group>
+            <mat-button-toggle class="btnHepsi" (change)="filterTableByTip(0)"
+            matTooltip="Bakımları listele">
+              <mat-icon>remove_red_eye</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle class="btnEdit" (change)="filterTableByTip(1)"
+            matTooltip="Plan tipindeki bakımları listele">
+              <mat-icon>event_note</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle class="btnTalep" (change)="filterTableByTip(2)"  matTooltip="Talep tipindeki bakları listele">
+              <mat-icon>pan_tool</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle class="btnAriza" (change)="filterTableByTip(3)"  matTooltip="Arıza tipindeki bakımları listele">
+              <mat-icon>flash_on</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle class="btnPeriyodik" (change)="filterTableByTip(4)"  matTooltip="Periyodik tipteki bakımları listele">
+              <mat-icon>schedule</mat-icon>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+
+        </div>
+        <div class='column' fxLayoutAlign="flex-end">
+          <mat-button-toggle-group>
+            <mat-button-toggle class="btnPlan" (change)="filterTableByDurum(1)"  matTooltip="Plan durumundaki bakımları listele">
+              <mat-icon>event_note</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle class="btnTamamlandi" (change)="filterTableByDurum(2)" matTooltip="Tamamlanan bakımları listele">
+              <mat-icon>done_all</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle class="btnIptal" (change)="filterTableByDurum(3)"  matTooltip="İptal edilen bakımları listele">
+              <mat-icon>cancel</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle class="btnDevam" (change)="filterTableByDurum(4)"  matTooltip="Devam eden bakımları listele">
+              <mat-icon>info</mat-icon>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-md-12">
           <div class="card">
@@ -89,7 +132,7 @@
                           </th>
                           <td mat-cell *matCellDef="let row">
                             <mat-button-toggle-group>
-                              <mat-button-toggle (change)="editTask(row)" class="btnEdit">
+                              <mat-button-toggle (change)="editTask(row.id)" class="btnEdit">
                                 <mat-icon>edit_task</mat-icon>
                               </mat-button-toggle>
                               <mat-button-toggle (change)="deleteTask(row.id)" class="btnDanger">

@@ -8,8 +8,9 @@ import { BaseService } from 'app/shared/base.service';
 
 @Injectable()
 export class BakimService extends BaseService {
+
     getirBakim(bakimId: number): Observable<BakimModel> {
-        return this.getOnly<BakimModel>('/Bakim/BakimGetir/');
+        return this.getOnly<BakimModel>('/Bakim/GetirBakim?id=' + bakimId);
     }
     silBakim(bakimId: number): Observable<PostResult> {
         return this.deleteValue('/Bakim/SilBakim?id=' + bakimId).pipe(
@@ -25,16 +26,22 @@ export class BakimService extends BaseService {
     getirBakimListesi(): Observable<BakimModelBasic[]> {
         return this.getOnly<BakimModelBasic[]>('/Bakim/BakimListesiniGetir/');
     }
+    getirBakimListesiTipFiltreli(tip: number): Observable<BakimModelBasic[]> {
+        return this.getOnly<BakimModelBasic[]>('/Bakim/getirBakimListesiTipFiltreli?tip=' + tip);
+    }
+    getirBakimListesiDurumFiltreli(durum: number): Observable<BakimModelBasic[]> {
+        return this.getOnly<BakimModelBasic[]>('/Bakim/getirBakimListesiDurumFiltreli?durum=' + durum);
+    }
     kaydetBakim(bakimParam: BakimModel): Observable<PostResult> {
         return this.postValue('/Bakim/KaydetBakim', bakimParam).
-        pipe(
-            map(response => {
-                return response;
-            }),
-            catchError((error) => {
-                return of({ success: false } as PostResult);
-            }),
-        );
+            pipe(
+                map(response => {
+                    return response;
+                }),
+                catchError((error) => {
+                    return of({ success: false } as PostResult);
+                }),
+            );
 
     }
 
