@@ -29,6 +29,10 @@ namespace BakTraCam.Core.Business.Application
         {
             return _kullaniciDom.KaydetKullaniciAsync(kullaniciModel);
         }
-       
+
+        public Task<int> SilKullaniciAsync(int id)
+        {
+            return _kullaniciDom.SilKullaniciAsync(id);
+        }
     }
 }

@@ -36,6 +36,12 @@ namespace BakTraCam.Core.Business.Domain.Kullanici
             return Mapper.Map<KullaniciEntity, KullaniciModel>(Kullanici);
 
         }
-      
+
+        public async Task<int> SilKullaniciAsync(int id)
+        {
+            await _kullaniciRep.DeleteAsync(a => a.Id == id);
+            await _uow.SaveChangesAsync();
+            return id;
+        }
     }
 }

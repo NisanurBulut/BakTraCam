@@ -1,0 +1,15 @@
+.btn-success{
+  transform: scale(0.75);
+}
+mat-button-toggle-group{
+  transform: scale(0.75);
+  background-color: white;
+  .btnEdit{
+      background-color: #007bff;
+      color:white;
+  }
+  .btnDanger{
+      background-color: #dc3545;
+      color:white;
+  }
+}

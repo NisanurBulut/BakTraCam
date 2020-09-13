@@ -1,14 +1,2 @@
-
-table {
-    width: 100%;
-    color:black;
-  }
-
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-
-  td, th {
-    width: 25%;
-  }
+@import '../../shared/shared.button.scss';
+@import '../../shared/shared.table.scss';
