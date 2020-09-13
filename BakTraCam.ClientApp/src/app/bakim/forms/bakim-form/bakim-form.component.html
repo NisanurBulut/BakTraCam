@@ -1,8 +1,14 @@
-<form fxLayout="column" fxFlex class="event-form w-100-p" name="form" [formGroup]="form">
+<form
+  fxLayout="column"
+  fxFlex
+  class="event-form w-100-p"
+  name="form"
+  [formGroup]="form"
+>
   <div class="row">
     <div class="col-md-12">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Bakım adı" formControlName="Ad" required/>
+        <input matInput placeholder="Bakım adı" formControlName="Ad" required />
         <mat-error *ngIf="form.get('Ad').hasError('required')">
           Bakım adı belirtilmelidir
         </mat-error>
@@ -16,7 +22,13 @@
     <div class="col-md-3">
       <mat-form-field appearance="outline">
         <mat-label>Bakım tarihi</mat-label>
-        <input type="datetime" matInput [matDatepicker]="Tarihi"  formControlName="Tarihi" required>
+        <input
+          type="datetime"
+          matInput
+          [matDatepicker]="Tarihi"
+          formControlName="Tarihi"
+          required
+        />
         <mat-datepicker-toggle matSuffix [for]="Tarihi"></mat-datepicker-toggle>
         <mat-datepicker #Tarihi></mat-datepicker>
         <mat-error *ngIf="form.get('Tarihi').hasError('required')">
@@ -25,57 +37,104 @@
       </mat-form-field>
     </div>
     <div class="col-md-3">
-      <mat-form-field appearance="outline" fxLayout="row"  fxFill>
+      <mat-form-field appearance="outline" fxLayout="row" fxFill>
         <mat-label>Tip</mat-label>
-        <mat-select [compareWith]="compareEnumKeys" fxFill formControlName="Tip">
-            <mat-option *ngFor="let item of BakimTips | enumkeys" [value]="item.key">
-                {{item.value | enumtranslate: EnumCategory.BakimTip }}
-            </mat-option>
+        <mat-select
+          [compareWith]="compareEnumKeys"
+          fxFill
+          formControlName="Tip"
+        >
+          <mat-option
+            *ngFor="let item of BakimTips | enumkeys"
+            [value]="item.key"
+          >
+            {{ item.value | enumtranslate: EnumCategory.BakimTip }}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
     </div>
     <div class="col-md-3">
-      <mat-form-field appearance="outline" fxLayout="row"  fxFill>
+      <mat-form-field appearance="outline" fxLayout="row" fxFill>
         <mat-label>Durum</mat-label>
-        <mat-select [compareWith]="compareEnumKeys" fxFill formControlName="Durum">
-            <mat-option *ngFor="let item of BakimDurums | enumkeys" [value]="item.key">
-                {{item.value | enumtranslate: EnumCategory.BakimDurum }}
-            </mat-option>
+        <mat-select
+          [compareWith]="compareEnumKeys"
+          fxFill
+          formControlName="Durum"
+        >
+          <mat-option
+            *ngFor="let item of BakimDurums | enumkeys"
+            [value]="item.key"
+          >
+            {{ item.value | enumtranslate: EnumCategory.BakimDurum }}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
     </div>
     <div class="col-md-3">
-      <mat-form-field appearance="outline" fxLayout="row"  fxFill>
+      <mat-form-field appearance="outline" fxLayout="row" fxFill>
         <mat-label>Periyot</mat-label>
-        <mat-select [compareWith]="compareEnumKeys" fxFill formControlName="Period">
-            <mat-option  *ngFor="let item of BakimPeroids | enumkeys; trackBy:trackByPeriodID"
-            [value]="item.key">
-                {{item.value | enumtranslate: EnumCategory.BakimPeriod }}
-            </mat-option>
+        <mat-select
+          [compareWith]="compareEnumKeys"
+          fxFill
+          formControlName="Period"
+        >
+          <mat-option
+            *ngFor="
+              let item of BakimPeroids | enumkeys;
+              trackBy: trackByPeriodID
+            "
+            [value]="item.key"
+          >
+            {{ item.value | enumtranslate: EnumCategory.BakimPeriod }}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <app-kullanici-select #Sorumlu1 (kullaniciChange)="SelectSorumluBir($event)"></app-kullanici-select>
+      <app-kullanici-select
+        [parentFormGroup]="form"
+        [controlName]="'Sorumlu1'"
+        (kullaniciChange)="SelectSorumluBir($event)"
+      ></app-kullanici-select>
     </div>
     <div class="col-md-6">
-      <app-kullanici-select #Sorumlu2 (kullaniciChange)="SelectSorumluIki($event)"></app-kullanici-select>
+      <app-kullanici-select
+        [parentFormGroup]="form"
+        [controlName]="'Sorumlu2'"
+        (kullaniciChange)="SelectSorumluIki($event)"
+      ></app-kullanici-select>
     </div>
   </div>
   <div class="row">
     <div class="col-md-3">
-      <app-kullanici-select (kullaniciChange)="GerceklestirenBir($event)"></app-kullanici-select>
+      <app-kullanici-select
+        [parentFormGroup]="form"
+        [controlName]="'Gerceklestiren1'"
+        (kullaniciChange)="GerceklestirenBir($event)"
+      ></app-kullanici-select>
     </div>
     <div class="col-md-3">
-      <app-kullanici-select (kullaniciChange)="GerceklestirenIki($event)"></app-kullanici-select>
+      <app-kullanici-select
+        [parentFormGroup]="form"
+        [controlName]="'Gerceklestiren2'"
+        (kullaniciChange)="GerceklestirenIki($event)"
+      ></app-kullanici-select>
     </div>
     <div class="col-md-3">
-      <app-kullanici-select (kullaniciChange)="GerceklestirenUc($event)"></app-kullanici-select>
+      <app-kullanici-select
+        [parentFormGroup]="form"
+        [controlName]="'Gerceklestiren3'"
+        (kullaniciChange)="GerceklestirenUc($event)"
+      ></app-kullanici-select>
     </div>
     <div class="col-md-3">
-      <app-kullanici-select (kullaniciChange)="GerceklestirenDort($event)"></app-kullanici-select>
+      <app-kullanici-select
+        [parentFormGroup]="form"
+        [controlName]="'Gerceklestiren4'"
+        (kullaniciChange)="GerceklestirenDort($event)"
+      ></app-kullanici-select>
     </div>
   </div>
   <div class="row">

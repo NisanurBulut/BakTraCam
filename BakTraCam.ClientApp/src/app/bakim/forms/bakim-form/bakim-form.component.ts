@@ -29,7 +29,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   private _unsubscribeAll = new Subject();
   private _bakimIdWaiter: Subject<number> = new Subject<number>();
 
-  @Input() kullanici:number;
+  @Input() kullanici: string;
   @Output() result: EventEmitter<number> = new EventEmitter<number>();
 
   private _bakimId = 0;
@@ -48,18 +48,34 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     private _dialog: MatDialog,
     private _bakimService: BakimService) {
 
-      this._bakimIdWaiter.pipe(
-        takeUntil(this._unsubscribeAll),
-        filter((id) => id > 0),
-        mergeMap((id) => this._bakimService.getirBakim(id))
-      ).subscribe((bakim) => {
-        if (bakim) {
-          console.log(bakim);
-          this.data = bakim;
-          this.defaultData = deepCopy(this.data);
-          this.createForm();
-        }
-      });
+    this.form = this.formBuilder.group({
+      Ad:  [[]],
+      Aciklama: [[]],
+      Tarihi: [[]],
+      Durum: [[]],
+      Tip: [[]],
+      Period: [[]],
+      Sorumlu1: [[]],
+      Sorumlu2: [[]],
+      Gerceklestiren1: [[]],
+      Gerceklestiren2: [[]],
+      Gerceklestiren3: [[]],
+      Gerceklestiren4: [[]]
+    });
+
+
+    this._bakimIdWaiter.pipe(
+      takeUntil(this._unsubscribeAll),
+      filter((id) => id > 0),
+      mergeMap((id) => this._bakimService.getirBakim(id))
+    ).subscribe((bakim) => {
+      if (bakim) {
+        console.log(bakim);
+        this.data = bakim;
+        this.defaultData = deepCopy(this.data);
+        this.createForm();
+      }
+    });
   }
 
 
@@ -100,29 +116,21 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     }
   }
   createForm(): void {
-    console.log('defaultData',this.defaultData);
-    if(this.defaultData){
-      this.form = this.formBuilder.group({
-        Ad: [this.defaultData.ad, [Validators.required, Validators.maxLength(50)]],
-        Aciklama: [this.defaultData.aciklama, [Validators.maxLength(100)]],
-        Tarihi: [this.defaultData.tarihi, [Validators.required]],
-        Durum: [this.defaultData.durum, [Validators.required, Validators.min(1)]],
-        Tip: [this.defaultData.tip, [Validators.required, Validators.min(1)]],
-        Period: [this.defaultData.period, [Validators.required, Validators.min(1)]],
-        Sorumlu1: this.defaultData.Sorumlu1,
-      });
-
-    }else{
-      this.form = this.formBuilder.group({
-        Ad: [this.defaultData.Ad, [Validators.required, Validators.maxLength(50)]],
-        Aciklama: [this.defaultData.Aciklama, [Validators.maxLength(100)]],
-        Tarihi: [this.defaultData.Tarihi, [Validators.required]],
-        Durum: [this.defaultData.Durum, [Validators.required, Validators.min(1)]],
-        Tip: [this.defaultData.Tip, [Validators.required, Validators.min(1)]],
-        Period: [this.defaultData.Period, [Validators.required, Validators.min(1)]]
-      });
-    }
-
+    console.log('defaultData', this.defaultData);
+    this.form = this.formBuilder.group({
+      Ad: [this.defaultData.ad, [Validators.required, Validators.maxLength(50)]],
+      Aciklama: [this.defaultData.aciklama, [Validators.maxLength(100)]],
+      Tarihi: [this.defaultData.tarihi, [Validators.required]],
+      Durum: [this.defaultData.durum, [Validators.required, Validators.min(1)]],
+      Tip: [this.defaultData.tip, [Validators.required, Validators.min(1)]],
+      Period: [this.defaultData.period, [Validators.required, Validators.min(1)]],
+      Sorumlu1:[this.defaultData.sorumlu1],
+      Sorumlu2:[this.defaultData.sorumlu2],
+      Gerceklestiren1:[this.defaultData.gerceklestiren1],
+      Gerceklestiren2:[this.defaultData.gerceklestiren2],
+      Gerceklestiren3:[this.defaultData.gerceklestiren3],
+      Gerceklestiren4:[this.defaultData.gerceklestiren4]
+    });
 
     // Kullanıcıları Yükle
     this.formInit = true;

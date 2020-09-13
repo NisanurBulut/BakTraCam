@@ -1,8 +1,10 @@
-<mat-form-field appearance="outline" fxLayout="row"  fxFill>
-    <mat-label>Kullanıcı</mat-label>
-    <mat-select fxFill #kullaniciSelect  (selectionChange)="onChangeKullaniciSelect($event)">
-        <mat-option *ngFor="let item of this._kullanicilar" [value]="item.key">
-            {{item.name }}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
+<ng-container [formGroup]="parentFormGroup">
+    <mat-form-field fxLayout="column"  fxFill appearance="outline">
+        <mat-label>Kullanıcı</mat-label>
+        <mat-select [compareWith]="compareKullanici" #kullaniciSelect [formControlName]="controlName">
+            <mat-option *ngFor="let item of this._kullanicilar" [value]="item.key">
+                {{item.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</ng-container>
