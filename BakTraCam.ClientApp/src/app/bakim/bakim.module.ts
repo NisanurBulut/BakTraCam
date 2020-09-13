@@ -7,10 +7,12 @@ import { BakimFormComponent , BakimFormPopupComponent, BakimListComponent} from 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ComponentsModule } from 'app/components/components.module';
+import { BaseCommonModule } from 'app/shared/baseCommon.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        BaseCommonModule,
         ComponentsModule,
         HttpClientModule,
         FormsModule,

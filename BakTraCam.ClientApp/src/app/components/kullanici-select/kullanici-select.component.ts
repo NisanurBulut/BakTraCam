@@ -36,7 +36,6 @@ export class KullaniciSelectComponent implements OnInit, OnDestroy {
             takeUntil(this._unsubscribeAll)
         ).subscribe(data => {
             this._kullanicilar = data;
-            console.log(this._kullanicilar);
         });
     }
     ngOnDestroy() {

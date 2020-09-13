@@ -25,7 +25,7 @@ namespace BakTraCam.Service.WebApi.Controllers
         }
         [Route("[action]")]
         [HttpPost]
-        public async Task<IActionResult> kaydetBakim(BakimModel bakimModel)
+        public async Task<IActionResult> KaydetBakim(BakimModel bakimModel)
         {
             return Ok(await _bakimApp.KaydetBakimAsync(bakimModel));
         }

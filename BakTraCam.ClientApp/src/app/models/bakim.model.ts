@@ -9,5 +9,8 @@ export interface BakimModel {
     kullanici1: string,
     kullanici2: string,
     Tarihi: Date,
-    Oncelik: number
+    Durum: number,
+    Period: number,
+    Tip: number
+
 }

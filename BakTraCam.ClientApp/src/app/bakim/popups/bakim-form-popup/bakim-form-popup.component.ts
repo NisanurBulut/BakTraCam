@@ -34,7 +34,6 @@ export class BakimFormPopupComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    console.log(this.bakimForm);
     this.bakimForm.save();
     this.closeDialog();
   }

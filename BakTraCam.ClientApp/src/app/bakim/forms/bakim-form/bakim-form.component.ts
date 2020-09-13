@@ -2,9 +2,9 @@ import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, Afte
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { BakimModel, Select } from 'app/models';
+import { BakimDurum, BakimModel, BakimPeriod, BakimTip, EnumCategory, Select } from 'app/models';
 import { BakimService } from 'app/bakim/bakim.service';
-import { deepCopy, markAsTouched } from 'app/common/generic-functions';
+import { compareEnumKeys, deepCopy, markAsTouched } from 'app/common/generic-functions';
 import { takeUntil, filter, tap, mergeMap } from 'rxjs/operators';
 
 @Component({
@@ -18,6 +18,13 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   defaultData: BakimModel;
   formInit = false;
   form: FormGroup;
+
+  // enums
+  EnumCategory = EnumCategory;
+  BakimDurums = BakimDurum;
+  BakimTips = BakimTip;
+  BakimPeroids = BakimPeriod;
+  compareEnumKeys = compareEnumKeys;
 
   private _unsubscribeAll = new Subject();
   private _bakimIdWaiter: Subject<number> = new Subject<number>();
@@ -82,7 +89,9 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         Gerceklestiren2: this.data.Gerceklestiren2,
         Gerceklestiren3: this.data.Gerceklestiren3,
         Gerceklestiren4: this.data.Gerceklestiren4,
-        Oncelik: this.data.Oncelik,
+        Durum: this.data.Durum,
+        Tip: this.data.Tip,
+        Period: this.data.Period,
       });
       // veri out edilerek parentine verilir
       this.result.emit(this.form.getRawValue());
@@ -93,7 +102,9 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       Ad: [this.data.Ad, [Validators.required, Validators.maxLength(50)]],
       Aciklama: [this.data.Aciklama, [Validators.maxLength(100)]],
       Tarihi: [this.data.Tarihi, [Validators.required]],
-      Oncelik: [this.data.Oncelik, [Validators.required, Validators.min(1)]]
+      Durum: [this.data.Durum, [Validators.required, Validators.min(1)]],
+      Tip: [this.data.Tip, [Validators.required, Validators.min(1)]],
+      Period: [this.data.Period, [Validators.required, Validators.min(1)]]
     });
 
     // Kullanıcıları Yükle
@@ -101,16 +112,22 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     this._cd.detectChanges();
   }
   save(): void {
+
     if (this.validateForm()) {
+
       const bakim = {
         Id: this.bakimId,
         Gerceklestiren1: this.defaultData.Gerceklestiren1,
         Gerceklestiren2: this.defaultData.Gerceklestiren2,
         Gerceklestiren3: this.defaultData.Gerceklestiren3,
-        Gerceklestiren4: this.GerceklestirenDort,
+        Gerceklestiren4: this.defaultData.Gerceklestiren4,
         kullanici1: this.defaultData.kullanici1,
         kullanici2: this.defaultData.kullanici2,
-        ...this.form.getRawValue()
+        Durum: parseInt(this.form.get('Durum').value),
+        Tip: parseInt(this.form.get('Tip').value),
+        Period: parseInt(this.form.get('Period').value),
+        Aciklama: this.form.get('Aciklama').value,
+        Tarihi: this.form.get('Tarihi').value,
       } as BakimModel;
       console.log(bakim);
       this._bakimService.kaydetBakim(bakim).pipe(
@@ -127,7 +144,6 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   SelectSorumluBir(sorumlu: Select): void {
     if (sorumlu) {
       this.defaultData.kullanici1 = sorumlu.Key;
-      console.log(this.defaultData);
     }
   }
   SelectSorumluIki(sorumlu: Select): void {
@@ -155,4 +171,23 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       this.defaultData.Gerceklestiren4 = sorumlu.Key;
     }
   }
+  trackByPeriodID(index: number, item: any): string {
+    return item.ID;
+  }
 }
+
+/*
+Bakımın türü : Planlı, Talep, Arıza, Periyodik
+Bakım önceliğine gerek yok
+Bakımın durumu : Planlandı, tamamlandı, iptal, devam ediyor
+
+Plan durumuna göre, filtreli sonuç gmsterilebilmeli
+Period: 1 gün, 1 hafta, 2 hafta,3 hafta,1 ay,2 ay, 3 ay,4 ay,6 ay, 1 sene
+Kullanıcı başlangıç ve bitiş tarıhını seçecek, periyoda göre diğer bakımlar hesaplanacak
+
+Ana sayfada ise solda o günki elle girilen bakımlar(ekiplerin gittiği işler: talep arıza işleri)
+ve o günki planlı bakımlar gözükecek.
+ayrıyeten sağda akan bir ekranda yaklaşan (15 günlük planlı ve periyodik bakımlar akacak)
+akarkenki bilgiler , bakım adı,tarihi,sorumlu kişileri
+
+*/

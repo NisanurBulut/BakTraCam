@@ -15,7 +15,7 @@ export class BakimService extends BaseService {
         return this.getOnly<BakimModel[]>('/Bakim/BakimListesiniGetir/');
     }
     kaydetBakim(bakimParam: BakimModel): Observable<PostResult> {
-        return this.postValue('/Bakim/kaydetBakim', bakimParam).pipe(
+        return this.postValue('/Bakim/KaydetBakim', bakimParam).pipe(
             map(response => {
                 return response;
             }),
