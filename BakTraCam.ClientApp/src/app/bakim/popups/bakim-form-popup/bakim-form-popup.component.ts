@@ -13,7 +13,6 @@ export class BakimFormPopupComponent implements OnInit, OnDestroy {
 
   private _unsubscribeAll = new Subject();
   bakimId: number;
-
   @ViewChild('bakimForm', { static: true }) bakimForm: BakimFormComponent;
 
   constructor(

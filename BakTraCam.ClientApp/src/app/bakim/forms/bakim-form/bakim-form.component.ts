@@ -29,7 +29,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   private _unsubscribeAll = new Subject();
   private _bakimIdWaiter: Subject<number> = new Subject<number>();
 
-
+  @Input() kullanici:number;
   @Output() result: EventEmitter<number> = new EventEmitter<number>();
 
   private _bakimId = 0;
@@ -100,14 +100,29 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     }
   }
   createForm(): void {
-    this.form = this.formBuilder.group({
-      Ad: [this.defaultData.Ad, [Validators.required, Validators.maxLength(50)]],
-      Aciklama: [this.defaultData.Aciklama, [Validators.maxLength(100)]],
-      Tarihi: [this.defaultData.Tarihi, [Validators.required]],
-      Durum: [this.defaultData.Durum, [Validators.required, Validators.min(1)]],
-      Tip: [this.defaultData.Tip, [Validators.required, Validators.min(1)]],
-      Period: [this.defaultData.Period, [Validators.required, Validators.min(1)]]
-    });
+    console.log('defaultData',this.defaultData);
+    if(this.defaultData){
+      this.form = this.formBuilder.group({
+        Ad: [this.defaultData.ad, [Validators.required, Validators.maxLength(50)]],
+        Aciklama: [this.defaultData.aciklama, [Validators.maxLength(100)]],
+        Tarihi: [this.defaultData.tarihi, [Validators.required]],
+        Durum: [this.defaultData.durum, [Validators.required, Validators.min(1)]],
+        Tip: [this.defaultData.tip, [Validators.required, Validators.min(1)]],
+        Period: [this.defaultData.period, [Validators.required, Validators.min(1)]],
+        Sorumlu1: this.defaultData.Sorumlu1,
+      });
+
+    }else{
+      this.form = this.formBuilder.group({
+        Ad: [this.defaultData.Ad, [Validators.required, Validators.maxLength(50)]],
+        Aciklama: [this.defaultData.Aciklama, [Validators.maxLength(100)]],
+        Tarihi: [this.defaultData.Tarihi, [Validators.required]],
+        Durum: [this.defaultData.Durum, [Validators.required, Validators.min(1)]],
+        Tip: [this.defaultData.Tip, [Validators.required, Validators.min(1)]],
+        Period: [this.defaultData.Period, [Validators.required, Validators.min(1)]]
+      });
+    }
+
 
     // Kullanıcıları Yükle
     this.formInit = true;

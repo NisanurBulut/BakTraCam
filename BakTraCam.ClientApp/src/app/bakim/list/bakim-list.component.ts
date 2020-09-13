@@ -61,6 +61,9 @@ export class BakimListComponent implements OnInit, OnDestroy {
   }
   filterTableByTip(tip: number) {
     switch (tip) {
+      case 0:
+        this.bakimListesiniGetir();
+        break;
       case 1:
         this.bakimListesiniTipFiltreliGetir(1);
         break;
@@ -77,9 +80,6 @@ export class BakimListComponent implements OnInit, OnDestroy {
   }
   filterTableByDurum(tip: number) {
     switch (tip) {
-      case 0:
-        this.bakimListesiniGetir();
-        break;
       case 1:
         this.bakimListesiniDurumFiltreliGetir(1);
         break;

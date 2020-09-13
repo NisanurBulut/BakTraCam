@@ -58,10 +58,10 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <app-kullanici-select (kullaniciChange)="SelectSorumluBir($event)"></app-kullanici-select>
+      <app-kullanici-select #Sorumlu1 (kullaniciChange)="SelectSorumluBir($event)"></app-kullanici-select>
     </div>
     <div class="col-md-6">
-      <app-kullanici-select (kullaniciChange)="SelectSorumluIki($event)"></app-kullanici-select>
+      <app-kullanici-select #Sorumlu2 (kullaniciChange)="SelectSorumluIki($event)"></app-kullanici-select>
     </div>
   </div>
   <div class="row">
