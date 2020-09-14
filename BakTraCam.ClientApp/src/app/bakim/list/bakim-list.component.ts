@@ -150,7 +150,9 @@ export class BakimListComponent implements OnInit, OnDestroy {
     }).afterClosed().pipe(
       takeUntil(this._unsubscribeAll)
     ).subscribe((res) => {
-      this.bakimListesiniGetir();
+      if (res) {
+        this.bakimListesiniGetir();
+      }
     });
   }
 }

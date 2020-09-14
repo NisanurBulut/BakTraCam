@@ -9,7 +9,7 @@ import { PostResult } from 'app/models';
 export class KullaniciService extends BaseService {
 
     getirKullanici(kullaniciId: number): Observable<KullaniciModel> {
-        return this.getOnly<KullaniciModel>('/Kullanici/KullaniciGetir/');
+        return this.getOnly<KullaniciModel>('/Kullanici/KullaniciGetir?id=' + kullaniciId);
     }
     getirKullaniciListesi(): Observable<KullaniciModel[]> {
         return this.getOnly<KullaniciModel[]>('/Kullanici/KullaniciListesiniGetir/');
@@ -26,14 +26,13 @@ export class KullaniciService extends BaseService {
     }
     kaydetKullanici(kullaniciParam: KullaniciModel): Observable<PostResult> {
         return this.postValue('/Kullanici/KaydetKullanici', kullaniciParam).
-        pipe(
-            map(response => {
-                return response;
-            }),
-            catchError((error) => {
-                return of({ success: false } as PostResult);
-            }),
-        );
+            pipe(
+                map(response => {
+                    return response;
+                }),
+                catchError((error) => {
+                    return of({ success: false } as PostResult);
+                }),
+            );
     }
-
 }

@@ -11,5 +11,6 @@ namespace BakTraCam.Core.Business.Domain
         Task<IEnumerable<KullaniciModel>> KullanicilariGetirAsync();
         Task<KullaniciModel> KaydetKullaniciAsync(KullaniciModel model);
         Task<int> SilKullaniciAsync(int id);
+        Task<KullaniciModel> KullaniciGetirAsync(int id);
     }
 }

@@ -43,8 +43,15 @@ export class KullaniciFormComponent implements OnInit, AfterViewInit {
 
   constructor(private formBuilder: FormBuilder,
     private _cd: ChangeDetectorRef,
-    private _dialog: MatDialog,
     private _kService: KullaniciService) {
+
+
+    this.form = this.formBuilder.group({
+      Ad: [[]],
+      UnvanId: [[]]
+    });
+
+
     this._kullaniciIdWaiter.pipe(
       takeUntil(this._unsubscribeAll),
       filter((id) => id > 0),
@@ -99,18 +106,15 @@ export class KullaniciFormComponent implements OnInit, AfterViewInit {
     if (this.validateForm()) {
       const kullanici: KullaniciModel = {
         Id: this.kullaniciId,
-        Ad: this.form.get('Ad').value,
-        UnvanId: parseInt(this.form.get('UnvanId').value)
+        ...this.form.getRawValue()
       };
 
       this._kService.kaydetKullanici(kullanici).pipe(
         takeUntil(this._unsubscribeAll),
         filter((res) => res.success),
-        tap((res) => {
-          console.log(res);
-        }),
-        tap((res) => this.kullaniciId = res.key),
-        tap((res) => this.result.emit(res.key))
+        tap((res) => { console.log(res) }),
+        tap((res) => this.kullaniciId = res.data.Id),
+        tap((res) => this.result.emit(res.data.Id))
       ).subscribe();
     }
   }

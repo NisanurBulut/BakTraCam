@@ -70,7 +70,6 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       mergeMap((id) => this._bakimService.getirBakim(id))
     ).subscribe((bakim) => {
       if (bakim) {
-        console.log(bakim);
         this.data = bakim;
         this.defaultData = deepCopy(this.data);
         this.createForm();
@@ -116,7 +115,6 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     }
   }
   createForm(): void {
-    console.log('defaultData', this.defaultData);
     this.form = this.formBuilder.group({
       Ad: [this.defaultData.Ad, [Validators.required, Validators.maxLength(50)]],
       Aciklama: [this.defaultData.Aciklama, [Validators.maxLength(100)]],
@@ -139,30 +137,16 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   save(): void {
 
     if (this.validateForm()) {
-
       const bakim = {
         Id: this.bakimId,
-        Ad: this.form.get('Ad').value,
-        Gerceklestiren1: this.defaultData.Gerceklestiren1,
-        Gerceklestiren2: this.defaultData.Gerceklestiren2,
-        Gerceklestiren3: this.defaultData.Gerceklestiren3,
-        Gerceklestiren4: this.defaultData.Gerceklestiren4,
-        Sorumlu1: this.defaultData.Sorumlu1,
-        Sorumlu2: this.defaultData.Sorumlu2,
-        Durum: parseInt(this.form.get('Durum').value),
-        Tip: parseInt(this.form.get('Tip').value),
-        Period: parseInt(this.form.get('Period').value),
-        Aciklama: this.form.get('Aciklama').value,
-        Tarihi: this.form.get('Tarihi').value,
+        ...this.form.getRawValue()
       } as BakimModel;
+
       this._bakimService.kaydetBakim(bakim).pipe(
         takeUntil(this._unsubscribeAll),
         filter((res) => res.success),
-        tap((res) => {
-          console.log(res);
-        }),
-        tap((res) => this.bakimId = res.key),
-        tap((res) => this.result.emit(res.key))
+        tap((res) => this.bakimId = res.data.Id),
+        tap((res) => this.result.emit(res.data.Id))
       ).subscribe();
 
     }
@@ -205,7 +189,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
 /*
 Bakımın türü : Planlı, Talep, Arıza, Periyodik
 Bakım önceliğine gerek yok
-Bakımın durumu : Planlandı, tamamlandı, iptal, devam ediyor
+Bakımın durumu : Beklemede, tamamlandı, iptal, devam ediyor
 
 Plan durumuna göre, filtreli sonuç gmsterilebilmeli
 Period: 1 gün, 1 hafta, 2 hafta,3 hafta,1 ay,2 ay, 3 ay,4 ay,6 ay, 1 sene
@@ -216,4 +200,7 @@ ve o günki planlı bakımlar gözükecek.
 ayrıyeten sağda akan bir ekranda yaklaşan (15 günlük planlı ve periyodik bakımlar akacak)
 akarkenki bilgiler , bakım adı,tarihi,sorumlu kişileri
 
+Bakım tipi, planlı ve periyodikse periyot seçilmesi zorunlu aksi durumda değil.
+Bir bakım yeni oluşturulmuşsa, beklemede olarak oluşturulur.
+Bakımın durumu değiştirilebilmelidir.
 */

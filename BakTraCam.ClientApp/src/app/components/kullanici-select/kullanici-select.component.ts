@@ -17,6 +17,7 @@ export class KullaniciSelectComponent implements OnInit, OnDestroy {
 
     @Input() parentFormGroup: FormGroup;
     @Input() controlName: string;
+    @Input() labelName: string;
 
     @Output() kullaniciChange = new EventEmitter();
     selectedKullanici: Select = {

@@ -26,7 +26,7 @@ export enum BakimTip {
     Periyodik = 4
 }
 export enum BakimDurum {
-    Planlandi = 1,
+    Beklemede = 1,
     Tamamlandi = 2,
     Iptal = 3,
     Devam = 4

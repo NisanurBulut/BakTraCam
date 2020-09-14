@@ -58,13 +58,21 @@ namespace BakTraCam.Core.Business.Domain.Bakim
 
         public async Task<BakimModel> KaydetBakimAsync(BakimModel model)
         {
+            BakimEntity bakim = model.Id > 0 ? await _bakimRep.FirstOrDefaultAsync(m => m.Id == model.Id) : null;
+            if (null == bakim)
+            {
+                bakim = Mapper.Map<BakimModel, BakimEntity>(model);
 
-            BakimEntity bakim = new BakimEntity();
+                await _bakimRep.AddAsync(bakim);
+                await _uow.SaveChangesAsync();
+            }
+            else
+            {
+                Mapper.Map(model, bakim);
 
-            Mapper.Map(model, bakim);
-            await _bakimRep.AddAsync(bakim);
-            await _uow.SaveChangesAsync();
-
+                await _bakimRep.UpdateAsync(bakim);
+                await _uow.SaveChangesAsync();
+            }
             return Mapper.Map<BakimEntity,BakimModel>(bakim);
 
         }

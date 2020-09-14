@@ -30,6 +30,7 @@ export class KullaniciFormPopupComponent implements OnInit, OnDestroy {
   }
 
   saved(kullaniciId: number): void {
+    console.log(kullaniciId);
     this.dialogRef.close(kullaniciId);
   }
 

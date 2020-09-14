@@ -17,7 +17,7 @@ import { KullaniciFormPopupComponent } from '../popups/kullanici-form-popup/kull
 })
 export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit {
   loading: boolean;
-  bakimListe: KullaniciModel[];
+  kullaniciListe: KullaniciModel[];
 
   displayedColumns: string[] = ['Id', 'Ad', 'UnvanId', 'Actions'];
   dataSource: MatTableDataSource<KullaniciModel>;
@@ -46,9 +46,7 @@ export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit 
       })
     ).subscribe();
   }
-  ngAfterViewInit() {
-
-  }
+  ngAfterViewInit() {}
   ngOnDestroy(): void {
     this._unsubscribeAll.unsubscribe();
   }
@@ -68,17 +66,19 @@ export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit 
       takeUntil(this._unsubscribeAll),
       tap(() => this.loading = true),
       map((resListe) => {
-        this.bakimListe = (resListe as KullaniciModel[]);
-        console.log(this.bakimListe);
-        this.dataSource = new MatTableDataSource(this.bakimListe);
+        this.kullaniciListe = (resListe as KullaniciModel[]);
+        this.dataSource = new MatTableDataSource(this.kullaniciListe);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       }),
       tap(() => this.loading = false),
     ).subscribe()
   }
-  createNewTask(): void {
+  createNewKullanici(): void {
     this.openKullaniciPopup({ id: 0 });
+  }
+  editKullanici(kullaniciId: any): void {
+    this.openKullaniciPopup({ id: kullaniciId });
   }
   openKullaniciPopup(data: any): void {
     this._dialog.open(KullaniciFormPopupComponent, {
@@ -88,7 +88,9 @@ export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit 
     }).afterClosed().pipe(
       takeUntil(this._unsubscribeAll)
     ).subscribe((res) => {
-      this.kullaniciListesiniGetir();
+      if (res) {
+        this.kullaniciListesiniGetir();
+      }
     });
   }
 }

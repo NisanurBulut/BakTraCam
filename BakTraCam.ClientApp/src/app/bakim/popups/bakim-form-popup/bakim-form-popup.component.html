@@ -13,7 +13,7 @@
   </mat-toolbar>
 
   <div class="card-body">
-    <app-bakim-form #bakimForm [bakimId]="bakimId"></app-bakim-form>
+    <app-bakim-form #bakimForm [bakimId]="bakimId" (result)="saved($event)"></app-bakim-form>
   </div>
   <div class="clearfix"></div>
     <button

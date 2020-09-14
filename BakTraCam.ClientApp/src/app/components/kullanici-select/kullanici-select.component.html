@@ -1,6 +1,6 @@
 <ng-container [formGroup]="parentFormGroup">
     <mat-form-field fxLayout="column"  fxFill appearance="outline">
-        <mat-label>Kullanıcı</mat-label>
+        <mat-label>{{this.labelName}}</mat-label>
         <mat-select [compareWith]="compareKullanici" #kullaniciSelect [formControlName]="controlName">
             <mat-option *ngFor="let item of this._kullanicilar" [value]="item.Key">
                 {{item.Name}}

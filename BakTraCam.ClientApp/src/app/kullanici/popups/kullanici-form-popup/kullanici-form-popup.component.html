@@ -13,7 +13,7 @@
   </mat-toolbar>
 
   <div class="card-body">
-    <app-kullanici-form #kullaniciForm [kullaniciId]="kullaniciId"></app-kullanici-form>
+    <app-kullanici-form #kullaniciForm [kullaniciId]="kullaniciId" (result)="saved($event)"></app-kullanici-form>
   </div>
   <div class="clearfix"></div>
     <button

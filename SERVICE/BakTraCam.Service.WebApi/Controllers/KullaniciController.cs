@@ -28,13 +28,21 @@ namespace BakTraCam.Service.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> KaydetKullanici(KullaniciModel kullaniciModel)
         {
-            return Ok(await _kullaniciApp.KaydetKullaniciAsync(kullaniciModel));
+            var result = await _kullaniciApp.KaydetKullaniciAsync(kullaniciModel);
+            return result != null ? Success(result) : Fail();
         }
         [Route("[action]")]
         [HttpDelete]
         public async Task<IActionResult> SilKullanici(int id)
         {
-            return Ok(await _kullaniciApp.SilKullaniciAsync(id));
+            var key = await _kullaniciApp.SilKullaniciAsync(id);
+            return key > 0 ? Success(key) : Fail();
+        }
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<IActionResult> KullaniciGetir(int id)
+        {
+            return Ok(await _kullaniciApp.KullaniciGetirAsync(id));
         }
     }
 }

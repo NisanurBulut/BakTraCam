@@ -95,6 +95,7 @@
     <div class="col-md-6">
       <app-kullanici-select
         [parentFormGroup]="form"
+        [labelName]="'Sorumlu'"
         [controlName]="'Sorumlu1'"
         (kullaniciChange)="SelectSorumluBir($event)"
       ></app-kullanici-select>
@@ -103,6 +104,7 @@
       <app-kullanici-select
         [parentFormGroup]="form"
         [controlName]="'Sorumlu2'"
+        [labelName]="'Sorumlu'"
         (kullaniciChange)="SelectSorumluIki($event)"
       ></app-kullanici-select>
     </div>
@@ -111,6 +113,7 @@
     <div class="col-md-3">
       <app-kullanici-select
         [parentFormGroup]="form"
+        [labelName]="'Gerçekleştiren'"
         [controlName]="'Gerceklestiren1'"
         (kullaniciChange)="GerceklestirenBir($event)"
       ></app-kullanici-select>
@@ -118,6 +121,7 @@
     <div class="col-md-3">
       <app-kullanici-select
         [parentFormGroup]="form"
+        [labelName]="'Gerçekleştiren'"
         [controlName]="'Gerceklestiren2'"
         (kullaniciChange)="GerceklestirenIki($event)"
       ></app-kullanici-select>
@@ -125,6 +129,7 @@
     <div class="col-md-3">
       <app-kullanici-select
         [parentFormGroup]="form"
+        [labelName]="'Gerçekleştiren'"
         [controlName]="'Gerceklestiren3'"
         (kullaniciChange)="GerceklestirenUc($event)"
       ></app-kullanici-select>
@@ -132,6 +137,7 @@
     <div class="col-md-3">
       <app-kullanici-select
         [parentFormGroup]="form"
+        [labelName]="'Gerçekleştiren'"
         [controlName]="'Gerceklestiren4'"
         (kullaniciChange)="GerceklestirenDort($event)"
       ></app-kullanici-select>

@@ -26,14 +26,23 @@ namespace BakTraCam.Core.Business.Domain.Kullanici
         }
         public async Task<KullaniciModel> KaydetKullaniciAsync(KullaniciModel model)
         {
+            KullaniciEntity kullanici = model.Id > 0 ? await _kullaniciRep.FirstOrDefaultAsync(m => m.Id == model.Id) : null;
+            if (null == kullanici)
+            {
+                kullanici = Mapper.Map<KullaniciModel, KullaniciEntity>(model);
 
-            KullaniciEntity Kullanici = new KullaniciEntity();
+                await _kullaniciRep.AddAsync(kullanici);
+                await _uow.SaveChangesAsync();
+            }
+            else
+            {
+                Mapper.Map(model, kullanici);
 
-            Mapper.Map(model, Kullanici);
-            await _kullaniciRep.AddAsync(Kullanici);
-            await _uow.SaveChangesAsync();
-
-            return Mapper.Map<KullaniciEntity, KullaniciModel>(Kullanici);
+                await _kullaniciRep.UpdateAsync(kullanici);
+                await _uow.SaveChangesAsync();
+            }
+             
+            return Mapper.Map<KullaniciEntity, KullaniciModel>(kullanici);
 
         }
 
@@ -42,6 +51,12 @@ namespace BakTraCam.Core.Business.Domain.Kullanici
             await _kullaniciRep.DeleteAsync(a => a.Id == id);
             await _uow.SaveChangesAsync();
             return id;
+        }
+
+        public async Task<KullaniciModel> KullaniciGetirAsync(int id)
+        {
+            var result = await _kullaniciRep.FirstOrDefaultAsync<KullaniciModel>(a => a.Id == id);
+            return result;
         }
     }
 }
