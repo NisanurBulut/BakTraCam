@@ -64,66 +64,66 @@
                   <div class="table-responsive">
                     <table mat-table [dataSource]="dataSource" matSort>
                       <!-- ID Column -->
-                      <ng-container matColumnDef="id">
+                      <ng-container matColumnDef="Id">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
-                        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Id }}</td>
                       </ng-container>
 
                       <!-- Ad Column -->
-                      <ng-container matColumnDef="ad">
+                      <ng-container matColumnDef="Ad">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Ad</th>
-                        <td mat-cell *matCellDef="let row">{{ row.ad }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Ad }}</td>
                       </ng-container>
 
                       <!-- Açıklama Column -->
-                      <ng-container matColumnDef="aciklama">
+                      <ng-container matColumnDef="Aciklama">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Açıklama</th>
-                        <td mat-cell *matCellDef="let row">{{ row.aciklama }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Aciklama }}</td>
                       </ng-container>
                       <!-- Tarihi Column -->
-                      <ng-container matColumnDef="tarihi">
+                      <ng-container matColumnDef="Tarihi">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Tarihi</th>
-                        <td mat-cell *matCellDef="let row">{{ row.tarihi | date: 'dd.MM.yyyy'}}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Tarihi | date: 'dd.MM.yyyy'}}</td>
                       </ng-container>
 
                       <!-- kullanici1 Column -->
-                      <ng-container matColumnDef="sorumlu1">
+                      <ng-container matColumnDef="Sorumlu1">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu</th>
-                        <td mat-cell *matCellDef="let row">{{ row.sorumlu1 }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Sorumlu1 }}</td>
                       </ng-container>
 
                       <!-- kullanici2 Column -->
-                      <ng-container matColumnDef="sorumlu2">
+                      <ng-container matColumnDef="Sorumlu2">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu</th>
-                        <td mat-cell *matCellDef="let row">{{ row.sorumlu2 }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Sorumlu2 }}</td>
                       </ng-container>
 
                        <!-- gerceklestiren1 Column -->
-                       <ng-container matColumnDef="gerceklestiren1">
+                       <ng-container matColumnDef="Gerceklestiren1">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
-                        <td mat-cell *matCellDef="let row">{{ row.gerceklestiren1 }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren1 }}</td>
                       </ng-container>
 
                        <!-- gerceklestiren2 Column -->
-                       <ng-container matColumnDef="gerceklestiren2">
+                       <ng-container matColumnDef="Gerceklestiren2">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
-                        <td mat-cell *matCellDef="let row">{{ row.gerceklestiren2 }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren2 }}</td>
                       </ng-container>
 
                        <!-- gerceklestiren3 Column -->
-                       <ng-container matColumnDef="gerceklestiren3">
+                       <ng-container matColumnDef="Gerceklestiren3">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
-                        <td mat-cell *matCellDef="let row">{{ row.gerceklestiren3 }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren3 }}</td>
                       </ng-container>
 
                          <!-- gerceklestiren4 Column -->
-                         <ng-container matColumnDef="gerceklestiren4">
+                         <ng-container matColumnDef="Gerceklestiren4">
                           <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
-                          <td mat-cell *matCellDef="let row">{{ row.gerceklestiren4 }}</td>
+                          <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren4 }}</td>
                         </ng-container>
 
                          <!-- gerceklestiren4 Column -->
-                         <ng-container matColumnDef="actions">
+                         <ng-container matColumnDef="Actions">
                           <th mat-header-cell *matHeaderCellDef>
 
                             <button mat-raised-button class="btn-success btn-sm"   (click)="createNewTask()">
@@ -132,10 +132,10 @@
                           </th>
                           <td mat-cell *matCellDef="let row">
                             <mat-button-toggle-group>
-                              <mat-button-toggle (change)="editTask(row.id)" class="btnEdit">
+                              <mat-button-toggle (change)="editTask(row.Id)" class="btnEdit">
                                 <mat-icon>edit_task</mat-icon>
                               </mat-button-toggle>
-                              <mat-button-toggle (change)="deleteTask(row.id)" class="btnDanger">
+                              <mat-button-toggle (change)="deleteTask(row.Id)" class="btnDanger">
                                 <mat-icon>delete_task</mat-icon>
                               </mat-button-toggle>
                             </mat-button-toggle-group>

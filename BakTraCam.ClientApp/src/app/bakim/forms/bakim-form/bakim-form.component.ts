@@ -49,7 +49,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     private _bakimService: BakimService) {
 
     this.form = this.formBuilder.group({
-      Ad:  [[]],
+      Ad: [[]],
       Aciklama: [[]],
       Tarihi: [[]],
       Durum: [[]],
@@ -118,18 +118,18 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
   createForm(): void {
     console.log('defaultData', this.defaultData);
     this.form = this.formBuilder.group({
-      Ad: [this.defaultData.ad, [Validators.required, Validators.maxLength(50)]],
-      Aciklama: [this.defaultData.aciklama, [Validators.maxLength(100)]],
-      Tarihi: [this.defaultData.tarihi, [Validators.required]],
-      Durum: [this.defaultData.durum, [Validators.required, Validators.min(1)]],
-      Tip: [this.defaultData.tip, [Validators.required, Validators.min(1)]],
-      Period: [this.defaultData.period, [Validators.required, Validators.min(1)]],
-      Sorumlu1:[this.defaultData.sorumlu1],
-      Sorumlu2:[this.defaultData.sorumlu2],
-      Gerceklestiren1:[this.defaultData.gerceklestiren1],
-      Gerceklestiren2:[this.defaultData.gerceklestiren2],
-      Gerceklestiren3:[this.defaultData.gerceklestiren3],
-      Gerceklestiren4:[this.defaultData.gerceklestiren4]
+      Ad: [this.defaultData.Ad, [Validators.required, Validators.maxLength(50)]],
+      Aciklama: [this.defaultData.Aciklama, [Validators.maxLength(100)]],
+      Tarihi: [this.defaultData.Tarihi, [Validators.required]],
+      Durum: [this.defaultData.Durum, [Validators.required, Validators.min(1)]],
+      Tip: [this.defaultData.Tip, [Validators.required, Validators.min(1)]],
+      Period: [this.defaultData.Period, [Validators.required, Validators.min(1)]],
+      Sorumlu1: [this.defaultData.Sorumlu1],
+      Sorumlu2: [this.defaultData.Sorumlu2],
+      Gerceklestiren1: [this.defaultData.Gerceklestiren1],
+      Gerceklestiren2: [this.defaultData.Gerceklestiren2],
+      Gerceklestiren3: [this.defaultData.Gerceklestiren3],
+      Gerceklestiren4: [this.defaultData.Gerceklestiren4]
     });
 
     // Kullanıcıları Yükle

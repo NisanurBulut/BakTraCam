@@ -18,6 +18,7 @@ namespace BakTraCam.Core.IoC
     {
         public static void AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
+
             services.AddClassesMatchingInterfacesFrom(
                 Assembly.GetAssembly(typeof(IBakimDomain)),
                 Assembly.GetAssembly(typeof(IDatabaseUnitOfWork)));

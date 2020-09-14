@@ -20,10 +20,10 @@ export class BakimListComponent implements OnInit, OnDestroy {
   loading: boolean;
   bakimListe: BakimModelBasic[];
 
-  displayedColumns: string[] = ['id', 'ad', 'aciklama', 'tarihi',
-    'sorumlu1', 'sorumlu2', 'gerceklestiren1',
-    'gerceklestiren2', 'gerceklestiren3',
-    'gerceklestiren4', 'actions'];
+  displayedColumns: string[] = ['Id', 'Ad', 'Aciklama', 'Tarihi',
+    'Sorumlu1', 'Sorumlu2', 'Gerceklestiren1',
+    'Gerceklestiren2', 'Gerceklestiren3',
+    'Gerceklestiren4', 'Actions'];
   dataSource: MatTableDataSource<BakimModelBasic>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

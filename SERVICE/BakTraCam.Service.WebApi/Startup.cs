@@ -35,6 +35,15 @@ namespace BakTraCam.Service.WebApi
 
             services.AddMemoryCache();
 
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.UseMemberCasing();
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+
+                options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+                options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+            });
 
             services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             
