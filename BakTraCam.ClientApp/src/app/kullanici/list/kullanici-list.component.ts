@@ -19,7 +19,7 @@ export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit 
   loading: boolean;
   bakimListe: KullaniciModel[];
 
-  displayedColumns: string[] = ['id', 'ad', 'unvanId', 'actions'];
+  displayedColumns: string[] = ['Id', 'Ad', 'UnvanId', 'Actions'];
   dataSource: MatTableDataSource<KullaniciModel>;
 
   Unvan = Unvan;
@@ -88,7 +88,6 @@ export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit 
     }).afterClosed().pipe(
       takeUntil(this._unsubscribeAll)
     ).subscribe((res) => {
-
       this.kullaniciListesiniGetir();
     });
   }
