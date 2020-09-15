@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BakimFormPopupComponent } from '../popups/bakim-form-popup/bakim-form-popup.component';
 import { SnackbarService } from 'app/shared/snackbar.service';
 import { TranslateService } from '@ngx-translate/core';
+import { BakimDetailPopupComponent } from '../popups/bakim-detail-popup/bakim-detail-popup.component';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class BakimListComponent implements OnInit, OnDestroy {
   loading: boolean;
   bakimListe: BakimModelBasic[];
 
-  displayedColumns: string[] = ['Id', 'Ad', 'Aciklama', 'Tarihi',
+  displayedColumns: string[] = ['Id', 'Ad', 'Tarihi',
     'Sorumlu1', 'Sorumlu2', 'Gerceklestiren1',
     'Gerceklestiren2', 'Gerceklestiren3',
     'Gerceklestiren4', 'Actions'];
@@ -48,7 +49,7 @@ export class BakimListComponent implements OnInit, OnDestroy {
       mergeMap((bakimId) => this._bService.silBakim(bakimId)),
       tap((res) => {
         const msg = this._translate.instant('Bakım silindi');
-          this._snackbarService.show(msg);
+        this._snackbarService.show(msg);
         this.bakimListesiniGetir();
       })
     ).subscribe();
@@ -139,6 +140,9 @@ export class BakimListComponent implements OnInit, OnDestroy {
       tap(() => this.loading = false),
     ).subscribe();
   }
+  viewTask(bakimId: number) {
+    this.openBakimDetailPopup({ id: bakimId });
+  }
   createNewTask(): void {
     this.openBakimPopup({ id: 0 });
   }
@@ -147,6 +151,19 @@ export class BakimListComponent implements OnInit, OnDestroy {
   }
   deleteTask(bakimId: number) {
     this._bakimSilAction.next(bakimId);
+  }
+  openBakimDetailPopup(data: any): void {
+    this._dialog.open(BakimDetailPopupComponent, {
+      disableClose: true,
+      panelClass: 'form-dialog',
+      data: data
+    }).afterClosed().pipe(
+      takeUntil(this._unsubscribeAll)
+    ).subscribe((res) => {
+      if (res) {
+        this.bakimListesiniGetir();
+      }
+    });
   }
   openBakimPopup(data: any): void {
     this._dialog.open(BakimFormPopupComponent, {

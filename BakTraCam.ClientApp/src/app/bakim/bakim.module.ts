@@ -5,7 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'app/shared/material.module';
 import { BakimFormComponent} from './forms';
 
-import { BakimFormPopupComponent, BakimListComponent} from '../bakim';
+import { BakimFormPopupComponent, BakimListComponent,
+         BakimDetailFormComponent, BakimDetailPopupComponent} from '../bakim';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ComponentsModule } from 'app/components/components.module';
@@ -24,7 +25,9 @@ import { BaseCommonModule } from 'app/shared/baseCommon.module';
     declarations: [
         BakimListComponent,
         BakimFormComponent,
-        BakimFormPopupComponent
+        BakimFormPopupComponent,
+        BakimDetailFormComponent,
+        BakimDetailPopupComponent
     ],
     providers: [
         BakimService,
