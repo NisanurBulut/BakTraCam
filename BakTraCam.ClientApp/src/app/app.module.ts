@@ -13,10 +13,13 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { MaterialModule } from './shared/material.module';
 import { BaseCommonModule } from './shared/baseCommon.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackbarService } from './shared/snackbar.service';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
+    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
@@ -31,7 +34,9 @@ import { BaseCommonModule } from './shared/baseCommon.module';
     AdminLayoutComponent,
 
   ],
-  providers: [],
+  providers: [
+    SnackbarService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

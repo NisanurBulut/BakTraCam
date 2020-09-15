@@ -8,6 +8,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { BakimFormPopupComponent } from '../popups/bakim-form-popup/bakim-form-popup.component';
+import { SnackbarService } from 'app/shared/snackbar.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -34,7 +36,10 @@ export class BakimListComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any> = new Subject();
   private _bakimSilAction = new Subject<number>();
 
-  constructor(private _bService: BakimService, private _dialog: MatDialog) {
+  constructor(private _bService: BakimService,
+    private _dialog: MatDialog,
+    private _snackbarService: SnackbarService,
+    private _translate: TranslateService) {
     this.bakimListesiniGetir();
   }
   ngOnInit() {
@@ -42,7 +47,8 @@ export class BakimListComponent implements OnInit, OnDestroy {
       takeUntil(this._unsubscribeAll),
       mergeMap((bakimId) => this._bService.silBakim(bakimId)),
       tap((res) => {
-        console.log(res);
+        const msg = this._translate.instant('Bakım silindi');
+          this._snackbarService.show(msg);
         this.bakimListesiniGetir();
       })
     ).subscribe();
@@ -131,7 +137,7 @@ export class BakimListComponent implements OnInit, OnDestroy {
         this.dataSource.sort = this.sort;
       }),
       tap(() => this.loading = false),
-    ).subscribe()
+    ).subscribe();
   }
   createNewTask(): void {
     this.openBakimPopup({ id: 0 });

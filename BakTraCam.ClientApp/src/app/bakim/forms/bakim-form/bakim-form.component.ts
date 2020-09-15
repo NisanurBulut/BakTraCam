@@ -6,6 +6,8 @@ import { BakimDurum, BakimModel, BakimPeriod, BakimTip, EnumCategory, Select } f
 import { BakimService } from 'app/bakim/bakim.service';
 import { compareEnumKeys, deepCopy, markAsTouched } from 'app/common/generic-functions';
 import { takeUntil, filter, tap, mergeMap } from 'rxjs/operators';
+import { SnackbarService } from 'app/shared/snackbar.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-bakim-form',
@@ -45,7 +47,8 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
 
   constructor(private formBuilder: FormBuilder,
     private _cd: ChangeDetectorRef,
-    private _dialog: MatDialog,
+    private _snackbarService: SnackbarService,
+    private _translate: TranslateService,
     private _bakimService: BakimService) {
 
     this.form = this.formBuilder.group({
@@ -145,6 +148,10 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       this._bakimService.kaydetBakim(bakim).pipe(
         takeUntil(this._unsubscribeAll),
         filter((res) => res.success),
+        tap(() => {
+          const msg = this._translate.instant('Bakım kaydedildi');
+          this._snackbarService.show(msg);
+        }),
         tap((res) => this.bakimId = res.data.Id),
         tap((res) => this.result.emit(res.data.Id))
       ).subscribe();
