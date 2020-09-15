@@ -6,9 +6,9 @@
           <mat-button-toggle-group>
             <mat-button-toggle class="btnHepsi" (change)="filterTableByTip(0)"
             matTooltip="Bakımları listele">
-              <mat-icon>remove_red_eye</mat-icon>
+              <mat-icon>apps</mat-icon>
             </mat-button-toggle>
-            <mat-button-toggle class="btnEdit" (change)="filterTableByTip(1)"
+            <mat-button-toggle class="btnBekleme" (change)="filterTableByTip(1)"
             matTooltip="Plan tipindeki bakımları listele">
               <mat-icon>event_note</mat-icon>
             </mat-button-toggle>
@@ -27,7 +27,7 @@
         <div class='column' fxLayoutAlign="flex-end">
           <mat-button-toggle-group>
             <mat-button-toggle class="btnPlan" (change)="filterTableByDurum(1)"  matTooltip="Beklemedeki bakımları listele">
-              <mat-icon>event_note</mat-icon>
+              <mat-icon>hourglass_bottom</mat-icon>
             </mat-button-toggle>
             <mat-button-toggle class="btnTamamlandi" (change)="filterTableByDurum(2)" matTooltip="Tamamlanan bakımları listele">
               <mat-icon>done_all</mat-icon>
@@ -125,13 +125,15 @@
                          <!-- gerceklestiren4 Column -->
                          <ng-container matColumnDef="Actions">
                           <th mat-header-cell *matHeaderCellDef>
-
                             <button mat-raised-button class="btn-success btn-sm"   (click)="createNewTask()">
                               <mat-icon>add_task</mat-icon>
                             </button>
                           </th>
                           <td mat-cell *matCellDef="let row">
                             <mat-button-toggle-group>
+                              <mat-button-toggle (change)="editTask(row.Id)" class="btnDetail">
+                                <mat-icon>remove_red_eye</mat-icon>
+                              </mat-button-toggle>
                               <mat-button-toggle (change)="editTask(row.Id)" class="btnEdit">
                                 <mat-icon>edit_task</mat-icon>
                               </mat-button-toggle>

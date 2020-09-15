@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "COMMON", "COMMON", "{A60446
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BakTraCam.Common.Helper", "BakTraCam.Common.Helper\BakTraCam.Common.Helper.csproj", "{AE808D69-3DED-4E1B-877E-2C6E325022BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakTraCam.Core.Business", "BakTraCam.Core.Business\BakTraCam.Core.Business.csproj", "{A81D0241-A367-4C2E-A55F-C04EE8E5D35E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BakTraCam.Core.Business", "BakTraCam.Core.Business\BakTraCam.Core.Business.csproj", "{A81D0241-A367-4C2E-A55F-C04EE8E5D35E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

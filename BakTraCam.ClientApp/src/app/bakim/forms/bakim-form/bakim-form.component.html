@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <mat-form-field appearance="outline">
         <mat-label>Bakım tarihi</mat-label>
         <input
@@ -36,7 +36,7 @@
         </mat-error>
       </mat-form-field>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <mat-form-field appearance="outline" fxLayout="row" fxFill>
         <mat-label>Tip</mat-label>
         <mat-select
@@ -53,24 +53,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="col-md-3">
-      <mat-form-field appearance="outline" fxLayout="row" fxFill>
-        <mat-label>Durum</mat-label>
-        <mat-select
-          [compareWith]="compareEnumKeys"
-          fxFill
-          formControlName="Durum"
-        >
-          <mat-option
-            *ngFor="let item of BakimDurums | enumkeys"
-            [value]="item.key"
-          >
-            {{ item.value | enumtranslate: EnumCategory.BakimDurum }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <mat-form-field appearance="outline" fxLayout="row" fxFill>
         <mat-label>Periyot</mat-label>
         <mat-select

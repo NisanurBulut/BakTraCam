@@ -12,6 +12,15 @@ mat-button-toggle-group{
       background-color: #dc3545;
       color:white;
   }
+  .btnDetail{
+    background-color:#D98A99;
+    color:white;
+    // #BF4513
+}
+}
+.btnPlan{
+  background-color:   #00897b;
+  color:white;
 }
 .btnHepsi{
   background-color: #3e2723;
@@ -21,12 +30,12 @@ mat-button-toggle-group{
   background-color: #ff5722;
   color:white;
 }
-.btnPlan{
-  background-color: #00897b;
+.btnBekleme{
+  background-color:#9399B1;
   color:white;
 }
 .btnIptal{
-  background-color:#ffd600;
+  background-color:#FFA500;
   color:white;
 }
 .btnDevam{

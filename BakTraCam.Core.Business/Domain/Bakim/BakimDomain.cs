@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using BakTraCam.Core.Entity;
 using BakTraCam.Core.DataAccess.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
+using BakTraCam.Common.Helper.Enums;
 
 namespace BakTraCam.Core.Business.Domain.Bakim
 {
@@ -61,6 +62,8 @@ namespace BakTraCam.Core.Business.Domain.Bakim
             BakimEntity bakim = model.Id > 0 ? await _bakimRep.FirstOrDefaultAsync(m => m.Id == model.Id) : null;
             if (null == bakim)
             {
+                // yeni bakımlar beklemede oluşur
+                model.Durum = (int)Enums.BakimDurum.Beklemede;
                 bakim = Mapper.Map<BakimModel, BakimEntity>(model);
 
                 await _bakimRep.AddAsync(bakim);
