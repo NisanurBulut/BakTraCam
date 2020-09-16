@@ -1,7 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
     <span class="title dialog-title">
-      <mat-icon fontSet="fa" fontIcon="fa-eye"></mat-icon>
       <h4 class="card-title" *ngIf="bakimId">Bakım Detay Bilgileri</h4>
     </span>
     <button mat-icon-button (click)="this.dialogRef.close(false)">
@@ -11,5 +10,5 @@
 </mat-toolbar>
 
 <div mat-dialog-content>
-<app-bakim-detail-form></app-bakim-detail-form>
+<app-bakim-detail-form #bakimFormDetail [bakimId]="bakimId"></app-bakim-detail-form>
 </div>

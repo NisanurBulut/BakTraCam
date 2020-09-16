@@ -29,7 +29,10 @@
           formControlName="BaslangicTarihi"
           required
         />
-        <mat-datepicker-toggle matSuffix [for]="BaslangicTarihi"></mat-datepicker-toggle>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="BaslangicTarihi"
+        ></mat-datepicker-toggle>
         <mat-datepicker #BaslangicTarihi></mat-datepicker>
         <mat-error *ngIf="form.get('BaslangicTarihi').hasError('required')">
           Bakım başlangıç tarihi belirtilmelidir
@@ -46,7 +49,10 @@
           formControlName="BitisTarihi"
           required
         />
-        <mat-datepicker-toggle matSuffix [for]="BitisTarihi"></mat-datepicker-toggle>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="BitisTarihi"
+        ></mat-datepicker-toggle>
         <mat-datepicker #BitisTarihi></mat-datepicker>
         <mat-error *ngIf="form.get('BitisTarihi').hasError('required')">
           Bakım bitiş tarihi belirtilmelidir
@@ -90,6 +96,12 @@
             {{ item.value | enumtranslate: EnumCategory.BakimPeriod }}
           </mat-option>
         </mat-select>
+        <mat-error
+          *ngIf="
+            form.get('Tip').value === BakimTips.Planli ||
+            form.get('Tip').value === BakimTips.Periyodik
+          "
+        ></mat-error>
       </mat-form-field>
     </div>
   </div>

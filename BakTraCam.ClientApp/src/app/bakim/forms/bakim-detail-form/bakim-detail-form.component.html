@@ -1,26 +1,10 @@
-<form
-  fxLayout="column"
-  fxFlex
-  class="event-form w-100-p"
-  name="form"
->
-<!-- [formGroup]="form" -->
-  <div class="row">
-    <div class="col-md-12">
-      <label>Bakım açıklaması</label>
-      <mat-form-field class="example-full-width">
-        <textarea
-          matInput
-          placeholder="..."
-          formControlName="Aciklama"
-        ></textarea>
-        <!-- <mat-error *ngIf="form.get('Aciklama').hasError('required')">
-          Bakım açıklaması belirtilmelidir
-        </mat-error>
-        <mat-error *ngIf="form.get('Aciklama').hasError('maxlength')">
-          Bakım gerçekleştireni en çok 100 karakter olabilir.
-        </mat-error> -->
-      </mat-form-field>
-    </div>
+<div class="row">
+  <div class="col-md-12" *ngIf="data">
+    <label>Bakım tarihleri</label>
+    <p>{{this.data.BaslangicTarihi  | date: 'dd.MM.yyyy'}}-{{this.data.BitisTarihi | date: 'dd.MM.yyyy'}}</p>
   </div>
-</form>
+  <div class="col-md-12" *ngIf="data">
+    <label>Bakım açıklaması</label>
+    <p>{{this.data.Aciklama }}</p>
+  </div>
+</div>

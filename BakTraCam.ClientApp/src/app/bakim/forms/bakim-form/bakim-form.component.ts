@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
 import { BakimDurum, BakimModel, BakimPeriod, BakimTip, EnumCategory, Select } from 'app/models';
 import { BakimService } from 'app/bakim/bakim.service';
 import { compareEnumKeys, deepCopy, markAsTouched } from 'app/common/generic-functions';
@@ -156,7 +155,9 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         tap((res) => this.bakimId = res.data.Id),
         tap((res) => this.result.emit(res.data.Id))
       ).subscribe();
-
+    } else {
+      const msg = this._translate.instant('Bakım bilgileri doğrulanamadı');
+      this._snackbarService.show(msg);
     }
   }
   SelectSorumluBir(sorumlu: Select): void {
