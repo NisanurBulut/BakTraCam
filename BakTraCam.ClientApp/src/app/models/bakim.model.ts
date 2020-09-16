@@ -9,6 +9,8 @@ export interface BakimModel {
     Sorumlu1: number,
     Sorumlu2: number,
     Tarihi: Date,
+    BaslangicTarihi: Date;
+    BitisTarihi: Date;
     Durum: number,
     Period: number,
     Tip: number

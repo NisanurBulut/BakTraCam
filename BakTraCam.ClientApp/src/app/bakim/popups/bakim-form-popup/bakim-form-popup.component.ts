@@ -25,7 +25,8 @@ export class BakimFormPopupComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
   closeDialog(): void {
-    this.dialogRef.close();
+    console.log("close");
+    this.dialogRef.close(false)
   }
 
   saved(bakimId: number): void {

@@ -9,7 +9,8 @@ namespace BakTraCam.Service.DataContract
         public int Id { get; set; }
         public string Aciklama { get; set; }
         public string Ad { get; set; }
-        public DateTime Tarihi { get; set; }
+        public DateTime BaslangicTarihi { get; set; }
+        public DateTime BitisTarihi { get; set; }
         public string Gerceklestiren1 { get; set; }
         public string Gerceklestiren2 { get; set; }
         public string Gerceklestiren3 { get; set; }

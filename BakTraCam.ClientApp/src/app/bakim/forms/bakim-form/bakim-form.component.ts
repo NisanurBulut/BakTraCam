@@ -54,7 +54,8 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     this.form = this.formBuilder.group({
       Ad: [[]],
       Aciklama: [[]],
-      Tarihi: [[]],
+      BaslangicTarihi: [[]],
+      BitisTarihi: [[]],
       Durum: [[]],
       Tip: [[]],
       Period: [[]],
@@ -102,7 +103,8 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       this.form.reset({
         Ad: this.defaultData.Ad,
         Aciklama: this.data.Aciklama,
-        Tarihi: this.data.Tarihi,
+        BaslangicTarihi: this.data.BaslangicTarihi,
+        BitisTarihi: this.data.BitisTarihi,
         kullanici1: this.data.Sorumlu1,
         kullanici2: this.data.Sorumlu2,
         Gerceklestiren1: this.data.Gerceklestiren1,
@@ -120,7 +122,8 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     this.form = this.formBuilder.group({
       Ad: [this.defaultData.Ad, [Validators.required, Validators.maxLength(50)]],
       Aciklama: [this.defaultData.Aciklama, [Validators.maxLength(100)]],
-      Tarihi: [this.defaultData.Tarihi, [Validators.required]],
+      BaslangicTarihi: [this.defaultData.BaslangicTarihi, [Validators.required]],
+      BitisTarihi: [this.defaultData.BitisTarihi, [Validators.required]],
       Tip: [this.defaultData.Tip, [Validators.required, Validators.min(1)]],
       Period: [this.defaultData.Period, [Validators.required, Validators.min(1)]],
       Sorumlu1: [this.defaultData.Sorumlu1],

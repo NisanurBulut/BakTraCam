@@ -49,7 +49,8 @@ namespace BakTraCam.Core.IoC
         {
             services.AddDbContextPool<T>(options);
             T context = services.GetService<T>();
-            context.Database.EnsureCreated();
+            context.Database.Migrate();
+            // context.Database.EnsureCreated();
             context.Database.Migrate();
         }
     }

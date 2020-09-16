@@ -10,6 +10,8 @@ namespace BakTraCam.Core.Entity
         public string Aciklama { get; set; }
         public string Ad { get; set; }
         public DateTime Tarihi { get; set; }
+        public DateTime BaslangicTarihi { get; set; }
+        public DateTime BitisTarihi { get; set; }
         public int Gerceklestiren1 { get; set; }
         public int Gerceklestiren2 { get; set; }
         public int Gerceklestiren3 { get; set; }

@@ -19,24 +19,43 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <mat-form-field appearance="outline">
-        <mat-label>Bakım tarihi</mat-label>
+        <mat-label>Bakım Başlangıç Tarihi</mat-label>
         <input
           type="datetime"
           matInput
-          [matDatepicker]="Tarihi"
-          formControlName="Tarihi"
+          [matDatepicker]="BaslangicTarihi"
+          formControlName="BaslangicTarihi"
           required
         />
-        <mat-datepicker-toggle matSuffix [for]="Tarihi"></mat-datepicker-toggle>
-        <mat-datepicker #Tarihi></mat-datepicker>
-        <mat-error *ngIf="form.get('Tarihi').hasError('required')">
-          Bakım tarihi belirtilmelidir
+        <mat-datepicker-toggle matSuffix [for]="BaslangicTarihi"></mat-datepicker-toggle>
+        <mat-datepicker #BaslangicTarihi></mat-datepicker>
+        <mat-error *ngIf="form.get('BaslangicTarihi').hasError('required')">
+          Bakım başlangıç tarihi belirtilmelidir
         </mat-error>
       </mat-form-field>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
+      <mat-form-field appearance="outline">
+        <mat-label>Bakım Bitiş Tarihi</mat-label>
+        <input
+          type="datetime"
+          matInput
+          [matDatepicker]="BitisTarihi"
+          formControlName="BitisTarihi"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="BitisTarihi"></mat-datepicker-toggle>
+        <mat-datepicker #BitisTarihi></mat-datepicker>
+        <mat-error *ngIf="form.get('BitisTarihi').hasError('required')">
+          Bakım bitiş tarihi belirtilmelidir
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
       <mat-form-field appearance="outline" fxLayout="row" fxFill>
         <mat-label>Tip</mat-label>
         <mat-select
@@ -53,7 +72,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <mat-form-field appearance="outline" fxLayout="row" fxFill>
         <mat-label>Periyot</mat-label>
         <mat-select
