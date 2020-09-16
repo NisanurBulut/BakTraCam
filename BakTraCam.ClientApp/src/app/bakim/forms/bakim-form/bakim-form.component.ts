@@ -193,22 +193,3 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     return item.ID;
   }
 }
-
-/*
-Bakımın türü : Planlı, Talep, Arıza, Periyodik
-Bakım önceliğine gerek yok
-Bakımın durumu : Beklemede, tamamlandı, iptal, devam ediyor
-
-Plan durumuna göre, filtreli sonuç gmsterilebilmeli
-Period: 1 gün, 1 hafta, 2 hafta,3 hafta,1 ay,2 ay, 3 ay,4 ay,6 ay, 1 sene
-Kullanıcı başlangıç ve bitiş tarıhını seçecek, periyoda göre diğer bakımlar hesaplanacak
-
-Ana sayfada ise solda o günki elle girilen bakımlar(ekiplerin gittiği işler: talep arıza işleri)
-ve o günki planlı bakımlar gözükecek.
-ayrıyeten sağda akan bir ekranda yaklaşan (15 günlük planlı ve periyodik bakımlar akacak)
-akarkenki bilgiler , bakım adı,tarihi,sorumlu kişileri
-
-Bakım tipi, planlı ve periyodikse periyot seçilmesi zorunlu aksi durumda değil.
-Bir bakım yeni oluşturulmuşsa, beklemede olarak oluşturulur.
-Bakımın durumu değiştirilebilmelidir.
-*/
