@@ -1,23 +1,28 @@
 .btn-success{
   transform: scale(0.75);
 }
-mat-button-toggle-group{
-  transform: scale(0.75);
-  background-color: white;
-  .btnEdit{
-      background-color: #007bff;
+.card-body{
+  mat-button-toggle-group{
+    transform: scale(0.55);
+    background-color: white;
+    .btnEdit{
+        background-color: #007bff;
+        color:white;
+    }
+    .btnDanger{
+        background-color: #d50000;
+        color:white;
+    }
+    .btnDetail{
+      background-color:  #5e0a5e; //#D98A99;
       color:white;
-  }
-  .btnDanger{
-      background-color: #dc3545;
-      color:white;
-  }
-  .btnDetail{
-    background-color:  #5e0a5e; //#D98A99;
-    color:white;
 
+  }
+  }
 }
-}
+
+  mat-button-toggle-group{
+    transform: scale(0.85);
 .btnPlan{
   background-color:   #00897b;
   color:white;
@@ -43,7 +48,7 @@ mat-button-toggle-group{
   color:white;
 }
 .btnAriza{
-  background-color:#d50000;
+  background-color:#d81b60;  //:;
   color:white;
 }
 .btnPeriyodik{
@@ -54,3 +59,4 @@ mat-button-toggle-group{
   background-color: #4dd0e1;
   color:white;
 }
+  }
