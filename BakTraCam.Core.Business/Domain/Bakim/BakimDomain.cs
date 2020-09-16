@@ -62,10 +62,6 @@ namespace BakTraCam.Core.Business.Domain.Bakim
             BakimEntity bakim = model.Id > 0 ? await _bakimRep.FirstOrDefaultAsync(m => m.Id == model.Id) : null;
             if (null == bakim)
             {
-                if(bakim.Period>0)
-                {
-                   
-                }
                 // yeni bakımlar beklemede oluşur
                 model.Durum = (int)Enums.BakimDurum.Beklemede;
                 bakim = Mapper.Map<BakimModel, BakimEntity>(model);

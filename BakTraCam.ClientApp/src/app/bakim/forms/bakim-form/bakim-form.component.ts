@@ -148,6 +148,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       this._bakimService.kaydetBakim(bakim).pipe(
         takeUntil(this._unsubscribeAll),
         filter((res) => res.success),
+        tap((res) => { console.log(res) }),
         tap(() => {
           const msg = this._translate.instant('Bakım kaydedildi');
           this._snackbarService.show(msg);
