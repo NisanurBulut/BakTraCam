@@ -3,8 +3,7 @@
       <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
         <span class="title dialog-title">
           <mat-icon fontSet="fa" fontIcon=""></mat-icon>
-          <h4 class="card-title" *ngIf="!bakimId">Bakım Düzenle</h4>
-          <h4 class="card-title" *ngIf="bakimId">Bakım Ekle</h4>
+          <h4 class="card-title" *ngIf="bakimId">Bakım Detay Bilgileri</h4>
         </span>
         <button mat-icon-button (click)="this.dialogRef.close(false)">
           <mat-icon>close</mat-icon>
@@ -13,7 +12,7 @@
     </mat-toolbar>
 
     <div class="card-body">
-     Body
+   <app-bakim-detail-form></app-bakim-detail-form>
     </div>
     <div class="clearfix"></div>
       <button

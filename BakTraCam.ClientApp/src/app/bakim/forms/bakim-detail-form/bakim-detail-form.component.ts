@@ -6,7 +6,9 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
     styleUrls: ['./bakim-detail-form.component.scss']
 })
 export class BakimDetailFormComponent implements OnInit, AfterViewInit, OnDestroy {
-    constructor() { }
+    constructor() {
+        // bakım bilgisini getirmeli ve göstermeli
+     }
     ngOnDestroy(): void {
         throw new Error('Method not implemented.');
     }
