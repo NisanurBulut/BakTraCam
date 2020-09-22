@@ -1,14 +1,19 @@
-
+.card-header {
+  background-color: #f44336 !important ;
+}
+.card-title, .card-category {
+  color: white !important ;
+}
 table {
-    width: 100%;
-    color:black;
-  }
+  width: 100%;
+}
 
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
 
-  td, th {
-    width: 25%;
-  }
+td,
+th {
+  width: 25%;
+}

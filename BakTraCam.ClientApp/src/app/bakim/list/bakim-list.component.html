@@ -46,15 +46,13 @@
     <div class="row">
       <div class="col-md-12">
           <div class="card">
-              <div class="card-header card-header-danger">
+              <div class="card-header">
                 <h4 class="card-title ">Bakım Tablosu - Bakım Planını Temsil Eder</h4>
                  <div class="card-category">
                   <mat-form-field>
-                    <mat-label>Arama</mat-label>
                     <input
                       matInput
                       (keyup)="applyFilter($event)"
-                      placeholder="Arayın..."
                       #input
                     />
                   </mat-form-field>
