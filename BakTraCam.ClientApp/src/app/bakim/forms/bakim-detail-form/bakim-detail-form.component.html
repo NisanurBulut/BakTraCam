@@ -4,6 +4,10 @@
     <p>{{this.data.BaslangicTarihi  | date: 'dd.MM.yyyy'}}-{{this.data.BitisTarihi | date: 'dd.MM.yyyy'}}</p>
   </div>
   <div class="col-md-12" *ngIf="data">
+    <label>Bakım uygulama tarihi</label>
+    <p>{{this.data.Tarihi  | date: 'dd.MM.yyyy'}}</p>
+  </div>
+  <div class="col-md-12" *ngIf="data">
     <label>Bakım açıklaması</label>
     <p>{{this.data.Aciklama }}</p>
   </div>

@@ -133,6 +133,7 @@ export class BakimListComponent implements OnInit, OnDestroy {
       tap(() => this.loading = true),
       map((resListe) => {
         this.bakimListe = (resListe as BakimModelBasic[]);
+        console.log(this.bakimListe);
         this.dataSource = new MatTableDataSource(this.bakimListe);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

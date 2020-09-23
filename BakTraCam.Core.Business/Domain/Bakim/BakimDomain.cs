@@ -36,7 +36,7 @@ namespace BakTraCam.Core.Business.Domain.Bakim
                   + " left  join tKullanici kg2 on t.Gerceklestiren3 = kg2.Id"
                   + " left  join tKullanici kg3 on t.Gerceklestiren3 = kg3.Id"
                   + " left  join tKullanici kg4 on t.Gerceklestiren4 = kg4.Id", string.Empty);
-   
+
             return bakimlar;
         }
 
@@ -45,18 +45,18 @@ namespace BakTraCam.Core.Business.Domain.Bakim
             BakimEntity bakim = new BakimEntity();
             BakimModel bakimModel = new BakimModel();
             bakim = await _bakimRep.FirstOrDefaultAsync(a => a.Id == id);
-            return  Mapper.Map<BakimEntity,BakimModel>(bakim);        
+            return Mapper.Map<BakimEntity, BakimModel>(bakim);
         }
 
         public async Task<IEnumerable<BakimModelBasic>> getirBakimListesiTipFiltreliAsync(int tip)
         {
-            return await _bakimRep.ListAsync<BakimModelBasic>(a=>a.Tip==tip);
+            return await _bakimRep.ListAsync<BakimModelBasic>(a => a.Tip == tip);
         }
         public async Task<IEnumerable<BakimModelBasic>> getirBakimListesiDurumFiltreliAsync(int durum)
         {
             return await _bakimRep.ListAsync<BakimModelBasic>(a => a.Durum == durum);
         }
-       
+
         public async Task<BakimModel> KaydetBakimAsync(BakimModel model)
         {
             BakimEntity bakim = model.Id > 0 ? await _bakimRep.FirstOrDefaultAsync(m => m.Id == model.Id) : null;
@@ -64,10 +64,31 @@ namespace BakTraCam.Core.Business.Domain.Bakim
             {
                 // yeni bakımlar beklemede oluşur
                 model.Durum = (int)Enums.BakimDurum.Beklemede;
-                bakim = Mapper.Map<BakimModel, BakimEntity>(model);
+                model.Tarihi = model.BaslangicTarihi;
+                if (model.Tip == (int)Enums.BakimTip.Planli || model.Tip == (int)Enums.BakimTip.Periyodik)
+                {
+                    // kaç adet bakım olacağı hesaplanlanmalı ve tarihi de not alınmalı
+                    TimeSpan ts = model.BitisTarihi.Subtract(model.BaslangicTarihi);
+                    int dateDiff = int.Parse(ts.TotalDays.ToString());
+                    int BakimSayisi = dateDiff / model.Period;
+                    for (int i = 0; i < BakimSayisi; i++)
+                    {
+                        model.Tarihi = model.Tarihi.AddDays(model.Period);
+                        bakim = Mapper.Map<BakimModel, BakimEntity>(model);
 
-                await _bakimRep.AddAsync(bakim);
-                await _uow.SaveChangesAsync();
+                        await _bakimRep.AddAsync(bakim);
+                        await _uow.SaveChangesAsync();
+                    }
+                }
+                else
+                {
+                    model.Tarihi = model.BaslangicTarihi;
+                    bakim = Mapper.Map<BakimModel, BakimEntity>(model);
+
+                    await _bakimRep.AddAsync(bakim);
+                    await _uow.SaveChangesAsync();
+                }
+
             }
             else
             {
@@ -76,13 +97,13 @@ namespace BakTraCam.Core.Business.Domain.Bakim
                 await _bakimRep.UpdateAsync(bakim);
                 await _uow.SaveChangesAsync();
             }
-            return Mapper.Map<BakimEntity,BakimModel>(bakim);
+            return Mapper.Map<BakimEntity, BakimModel>(bakim);
 
         }
 
         public async Task<int> SilBakimAsync(int id)
         {
-            await this._bakimRep.DeleteAsync(m=>m.Id==id);
+            await this._bakimRep.DeleteAsync(m => m.Id == id);
             await _uow.SaveChangesAsync();
             return id;
         }

@@ -28,6 +28,7 @@
           [matDatepicker]="BaslangicTarihi"
           formControlName="BaslangicTarihi"
           required
+          maxlength="50"
         />
         <mat-datepicker-toggle
           matSuffix
@@ -48,6 +49,7 @@
           [matDatepicker]="BitisTarihi"
           formControlName="BitisTarihi"
           required
+          maxlength="50"
         />
         <mat-datepicker-toggle
           matSuffix
@@ -98,10 +100,13 @@
         </mat-select>
         <mat-error
           *ngIf="
-            form.get('Tip').value === BakimTips.Planli ||
-            form.get('Tip').value === BakimTips.Periyodik
+            (form.get('Tip').value === BakimTips.Planli ||
+              form.get('Tip').value === BakimTips.Periyodik) &&
+            !form.get('Period').value
           "
-        ></mat-error>
+          >Bakım tipi planlı veya periyodikken periyot belirtilmesi
+          gereklidir.</mat-error
+        >
       </mat-form-field>
     </div>
   </div>

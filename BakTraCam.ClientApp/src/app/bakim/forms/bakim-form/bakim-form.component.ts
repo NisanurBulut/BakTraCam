@@ -124,7 +124,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       BaslangicTarihi: [this.defaultData.BaslangicTarihi, [Validators.required]],
       BitisTarihi: [this.defaultData.BitisTarihi, [Validators.required]],
       Tip: [this.defaultData.Tip, [Validators.required, Validators.min(1)]],
-      Period: [this.defaultData.Period, [Validators.required, Validators.min(1)]],
+      Period: [this.defaultData.Period],
       Sorumlu1: [this.defaultData.Sorumlu1],
       Sorumlu2: [this.defaultData.Sorumlu2],
       Gerceklestiren1: [this.defaultData.Gerceklestiren1],

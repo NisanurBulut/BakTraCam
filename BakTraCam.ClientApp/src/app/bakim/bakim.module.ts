@@ -10,6 +10,7 @@ import { MaterialModule } from 'app/shared/material.module';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ComponentsModule } from 'app/components/components.module';
 import { BaseCommonModule } from 'app/shared/baseCommon.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { BaseCommonModule } from 'app/shared/baseCommon.module';
     ],
     providers: [
         BakimService,
+        { provide: MAT_DATE_LOCALE, useValue: 'tr-TR' },
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: [] }
     ]

@@ -10,14 +10,14 @@ export enum Unvan {
 }
 export enum BakimPeriod {
     Gun = 1,
-    BirHafta = 2,
-    IkiHafta = 3,
-    UcHafta = 4,
-    BirAy = 5,
-    IkiAy = 6,
-    UcAy = 7,
-    AltiAy = 8,
-    BirSene = 9
+    BirHafta = 7,
+    IkiHafta = 14,
+    UcHafta = 21,
+    BirAy = 29,
+    IkiAy = 60,
+    UcAy = 90,
+    AltiAy = 180,
+    BirSene = 365
 }
 export enum BakimTip {
     Planli = 1,
