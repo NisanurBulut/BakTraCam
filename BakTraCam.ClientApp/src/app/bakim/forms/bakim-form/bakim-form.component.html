@@ -56,8 +56,11 @@
           [for]="BitisTarihi"
         ></mat-datepicker-toggle>
         <mat-datepicker #BitisTarihi></mat-datepicker>
-        <mat-error *ngIf="form.get('BitisTarihi').hasError('required')">
-          Bakım bitiş tarihi belirtilmelidir
+        <mat-error
+        *ngIf="(form.get('Tip').value==BakimTips.Planli ||
+                form.get('Tip').value==BakimTips.Periyodik) &&
+                form.get('BitisTarihi').hasError('required')">
+          Planlı ve periyodik bakım tipinde bakım bitiş tarihi belirtilmelidir
         </mat-error>
       </mat-form-field>
     </div>
@@ -84,9 +87,11 @@
       <mat-form-field appearance="outline" fxLayout="row" fxFill>
         <mat-label>Periyot</mat-label>
         <mat-select
+          matInput
           [compareWith]="compareEnumKeys"
           fxFill
           formControlName="Period"
+          name="Period"
         >
           <mat-option
             *ngFor="
@@ -99,14 +104,11 @@
           </mat-option>
         </mat-select>
         <mat-error
-          *ngIf="
-            (form.get('Tip').value === BakimTips.Planli ||
-              form.get('Tip').value === BakimTips.Periyodik) &&
-            !form.get('Period').value
-          "
-          >Bakım tipi planlı veya periyodikken periyot belirtilmesi
-          gereklidir.</mat-error
-        >
+        *ngIf="
+          (form.get('Tip').value === BakimTips.Planli ||
+           form.get('Tip').value === BakimTips.Periyodik)"
+        >Bakım tipi planlı veya periyodikken periyot belirtilmesi
+        gereklidir.</mat-error>
       </mat-form-field>
     </div>
   </div>

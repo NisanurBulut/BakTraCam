@@ -30,7 +30,9 @@ export class KullaniciSelectComponent implements OnInit, OnDestroy {
     _kullanicilar: Select[] = [];
     kullaniciKontrol = new FormControl('', [Validators.required]);
     compareKullanici = compareEnumKeys;
-    constructor(private _cService: ComponentService, private _cd: ChangeDetectorRef, private formBuilder:FormBuilder) {
+    constructor(private _cService: ComponentService,
+                private _cd: ChangeDetectorRef,
+                private formBuilder:FormBuilder) {
         this.loadKullaniciSelect();
     }
 

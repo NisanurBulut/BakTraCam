@@ -122,7 +122,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       Ad: [this.defaultData.Ad, [Validators.required, Validators.maxLength(50)]],
       Aciklama: [this.defaultData.Aciklama, [Validators.maxLength(100)]],
       BaslangicTarihi: [this.defaultData.BaslangicTarihi, [Validators.required]],
-      BitisTarihi: [this.defaultData.BitisTarihi, [Validators.required]],
+      BitisTarihi: [this.defaultData.BitisTarihi],
       Tip: [this.defaultData.Tip, [Validators.required, Validators.min(1)]],
       Period: [this.defaultData.Period],
       Sorumlu1: [this.defaultData.Sorumlu1],
@@ -157,6 +157,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         tap((res) => this.result.emit(res.data.Id))
       ).subscribe();
     } else {
+      this.result.emit(0)
       const msg = this._translate.instant('Bakım bilgileri doğrulanamadı');
       this._snackbarService.show(msg);
     }
