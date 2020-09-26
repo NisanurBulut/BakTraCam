@@ -1,5 +1,5 @@
 Uygulama
-![Uygulama](https://github.com/NisanurBulut/BakTraCam/blob/master/BakTraCam.ClientApp/src/assets/img/anaEkran.gif)
+![Uygulama](https://github.com/NisanurBulut/BakTraCam/blob/master/BakTraCam.ClientApp/src/assets/Trailer/anaEkran.gif)
 
 Bakım Ekran
 ![Ana Ekran](https://github.com/NisanurBulut/BakTraCam/blob/master/BakTraCam.ClientApp/src/assets/img/anaEkran.png)
