@@ -44,7 +44,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatSelectModule,
         MatNativeDateModule,
         MatDatepickerModule,
-        MatTooltipModule]
+        MatTooltipModule
+    ]
 })
 export class MaterialModule {
 }

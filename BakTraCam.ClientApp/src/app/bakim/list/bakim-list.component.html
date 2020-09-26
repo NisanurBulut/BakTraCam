@@ -1,157 +1,157 @@
-<div class="main-content">
-  <div class="container-fluid">
-    <div class='btn-group-filter'>
-      <div class='row'>
-        <div class='column' fxLayoutAlign="flex-start">
-          <mat-button-toggle-group>
-            <mat-button-toggle class="btnHepsi" (change)="filterTableByTip(0)"
-            matTooltip="Bakımları listele">
-              <mat-icon>apps</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle class="btnAriza" (change)="filterTableByTip(3)"  matTooltip="Arıza tipindeki bakımları listele">
-              <mat-icon>flash_on</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle class="btnBekleme" (change)="filterTableByTip(1)"
-            matTooltip="Plan tipindeki bakımları listele">
-              <mat-icon>event_note</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle class="btnTalep" (change)="filterTableByTip(2)"  matTooltip="Talep tipindeki bakları listele">
-              <mat-icon>pan_tool</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle class="btnPeriyodik" (change)="filterTableByTip(4)"  matTooltip="Periyodik tipteki bakımları listele">
-              <mat-icon>schedule</mat-icon>
-            </mat-button-toggle>
-          </mat-button-toggle-group>
 
-        </div>
-        <div class='column' fxLayoutAlign="flex-end">
-          <mat-button-toggle-group>
-            <mat-button-toggle class="btnPlan" (change)="filterTableByDurum(1)"  matTooltip="Beklemedeki bakımları listele">
-              <mat-icon>hourglass_bottom</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle class="btnTamamlandi" (change)="filterTableByDurum(2)" matTooltip="Tamamlanan bakımları listele">
-              <mat-icon>done_all</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle class="btnIptal" (change)="filterTableByDurum(3)"  matTooltip="İptal edilen bakımları listele">
-              <mat-icon>cancel</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle class="btnDevam" (change)="filterTableByDurum(4)"  matTooltip="Devam eden bakımları listele">
-              <mat-icon>info</mat-icon>
-            </mat-button-toggle>
-          </mat-button-toggle-group>
-        </div>
+ <div class="col-md-12">
+  <div class='btn-group-filter'>
+    <div class='row'>
+      <div class='column' fxLayoutAlign="flex-start">
+        <mat-button-toggle-group>
+          <mat-button-toggle class="btnHepsi" (change)="filterTableByTip(0)"
+          matTooltip="Bakımları listele">
+            <mat-icon>apps</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle class="btnAriza" (change)="filterTableByTip(3)"  matTooltip="Arıza tipindeki bakımları listele">
+            <mat-icon>flash_on</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle class="btnBekleme" (change)="filterTableByTip(1)"
+          matTooltip="Plan tipindeki bakımları listele">
+            <mat-icon>event_note</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle class="btnTalep" (change)="filterTableByTip(2)"  matTooltip="Talep tipindeki bakları listele">
+            <mat-icon>pan_tool</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle class="btnPeriyodik" (change)="filterTableByTip(4)"  matTooltip="Periyodik tipteki bakımları listele">
+            <mat-icon>schedule</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+      </div>
+      <div class='column' fxLayoutAlign="flex-end">
+        <mat-button-toggle-group>
+          <mat-button-toggle class="btnPlan" (change)="filterTableByDurum(1)"  matTooltip="Beklemedeki bakımları listele">
+            <mat-icon>hourglass_bottom</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle class="btnTamamlandi" (change)="filterTableByDurum(2)" matTooltip="Tamamlanan bakımları listele">
+            <mat-icon>done_all</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle class="btnIptal" (change)="filterTableByDurum(3)"  matTooltip="İptal edilen bakımları listele">
+            <mat-icon>cancel</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle class="btnDevam" (change)="filterTableByDurum(4)"  matTooltip="Devam eden bakımları listele">
+            <mat-icon>info</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-md-12">
-          <div class="card">
-              <div class="card-header">
-                <h4 class="card-title ">Bakım Tablosu - Bakım Planını Temsil Eder</h4>
-                 <div class="card-category">
-                  <mat-form-field>
-                    <input
-                      matInput
-                      (keyup)="applyFilter($event)"
-                      #input
-                    />
-                  </mat-form-field>
-                 </div>
-              </div>
-              <div class="card-body">
-                  <div class="table-responsive">
-                    <table mat-table [dataSource]="dataSource" matSort>
-                      <!-- ID Column -->
-                      <ng-container matColumnDef="Id">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
-                        <td mat-cell *matCellDef="let row">{{ row.Id }}</td>
-                      </ng-container>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+              <h4 class="card-title ">Bakım Tablosu - Bakım Planını Temsil Eder</h4>
+               <div class="card-category">
+                <mat-form-field>
+                  <input
+                    matInput
+                    (keyup)="applyFilter($event)"
+                    #input
+                  />
+                </mat-form-field>
+               </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                  <table mat-table [dataSource]="dataSource" matSort>
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="Id">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+                      <td mat-cell *matCellDef="let row">{{ row.Id }}</td>
+                    </ng-container>
 
-                      <!-- Ad Column -->
-                      <ng-container matColumnDef="Ad">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ad</th>
-                        <td mat-cell *matCellDef="let row">{{ row.Ad }}</td>
-                      </ng-container>
-                      <!-- Tarihi Column -->
-                      <ng-container matColumnDef="Tarihi">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tarihi</th>
-                        <td mat-cell *matCellDef="let row">{{ row.Tarihi | date: 'dd.MM.yyyy'}}</td>
-                      </ng-container>
+                    <!-- Ad Column -->
+                    <ng-container matColumnDef="Ad">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ad</th>
+                      <td mat-cell *matCellDef="let row">{{ row.Ad }}</td>
+                    </ng-container>
+                    <!-- Tarihi Column -->
+                    <ng-container matColumnDef="Tarihi">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tarihi</th>
+                      <td mat-cell *matCellDef="let row">{{ row.Tarihi | date: 'dd.MM.yyyy'}}</td>
+                    </ng-container>
 
-                      <!-- kullanici1 Column -->
-                      <ng-container matColumnDef="Sorumlu1">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu</th>
-                        <td mat-cell *matCellDef="let row">{{ row.Sorumlu1 }}</td>
-                      </ng-container>
+                    <!-- kullanici1 Column -->
+                    <ng-container matColumnDef="Sorumlu1">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu</th>
+                      <td mat-cell *matCellDef="let row">{{ row.Sorumlu1 }}</td>
+                    </ng-container>
 
-                      <!-- kullanici2 Column -->
-                      <ng-container matColumnDef="Sorumlu2">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu</th>
-                        <td mat-cell *matCellDef="let row">{{ row.Sorumlu2 }}</td>
-                      </ng-container>
+                    <!-- kullanici2 Column -->
+                    <ng-container matColumnDef="Sorumlu2">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Sorumlu</th>
+                      <td mat-cell *matCellDef="let row">{{ row.Sorumlu2 }}</td>
+                    </ng-container>
 
-                       <!-- gerceklestiren1 Column -->
-                       <ng-container matColumnDef="Gerceklestiren1">
+                     <!-- gerceklestiren1 Column -->
+                     <ng-container matColumnDef="Gerceklestiren1">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
+                      <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren1 }}</td>
+                    </ng-container>
+
+                     <!-- gerceklestiren2 Column -->
+                     <ng-container matColumnDef="Gerceklestiren2">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
+                      <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren2 }}</td>
+                    </ng-container>
+
+                     <!-- gerceklestiren3 Column -->
+                     <ng-container matColumnDef="Gerceklestiren3">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
+                      <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren3 }}</td>
+                    </ng-container>
+
+                       <!-- gerceklestiren4 Column -->
+                       <ng-container matColumnDef="Gerceklestiren4">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
-                        <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren1 }}</td>
+                        <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren4 }}</td>
                       </ng-container>
 
-                       <!-- gerceklestiren2 Column -->
-                       <ng-container matColumnDef="Gerceklestiren2">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
-                        <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren2 }}</td>
-                      </ng-container>
-
-                       <!-- gerceklestiren3 Column -->
-                       <ng-container matColumnDef="Gerceklestiren3">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
-                        <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren3 }}</td>
-                      </ng-container>
-
-                         <!-- gerceklestiren4 Column -->
-                         <ng-container matColumnDef="Gerceklestiren4">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gercekleştiren</th>
-                          <td mat-cell *matCellDef="let row">{{ row.Gerceklestiren4 }}</td>
-                        </ng-container>
-
-                         <!-- gerceklestiren4 Column -->
-                         <ng-container matColumnDef="Actions">
-                          <th mat-header-cell *matHeaderCellDef>
-                            <button mat-raised-button class="btn-success btn-sm"   (click)="createNewTask()">
-                              <mat-icon>add_task</mat-icon>
-                            </button>
-                          </th>
-                          <td mat-cell *matCellDef="let row">
-                            <mat-button-toggle-group>
-                              <mat-button-toggle (change)="viewTask(row.Id)" class="btnDetail">
-                                <mat-icon>remove_red_eye</mat-icon>
-                              </mat-button-toggle>
-                              <mat-button-toggle (change)="editTask(row.Id)" class="btnEdit">
-                                <mat-icon>edit_task</mat-icon>
-                              </mat-button-toggle>
-                              <mat-button-toggle (change)="deleteTask(row.Id)" class="btnDanger">
-                                <mat-icon>delete_task</mat-icon>
-                              </mat-button-toggle>
-                            </mat-button-toggle-group>
-                          </td>
-                        </ng-container>
-
-                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
-                      <!-- Row shown when there is no matching data. -->
-                      <tr class="mat-row" *matNoDataRow>
-                        <td class="mat-cell" colspan="3">
-                          No data matching the filter "{{ input.value }}"
+                       <!-- gerceklestiren4 Column -->
+                       <ng-container matColumnDef="Actions">
+                        <th mat-header-cell *matHeaderCellDef>
+                          <button mat-raised-button class="btn-success btn-sm"   (click)="createNewTask()">
+                            <mat-icon>add_task</mat-icon>
+                          </button>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-button-toggle-group>
+                            <mat-button-toggle (change)="viewTask(row.Id)" class="btnDetail">
+                              <mat-icon>remove_red_eye</mat-icon>
+                            </mat-button-toggle>
+                            <mat-button-toggle (change)="editTask(row.Id)" class="btnEdit">
+                              <mat-icon>edit_task</mat-icon>
+                            </mat-button-toggle>
+                            <mat-button-toggle (change)="deleteTask(row.Id)" class="btnDanger">
+                              <mat-icon>delete_task</mat-icon>
+                            </mat-button-toggle>
+                          </mat-button-toggle-group>
                         </td>
-                      </tr>
-                    </table>
+                      </ng-container>
 
-                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                  </div>
-              </div>
-          </div>
-      </div>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+                    <!-- Row shown when there is no matching data. -->
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell" colspan="3">
+                        No data matching the filter "{{ input.value }}"
+                      </td>
+                    </tr>
+                  </table>
+
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
-  </div>
-</div>
+
+ </div>

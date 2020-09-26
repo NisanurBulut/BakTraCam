@@ -18,7 +18,10 @@ namespace BakTraCam.Core.Business.Application
             _bakimDom = serviceProvider.GetService<IBakimDomain>();
         }
 
-     
+        public Task<IEnumerable<BakimModelBasic>> OnBesGunYaklasanBakimlariGetirAsync()
+        {
+            return _bakimDom.OnBesGunYaklasanBakimlariGetirAsync();
+        }
         public Task<IEnumerable<BakimModelBasic>> BakimlistesiGetirAsync()
         {
             return _bakimDom.BakimlariGetirAsync();

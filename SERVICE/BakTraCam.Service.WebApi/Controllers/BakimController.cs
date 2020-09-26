@@ -24,6 +24,12 @@ namespace BakTraCam.Service.WebApi.Controllers
             return Ok(await _bakimApp.BakimlistesiGetirAsync());
         }
         [Route("[action]")]
+        [HttpGet]
+        public async Task<IActionResult> OnBesGunYaklasanBakimlariGetir()
+        {
+            return Ok(await _bakimApp.OnBesGunYaklasanBakimlariGetirAsync());
+        }
+        [Route("[action]")]
         [HttpPost]
         public async Task<IActionResult> KaydetBakim(BakimModel bakimModel)
         {

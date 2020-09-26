@@ -8,6 +8,7 @@ namespace BakTraCam.Core.Business.Application
 {
     public interface IBakimApplication
     {
+        Task<IEnumerable<BakimModelBasic>> OnBesGunYaklasanBakimlariGetirAsync();
         Task<IEnumerable<BakimModelBasic>> BakimlistesiGetirAsync();
         Task<IEnumerable<BakimModelBasic>> getirBakimListesiTipFiltreliAsync(int tip);
         Task<IEnumerable<BakimModelBasic>> getirBakimListesiDurumFiltreliAsync(int durum);

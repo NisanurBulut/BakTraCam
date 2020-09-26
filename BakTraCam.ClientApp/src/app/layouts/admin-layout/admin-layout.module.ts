@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -15,6 +14,7 @@ import { BakimModule } from 'app/bakim/bakim.module';
 import { HttpClientModule } from '@angular/common/http';
 import { KullaniciModule } from 'app/kullanici/kullanici.module';
 import {TranslateModule} from '@ngx-translate/core';
+import { HomeModule } from 'app/home/home.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +22,7 @@ import {TranslateModule} from '@ngx-translate/core';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    HomeModule,
     BakimModule,
     KullaniciModule,
     MatButtonModule,
@@ -33,7 +34,6 @@ import {TranslateModule} from '@ngx-translate/core';
     TranslateModule.forRoot()
   ],
   declarations: [
-    DashboardComponent,
     UserProfileComponent
   ]
 })

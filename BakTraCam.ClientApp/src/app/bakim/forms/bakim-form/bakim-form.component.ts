@@ -7,7 +7,8 @@ import { compareEnumKeys, deepCopy, markAsTouched } from 'app/common/generic-fun
 import { takeUntil, filter, tap, mergeMap } from 'rxjs/operators';
 import { SnackbarService } from 'app/shared/snackbar.service';
 import { TranslateService } from '@ngx-translate/core';
-
+import { FuseTranslationLoaderService } from 'app/shared/translation-loader.service';
+import { locale as turkish } from 'i18n/tr';
 @Component({
   selector: 'app-bakim-form',
   templateUrl: './bakim-form.component.html',
@@ -48,8 +49,9 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
     private _cd: ChangeDetectorRef,
     private _snackbarService: SnackbarService,
     private _translate: TranslateService,
-    private _bakimService: BakimService) {
-
+    private _bakimService: BakimService,
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService) {
+    this._fuseTranslationLoaderService.loadTranslations(turkish);
     this.form = this.formBuilder.group({
       Ad: [[]],
       Aciklama: [[]],

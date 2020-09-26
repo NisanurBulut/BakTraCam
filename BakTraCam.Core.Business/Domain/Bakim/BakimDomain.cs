@@ -24,6 +24,22 @@ namespace BakTraCam.Core.Business.Domain.Bakim
             _kullaniciRep = serviceProvider.GetService<IKullaniciRepository>();
             _uow = serviceProvider.GetService<IDatabaseUnitOfWork>();
         }
+        public async Task<IEnumerable<BakimModelBasic>> OnBesGunYaklasanBakimlariGetirAsync()
+        {
+            var query = $"SELECT  t.Id, t.Durum, t.Period, t.Tip, t.Ad, t.Aciklama, t.BaslangicTarihi,t.BitisTarihi,t.Tarihi,"
+                  + " ks1.Ad as Sorumlu1, ks2.Ad as Sorumlu2, ks1.Ad as Gerceklestiren1, kg2.Ad as Gerceklestiren2,"
+                  + " kg3.Ad as Gerceklestiren3, kg4.Ad as Gerceklestiren4 FROM [tBakim] as t"
+                  + " left  join tKullanici ks1 on t.Sorumlu1 = ks1.Id"
+                  + " left  join tKullanici ks2 on t.Sorumlu2 = ks2.Id"
+                  + " left  join tKullanici kg1 on t.Gerceklestiren1 = kg1.Id"
+                  + " left  join tKullanici kg2 on t.Gerceklestiren3 = kg2.Id"
+                  + " left  join tKullanici kg3 on t.Gerceklestiren3 = kg3.Id"
+                  + " left  join tKullanici kg4 on t.Gerceklestiren4 = kg4.Id"
+                  + " where t.Tarihi >= '" + DateTime.Now.AddDays(-15) + "'";
+            var bakimlar = await _uow.RawQueryAsync<BakimModelBasic>(query, string.Empty);
+
+            return bakimlar;
+        }
         public async Task<IEnumerable<BakimModelBasic>> BakimlariGetirAsync()
         {
 

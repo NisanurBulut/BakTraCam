@@ -26,6 +26,9 @@ export class BakimService extends BaseService {
     getirBakimListesi(): Observable<BakimModelBasic[]> {
         return this.getOnly<BakimModelBasic[]>('/Bakim/BakimListesiniGetir/');
     }
+    getirOnBesGunYaklasanBakimListesi(): Observable<BakimModelBasic[]> {
+        return this.getOnly<BakimModelBasic[]>('/Bakim/OnBesGunYaklasanBakimlariGetir/');
+    }
     getirBakimListesiTipFiltreli(tip: number): Observable<BakimModelBasic[]> {
         return this.getOnly<BakimModelBasic[]>('/Bakim/getirBakimListesiTipFiltreli?tip=' + tip);
     }

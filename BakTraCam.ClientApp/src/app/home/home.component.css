@@ -1,0 +1,39 @@
+.content {
+    padding: 16px;
+}
+
+.content > .card {
+    width: 250px;
+}
+.iconPlan{
+    background-color:  #00897b !important;
+    color:white;
+  }
+.iconTalep{
+    background-color: #ff5722 !important;
+    color:white;
+  }
+  .iconBekleme{
+    background-color:#ee0c88	 !important;
+    color:white;
+  }
+  .iconIptal{
+    background-color:#FFA500 !important;
+    color:white;
+  }
+  .iconDevam{
+    background-color:#ce93d8 !important;
+    color:white;
+  }
+  .iconAriza{
+    background-color:#d81b60 !important;
+    color:white;
+  }
+  .iconPeriyodik{
+    background-color:#b00bb6da !important;
+    color:white;
+  }
+  .iconTamamlandi{
+    background-color: #4dd0e1 !important;
+    color:white;
+  }
