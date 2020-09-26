@@ -8,9 +8,10 @@ export class EnumTranslatePipe implements PipeTransform {
     constructor(private _translate: TranslateService) { }
 
     transform(value: string, translateCategory: EnumCategory): string {
+        console.log(value, translateCategory);
         if (!value) {
             return '';
-        } else  if (!translateCategory) {
+        } else if (!translateCategory) {
             return value;
         }
 

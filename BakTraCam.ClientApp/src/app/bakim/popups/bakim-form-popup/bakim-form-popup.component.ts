@@ -30,7 +30,7 @@ export class BakimFormPopupComponent implements OnInit, OnDestroy {
 
   saved(bakimId: number): void {
     console.log(bakimId);
-    if (bakimId > 0) {
+    if (bakimId !== -1) {
       this.dialogRef.close(bakimId);
     }
   }

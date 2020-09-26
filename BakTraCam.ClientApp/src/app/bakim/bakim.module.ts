@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BakimFormComponent, BakimDetailFormComponent } from './forms';
 import { BakimFormPopupComponent, BakimDetailPopupComponent } from './popups';
 import { BakimService, BakimListComponent } from '../bakim';
+
 import { MaterialModule } from 'app/shared/material.module';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ComponentsModule } from 'app/components/components.module';

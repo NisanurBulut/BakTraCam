@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { BakimService } from '../bakim.service';
-import { BakimModel, BakimModelBasic } from 'app/models';
-import { Subject, fromEvent } from 'rxjs';
+import { BakimModelBasic } from 'app/models';
+import { Subject} from 'rxjs';
 import { takeUntil, tap, map, mergeMap, filter } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { BakimFormPopupComponent } from '../popups/bakim-form-popup/bakim-form-popup.component';
+
 import { SnackbarService } from 'app/shared/snackbar.service';
 import { TranslateService } from '@ngx-translate/core';
-import { BakimDetailPopupComponent } from '../popups/bakim-detail-popup/bakim-detail-popup.component';
+import { BakimDetailPopupComponent, BakimFormPopupComponent } from '../popups';
 
 
 @Component({

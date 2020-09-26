@@ -1,14 +1,26 @@
 <div class="row">
-  <div class="col-md-12" *ngIf="data">
-    <label>Bakım tarihleri</label>
-    <p>{{this.data.BaslangicTarihi  | date: 'dd.MM.yyyy'}}-{{this.data.BitisTarihi | date: 'dd.MM.yyyy'}}</p>
+  <div class="col-md-6" *ngIf="data">
+    <label>Bakım Tip</label>
+    <p>{{ this.data.Tip | enumtranslate: EnumCategory.BakimTip }}</p>
   </div>
-  <div class="col-md-12" *ngIf="data">
+  <div class="col-md-6" *ngIf="data">
+    <label>Bakım Periyot</label>
+    <p>{{ this.data.Period }}</p>
+  </div>
+  <div class="col-md-6" *ngIf="data">
+    <label>Bakım tarihleri</label>
+    <p>
+      {{ this.data.BaslangicTarihi | date: 'dd.MM.yyyy' }}-{{
+        this.data.BitisTarihi | date: 'dd.MM.yyyy'
+      }}
+    </p>
+  </div>
+  <div class="col-md-6" *ngIf="data">
     <label>Bakım uygulama tarihi</label>
-    <p>{{this.data.Tarihi  | date: 'dd.MM.yyyy'}}</p>
+    <p>{{ this.data.Tarihi | date: 'dd.MM.yyyy' }}</p>
   </div>
   <div class="col-md-12" *ngIf="data">
     <label>Bakım açıklaması</label>
-    <p>{{this.data.Aciklama }}</p>
+    <p>{{ this.data.Aciklama }}</p>
   </div>
 </div>

@@ -15,6 +15,8 @@ import { MaterialModule } from './shared/material.module';
 import { BaseCommonModule } from './shared/baseCommon.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarService } from './shared/snackbar.service';
+import { FuseTranslationLoaderService } from './shared/translation-loader.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -27,7 +29,8 @@ import { SnackbarService } from './shared/snackbar.service';
     RouterModule,
     AppRoutingModule,
     MaterialModule,
-    BaseCommonModule
+    BaseCommonModule,
+    TranslateModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -35,7 +38,8 @@ import { SnackbarService } from './shared/snackbar.service';
 
   ],
   providers: [
-    SnackbarService
+    SnackbarService,
+    FuseTranslationLoaderService
   ],
   bootstrap: [AppComponent]
 })

@@ -144,7 +144,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         Id: this.bakimId,
         ...this.form.getRawValue()
       } as BakimModel;
-
+      console.log(bakim);
       this._bakimService.kaydetBakim(bakim).pipe(
         takeUntil(this._unsubscribeAll),
         filter((res) => res.success),
@@ -157,7 +157,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         tap((res) => this.result.emit(res.data.Id))
       ).subscribe();
     } else {
-      this.result.emit(0)
+      this.result.emit(-1)
       const msg = this._translate.instant('Bakım bilgileri doğrulanamadı');
       this._snackbarService.show(msg);
     }
