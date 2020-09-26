@@ -10,7 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from '@angular/material/select';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
@@ -28,7 +28,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatSelectModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatRippleModule
     ],
     exports: [
         FlexLayoutModule,

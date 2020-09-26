@@ -2,13 +2,14 @@
     <mat-toolbar>
         <span>15 Gün, Yaklaşan Bakımlar</span>
       </mat-toolbar>
-      <div class="row" *ngIf="bakimListe">
+      <div class="row" *ngIf="bakimListe" [@listAnimation]="bakimListe.length">
         <div class="content" fxLayout="row wrap" fxLayoutGap="16px">
           <div
             fxFlex="25%"
             fxFlex.xs="100%"
             fxFlex.sm="33%"
             *ngFor="let bakim of bakimListe"
+            matRipple
           >
             <div class="card card-stats">
               <div class="card-header card-header-icon">
