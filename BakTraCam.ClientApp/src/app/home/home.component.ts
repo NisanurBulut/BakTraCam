@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     ).subscribe();
   }
   ngOnInit() {
-    Observable.interval(300000)
+    Observable.interval(3000)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((val) => { this.bakimListeGetir(); });
   }
