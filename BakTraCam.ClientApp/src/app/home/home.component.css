@@ -1,8 +1,9 @@
+
 .content {
     padding: 16px;
 }
 
-.content > .card {
+ .card {
     width: 250px;
 }
 .iconPlan{

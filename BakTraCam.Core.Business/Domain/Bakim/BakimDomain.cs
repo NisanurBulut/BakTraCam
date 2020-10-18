@@ -35,7 +35,7 @@ namespace BakTraCam.Core.Business.Domain.Bakim
                   + " left  join tKullanici kg2 on t.Gerceklestiren3 = kg2.Id"
                   + " left  join tKullanici kg3 on t.Gerceklestiren3 = kg3.Id"
                   + " left  join tKullanici kg4 on t.Gerceklestiren4 = kg4.Id"
-                  + " where t.Durum=1 and t.Tarihi >= '" + DateTime.Now.AddDays(-15) + "'";
+                  + " where t.Durum=1";
             var bakimlar = await _uow.RawQueryAsync<BakimModelBasic>(query, string.Empty);
 
             return bakimlar;
