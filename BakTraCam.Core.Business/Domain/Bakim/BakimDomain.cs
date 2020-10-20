@@ -68,11 +68,31 @@ namespace BakTraCam.Core.Business.Domain.Bakim
 
         public async Task<IEnumerable<BakimModelBasic>> getirBakimListesiTipFiltreliAsync(int tip)
         {
-            return await _bakimRep.ListAsync<BakimModelBasic>(a => a.Tip == tip);
+            string sqlScript = $"SELECT  t.Id, t.Durum, t.Period, t.Tip, t.Ad, t.Aciklama, t.BaslangicTarihi,t.BitisTarihi,t.Tarihi,"
+                  + " ks1.Ad as Sorumlu1, ks2.Ad as Sorumlu2, ks1.Ad as Gerceklestiren1, kg2.Ad as Gerceklestiren2,"
+                  + " kg3.Ad as Gerceklestiren3, kg4.Ad as Gerceklestiren4 FROM [tBakim] as t"
+                  + " left  join tKullanici ks1 on t.Sorumlu1 = ks1.Id"
+                  + " left  join tKullanici ks2 on t.Sorumlu2 = ks2.Id"
+                  + " left  join tKullanici kg1 on t.Gerceklestiren1 = kg1.Id"
+                  + " left  join tKullanici kg2 on t.Gerceklestiren3 = kg2.Id"
+                  + " left  join tKullanici kg3 on t.Gerceklestiren3 = kg3.Id"
+                  + " left  join tKullanici kg4 on t.Gerceklestiren4 = kg4.Id where t.Tip=" + tip+" and Durum<>"+(int)Enums.BakimDurum.Tamamlandi;
+
+            return await _uow.RawQueryAsync<BakimModelBasic>(sqlScript, string.Empty);
         }
         public async Task<IEnumerable<BakimModelBasic>> getirBakimListesiDurumFiltreliAsync(int durum)
         {
-            return await _bakimRep.ListAsync<BakimModelBasic>(a => a.Durum == durum);
+            string sqlScript = $"SELECT  t.Id, t.Durum, t.Period, t.Tip, t.Ad, t.Aciklama, t.BaslangicTarihi,t.BitisTarihi,t.Tarihi,"
+                  + " ks1.Ad as Sorumlu1, ks2.Ad as Sorumlu2, ks1.Ad as Gerceklestiren1, kg2.Ad as Gerceklestiren2,"
+                  + " kg3.Ad as Gerceklestiren3, kg4.Ad as Gerceklestiren4 FROM [tBakim] as t"
+                  + " left  join tKullanici ks1 on t.Sorumlu1 = ks1.Id"
+                  + " left  join tKullanici ks2 on t.Sorumlu2 = ks2.Id"
+                  + " left  join tKullanici kg1 on t.Gerceklestiren1 = kg1.Id"
+                  + " left  join tKullanici kg2 on t.Gerceklestiren3 = kg2.Id"
+                  + " left  join tKullanici kg3 on t.Gerceklestiren3 = kg3.Id"
+                  + " left  join tKullanici kg4 on t.Gerceklestiren4 = kg4.Id where t.Durum=" + durum;
+
+            return await _uow.RawQueryAsync<BakimModelBasic>(sqlScript, string.Empty);
         }
 
         public async Task<BakimModel> KaydetBakimAsync(BakimModel model)

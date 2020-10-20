@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { BakimService } from '../bakim.service';
-import { BakimModelBasic } from 'app/models';
+import { BakimDurum, BakimModelBasic, BakimTip } from 'app/models';
 import { Subject} from 'rxjs';
 import { takeUntil, tap, map, mergeMap, filter } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
@@ -68,36 +68,33 @@ export class BakimListComponent implements OnInit, OnDestroy {
   }
   filterTableByTip(tip: number) {
     switch (tip) {
-      case 0:
+      case BakimTip.Hepsi:
         this.bakimListesiniGetir();
         break;
-      case 1:
-        this.bakimListesiniTipFiltreliGetir(1);
+      case BakimTip.Planli:
+        this.bakimListesiniTipFiltreliGetir(BakimTip.Planli);
         break;
-      case 2:
-        this.bakimListesiniTipFiltreliGetir(2);
+      case BakimTip.Talep:
+        this.bakimListesiniTipFiltreliGetir(BakimTip.Talep);
         break;
-      case 3:
-        this.bakimListesiniTipFiltreliGetir(3);
+      case BakimTip.Ariza:
+        this.bakimListesiniTipFiltreliGetir(BakimTip.Ariza);
         break;
-      case 4:
-        this.bakimListesiniTipFiltreliGetir(4);
+      case BakimTip.Periyodik:
+        this.bakimListesiniTipFiltreliGetir(BakimTip.Periyodik);
         break;
     }
   }
   filterTableByDurum(tip: number) {
     switch (tip) {
-      case 1:
-        this.bakimListesiniDurumFiltreliGetir(1);
+      case BakimDurum.Beklemede:
+        this.bakimListesiniDurumFiltreliGetir(BakimDurum.Beklemede);
         break;
-      case 2:
-        this.bakimListesiniDurumFiltreliGetir(2);
+      case BakimDurum.Iptal:
+        this.bakimListesiniDurumFiltreliGetir(BakimDurum.Iptal);
         break;
-      case 3:
-        this.bakimListesiniDurumFiltreliGetir(3);
-        break;
-      case 4:
-        this.bakimListesiniDurumFiltreliGetir(4);
+      case BakimDurum.Tamamlandi:
+        this.bakimListesiniDurumFiltreliGetir(BakimDurum.Tamamlandi);
         break;
     }
   }

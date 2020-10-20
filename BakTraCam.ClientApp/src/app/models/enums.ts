@@ -20,6 +20,7 @@ export enum BakimPeriod {
     BirSene = 365
 }
 export enum BakimTip {
+    Hepsi = 0,
     Planli = 1,
     Talep = 2,
     Ariza = 3,
