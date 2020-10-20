@@ -1,13 +1,12 @@
 import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { deepCopy, markAsTouched, compareEnumKeys } from '../../../common';
+import { compareEnumKeys, deepCopy, markAsTouched } from 'app/common/generic-functions';
 import { takeUntil, filter, tap, mergeMap } from 'rxjs/operators';
-import { KullaniciModel, Unvan, EnumCategory } from '../../../models';
+import { KullaniciModel, Unvan, EnumCategory } from 'app/models';
 import { KullaniciService } from 'app/kullanici/kullanici.service';
 import { TranslateService } from '@ngx-translate/core';
-import { FuseTranslationLoaderService } from 'app/shared/translation-loader.service';
-import { locale as turkish } from 'i18n/tr';
+
 
 @Component({
   selector: 'app-kullanici-form',
@@ -42,18 +41,15 @@ export class KullaniciFormComponent implements OnInit, AfterViewInit {
     return this._bakimId;
   }
 
-  constructor(private formBuilder: FormBuilder, private _translate: TranslateService,
+  constructor(private formBuilder: FormBuilder,
+    private _translate: TranslateService,
     private _cd: ChangeDetectorRef,
-    private _kService: KullaniciService,
-    private _fuseTranslationLoaderService: FuseTranslationLoaderService) {
-    this._fuseTranslationLoaderService.loadTranslations(turkish);
-
+    private _kService: KullaniciService) {
 
     this.form = this.formBuilder.group({
       Ad: [[]],
       UnvanId: [[]]
     });
-
 
     this._kullaniciIdWaiter.pipe(
       takeUntil(this._unsubscribeAll),

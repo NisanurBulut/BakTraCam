@@ -83,7 +83,7 @@ export const locale = {
                 'Iptal': 'İptal',
             },
             'Unvan': {
-                'Sorumlu': ': Sorumlu',
+                'Sorumlu': 'Sorumlu',
                 'BakimElemani': 'Bakım Elemanı'
             }
         },

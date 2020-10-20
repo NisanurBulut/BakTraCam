@@ -8,14 +8,9 @@ export class EnumTranslatePipe implements PipeTransform {
     constructor(private _translate: TranslateService) { }
 
     transform(value: string, translateCategory: EnumCategory): string {
-console.log(translateCategory);
-        if (!value) {
-            return '';
-        } else if (!translateCategory) {
-            return value;
-        }
+
         let result = this._translate.instant('ENUMS.' + EnumCategory[translateCategory] + '.' + value);
-    console.log(result);
+
         if (result.startsWith('ENUMS.')) {
             result = value;
         }
