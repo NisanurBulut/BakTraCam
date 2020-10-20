@@ -4,6 +4,10 @@
     <p>{{ this.data.Tip | enumtranslate: EnumCategory.BakimTip }}</p>
   </div>
   <div class="col-md-6" *ngIf="data">
+    <label>Bakım Durum</label>
+    <p>{{ this.data.Durum | enumtranslate: EnumCategory.BakimDurum }}</p>
+  </div>
+  <div class="col-md-6" *ngIf="data">
     <label>Bakım Periyot</label>
     <p>{{ this.data.Period }}</p>
   </div>

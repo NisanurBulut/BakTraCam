@@ -51,7 +51,7 @@ namespace BakTraCam.Core.Business.Domain.Bakim
                   + " left  join tKullanici kg1 on t.Gerceklestiren1 = kg1.Id"
                   + " left  join tKullanici kg2 on t.Gerceklestiren3 = kg2.Id"
                   + " left  join tKullanici kg3 on t.Gerceklestiren3 = kg3.Id"
-                  + " left  join tKullanici kg4 on t.Gerceklestiren4 = kg4.Id", string.Empty);
+                  + " left  join tKullanici kg4 on t.Gerceklestiren4 = kg4.Id where t.Durum<>"+Enums.BakimDurum.Tamamlandi, string.Empty);
 
             return bakimlar;
         }

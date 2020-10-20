@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { HomeComponent } from 'app/home/home.component';
 import { KullaniciListComponent } from 'app/kullanici/list/kullanici-list.component';
-import { BakimListComponent } from 'app/bakim';
+import { BakimListComponent, BakimTamamlananListComponent } from 'app/bakim';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -37,6 +37,7 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'home',           component: HomeComponent },
     { path: 'bakim',          component: BakimListComponent },
+    { path: 'tamamlananbakim', component: BakimTamamlananListComponent },
     { path: 'kullanici',      component: KullaniciListComponent },
     { path: 'user-profile',   component: UserProfileComponent },
 ];

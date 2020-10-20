@@ -113,6 +113,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
         Gerceklestiren3: this.data.Gerceklestiren3,
         Gerceklestiren4: this.data.Gerceklestiren4,
         Tip: this.data.Tip,
+        Durum: this.data.Durum,
         Period: this.data.Period,
       });
       // veri out edilerek parentine verilir
@@ -125,6 +126,7 @@ export class BakimFormComponent implements OnInit, AfterViewInit {
       Aciklama: [this.defaultData.Aciklama, [Validators.maxLength(100)]],
       BaslangicTarihi: [this.defaultData.BaslangicTarihi, [Validators.required]],
       BitisTarihi: [this.defaultData.BitisTarihi],
+      Durum: [this.defaultData.Durum, [Validators.required, Validators.min(1)]],
       Tip: [this.defaultData.Tip, [Validators.required, Validators.min(1)]],
       Period: [this.defaultData.Period],
       Sorumlu1: [this.defaultData.Sorumlu1],
