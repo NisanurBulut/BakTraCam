@@ -13,6 +13,7 @@ import { BakimModule } from 'app/bakim/bakim.module';
 import { HttpClientModule } from '@angular/common/http';
 import { KullaniciModule } from 'app/kullanici/kullanici.module';
 import { HomeModule } from 'app/home/home.module';
+import { DuyuruModule } from 'app/duyuru/duyuru.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,6 +24,7 @@ import { HomeModule } from 'app/home/home.module';
     HomeModule,
     BakimModule,
     KullaniciModule,
+    DuyuruModule,
     MatButtonModule,
     MatRippleModule,
     MatFormFieldModule,

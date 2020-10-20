@@ -1,0 +1,15 @@
+<form fxLayout="column" fxFlex class="event-form w-100-p" name="form" [formGroup]="form">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Duyuru Metni" formControlName="Aciklama" required/>
+        <mat-error *ngIf="form.get('Aciklama').hasError('required')">
+          Kullanıcı adı belirtilmelidir
+        </mat-error>
+        <mat-error *ngIf="form.get('Aciklama').hasError('maxlength')">
+          Kullanıcı adı en çok 250 karakter olabilir.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</form>

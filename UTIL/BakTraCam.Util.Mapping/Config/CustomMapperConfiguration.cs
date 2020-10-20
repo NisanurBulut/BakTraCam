@@ -30,6 +30,7 @@ namespace BakTraCam.Util.Mapping.Config
                 ;
 
             GetPlansFor<KullaniciEntity>().To<SelectModel>();
+          
         }
 
         private void MapBakim()

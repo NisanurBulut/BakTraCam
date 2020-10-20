@@ -11,13 +11,8 @@ export const ROUTES: RouteInfo[] = [
   { path: '/home', title: 'Anasayfa', icon: 'home', class: '' },
   { path: '/bakim', title: 'Bakım Ekranı', icon: 'build', class: '' },
   { path: '/tamamlananbakim', title: 'Tamamlanan Bakımlar', icon: 'directions_run', class: '' },
-  { path: '/kullanici', title: 'kullanicilar', icon: 'supervisor_account', class: '' },
-  // { path: '/user-profile', title: 'User Profile', icon: 'person', class: '' },
-  // { path: '/typography', title: 'Typography', icon: 'library_books', class: '' },
-  // { path: '/icons', title: 'Icons', icon: 'bubble_chart', class: '' },
-  // { path: '/maps', title: 'Maps', icon: 'location_on', class: '' },
-  // { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' },
-  // { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },
+  { path: '/kullanici', title: 'Kullanicilar', icon: 'supervisor_account', class: '' },
+  { path: '/duyuru', title: 'Duyurular', icon: 'campaign', class: '' }
 ];
 
 @Component({

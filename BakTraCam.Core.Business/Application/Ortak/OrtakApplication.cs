@@ -25,7 +25,24 @@ namespace BakTraCam.Core.Business.Application
         {
             return _ortakDom.KullanicilariGetirAsync();
         }
-       
-       
+
+        public Task<IEnumerable<DuyuruModel>> DuyuruListesiGetirAsync()
+        {
+            return _ortakDom.DuyurulariGetirAsync();
+        }
+        public Task<DuyuruModel> KaydetDuyuruAsync(DuyuruModel duyuruModel)
+        {
+            return _ortakDom.KaydetDuyuruAsync(duyuruModel);
+        }
+
+        public Task<int> SilDuyuruAsync(int id)
+        {
+            return _ortakDom.SilDuyuruAsync(id);
+        }
+
+        public Task<DuyuruModel> DuyuruGetirAsync(int id)
+        {
+            return _ortakDom.DuyuruGetirAsync(id);
+        }
     }
 }
