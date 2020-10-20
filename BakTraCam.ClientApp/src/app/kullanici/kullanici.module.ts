@@ -9,6 +9,7 @@ import { KullaniciListComponent } from './list/kullanici-list.component';
 import { KullaniciFormComponent } from './forms/kullanici-form/kullanici-form.component';
 import { KullaniciFormPopupComponent } from './popups/kullanici-form-popup/kullanici-form-popup.component';
 import { KullaniciService } from './kullanici.service';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { KullaniciService } from './kullanici.service';
     ],
     providers: [
         KullaniciService,
+        { provide: MAT_DATE_LOCALE, useValue: 'tr-TR' },
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: [] }
     ]

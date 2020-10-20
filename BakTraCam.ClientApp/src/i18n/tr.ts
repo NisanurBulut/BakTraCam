@@ -81,6 +81,10 @@ export const locale = {
                 'Tamamlandi': 'Tamamlandı',
                 'Devam': 'Devam Ediyor',
                 'Iptal': 'İptal',
+            },
+            'Unvan': {
+                'Sorumlu': ': Sorumlu',
+                'BakimElemani': 'Bakım Elemanı'
             }
         },
     }

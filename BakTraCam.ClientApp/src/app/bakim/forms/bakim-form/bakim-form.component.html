@@ -77,7 +77,7 @@
             *ngFor="let item of BakimDurums | enumkeys"
             [value]="item.key"
           >
-            {{ item.value | enumtranslate: EnumCategory.BakimDurum }}
+            {{ BakimDurums[item.key] | enumtranslate: EnumCategory.BakimDurum }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -94,7 +94,7 @@
             *ngFor="let item of BakimTips | enumkeys"
             [value]="item.key"
           >
-            {{ item.value | enumtranslate: EnumCategory.BakimTip }}
+            {{ BakimTips[item.key] | enumtranslate: EnumCategory.BakimTip }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -117,7 +117,7 @@
             "
             [value]="item.key"
           >
-            {{ item.value | enumtranslate: EnumCategory.BakimPeriod }}
+            {{ BakimPeroids[item.key] | enumtranslate: EnumCategory.BakimPeriod }}
           </mat-option>
         </mat-select>
         <mat-error

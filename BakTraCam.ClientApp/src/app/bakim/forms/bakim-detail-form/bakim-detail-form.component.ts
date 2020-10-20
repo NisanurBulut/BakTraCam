@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, AfterViewInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { BakimService } from 'app/bakim';
 import { compareEnumKeys, deepCopy } from 'app/common';
-import { BakimModel, BakimTip, EnumCategory } from 'app/models';
-import { SnackbarService } from 'app/shared/snackbar.service';
+import { BakimDurum, BakimModel, BakimPeriod, BakimTip, EnumCategory } from 'app/models';
 import { Subject } from 'rxjs';
-import { takeUntil, filter, tap, mergeMap } from 'rxjs/operators'
+import { takeUntil, filter, mergeMap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-bakim-detail-form',
@@ -26,6 +25,8 @@ export class BakimDetailFormComponent implements OnInit {
 
   EnumCategory = EnumCategory;
   bakimTip = BakimTip;
+  bakimDurum = BakimDurum;
+  bakimPeriod = BakimPeriod;
   compareEnumKeys = compareEnumKeys;
   @Input() set bakimId(value: number) {
     this._bakimId = value;
@@ -38,7 +39,7 @@ export class BakimDetailFormComponent implements OnInit {
   }
 
   constructor(
-    private _bakimService: BakimService) {
+    private _bakimService: BakimService, private translateservice:TranslateService) {
     // bakım bilgisini getirmeli ve göstermeli
     this._bakimIdWaiter.pipe(
       takeUntil(this._unsubscribeAll),
