@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using BakTraCam.Core.IoC;
 using BakTraCam.Common.Helper;
 using BakTraCam.Core.Business.Application;
+using BakTraCam.Service.WebApi.Helpers;
 
 namespace BakTraCam.Service.WebApi
 {
@@ -79,7 +80,7 @@ namespace BakTraCam.Service.WebApi
                             .AllowCredentials());
 
             app.UseRouting();
-
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseAuthorization();
             app.UseEndpoints(ep =>
             {

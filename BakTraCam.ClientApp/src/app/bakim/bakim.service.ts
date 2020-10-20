@@ -33,6 +33,7 @@ export class BakimService extends BaseService {
         return this.getOnly<BakimModelBasic[]>('/Bakim/getirBakimListesiTipFiltreli?tip=' + tip);
     }
     getirBakimListesiDurumFiltreli(durum: number): Observable<BakimModelBasic[]> {
+        console.log(durum);
         return this.getOnly<BakimModelBasic[]>('/Bakim/getirBakimListesiDurumFiltreli?durum=' + durum);
     }
     kaydetBakim(bakimParam: BakimModel): Observable<PostResult> {
@@ -45,7 +46,5 @@ export class BakimService extends BaseService {
                     return of({ success: false } as PostResult);
                 }),
             );
-
     }
-
 }

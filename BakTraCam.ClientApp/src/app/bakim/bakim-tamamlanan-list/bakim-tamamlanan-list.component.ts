@@ -59,6 +59,7 @@ export class BakimTamamlananListComponent implements OnInit, OnDestroy {
   }
 
   private bakimListesiniGetir() {
+    console.log(BakimDurum.Tamamlandi);
     this._bService.getirBakimListesiDurumFiltreli(BakimDurum.Tamamlandi).pipe(
       takeUntil(this._unsubscribeAll),
       tap(() => this.loading = true),
