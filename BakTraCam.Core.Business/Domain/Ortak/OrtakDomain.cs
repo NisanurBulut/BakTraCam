@@ -36,7 +36,7 @@ namespace BakTraCam.Core.Business.Domain.Kullanici
             if (null == duyuru)
             {
                 duyuru = Mapper.Map<DuyuruModel, DuyuruEntity>(model);
-
+                duyuru.Tarihi = DateTime.Now;
                 await _duyuruRep.AddAsync(duyuru);
                 await _uow.SaveChangesAsync();
             }

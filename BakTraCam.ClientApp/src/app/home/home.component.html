@@ -1,77 +1,87 @@
 <div class="container">
-  <div class="flex-container"
-  fxLayout="column"
-  fxLayoutAlign="space-between end"
-  *ngIf="bakimListe" [@listAnimation]="bakimListe.length">
-    <div
-    fxFlex="100%"
-    *ngFor="let bakim of bakimListe"
-    matRipple
-  >
-    <div class="card card-stats">
-      <div class="card-header card-header-icon">
-        <div
-          matTooltip="Arıza Bakımı"
-          class="card-icon iconAriza"
-          *ngIf="bakim.Tip == BakimTip.Ariza"
-        >
-          <mat-icon>flash_on</mat-icon>
-        </div>
-        <div
-        matTooltip="Planlı Bakım"
-          class="card-icon iconPlan"
-          *ngIf="bakim.Tip == BakimTip.Planli"
-        >
-          <mat-icon>event_note</mat-icon>
-        </div>
-        <div
-        matTooltip="Talep Bakımı"
-          class="card-icon iconTalep"
-          *ngIf="bakim.Tip == BakimTip.Talep"
-        >
-          <mat-icon>pan_tool</mat-icon>
-        </div>
-        <div
-           matTooltip="Periyodik Bakım"
-          class="card-icon iconPeriyodik"
-          *ngIf="bakim.Tip == BakimTip.Periyodik"
-        >
-          <mat-icon>schedule</mat-icon>
-        </div>
-        <p class="card-category">{{ bakim.Ad }}</p>
-        <h3
-          class="card-title"
-          *ngIf="bakim.Durum == bakimDurum.Beklemede"
-        > Bekliyor
-          <mat-icon class="iconBekleme">hourglass_bottom</mat-icon>
-        </h3>
-        <h3
-        class="card-title"
-        *ngIf="bakim.Durum == bakimDurum.Devam"
-      > Devam Ediyor
-        <mat-icon class="iconDevam">info</mat-icon>
-      </h3>
-      <h3
-        class="card-title"
-        *ngIf="bakim.Durum == bakimDurum.Tamamlandi"
-      > Devam Ediyor
-        <mat-icon class="iconTamamlandi">done_all</mat-icon>
-      </h3>
-      <h3
-      class="card-title"
-      *ngIf="bakim.Durum == bakimDurum.Iptal"
-    > İptal
-      <div><mat-icon class="iconIptal">cancel</mat-icon></div>
-    </h3>
-      </div>
 
-      <div class="card-footer">
-        <div class="stats">
-          <i class="material-icons text-danger">warning</i>
-          <a>{{ bakim.Tarihi | date: 'dd.MM.yyyy' }}</a>
+<div class="row">
+  <div class="column">
+    <div class="parent-flex">
+      <div class="flex-item" *ngFor="let duyuru of duyuruListe" matRipple>
+        <div class="card card-stats">
+          <div class="card-header card-header-icon">
+            <div class="card-icon iconDuyuru">
+              <mat-icon>campaign</mat-icon>
+            </div>
+            <p class="card-category">{{ duyuru.Aciklama }}</p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons text-danger">schedule</i>
+              <a>{{ duyuru.Tarihi | date: 'dd.MM.yyyy hh:mm' }}</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="column">
+    <div class="parent-flex">
+      <div class="flex-item" *ngFor="let bakim of bakimListe" matRipple>
+        <div class="card card-stats">
+          <div class="card-header card-header-icon">
+            <div
+              matTooltip="Arıza Bakımı"
+              class="card-icon iconAriza"
+              *ngIf="bakim.Tip == BakimTip.Ariza"
+            >
+              <mat-icon>flash_on</mat-icon>
+            </div>
+            <div
+              matTooltip="Planlı Bakım"
+              class="card-icon iconPlan"
+              *ngIf="bakim.Tip == BakimTip.Planli"
+            >
+              <mat-icon>event_note</mat-icon>
+            </div>
+            <div
+              matTooltip="Talep Bakımı"
+              class="card-icon iconTalep"
+              *ngIf="bakim.Tip == BakimTip.Talep"
+            >
+              <mat-icon>pan_tool</mat-icon>
+            </div>
+            <div
+              matTooltip="Periyodik Bakım"
+              class="card-icon iconPeriyodik"
+              *ngIf="bakim.Tip == BakimTip.Periyodik"
+            >
+              <mat-icon>schedule</mat-icon>
+            </div>
+            <p class="card-category">{{ bakim.Ad }}</p>
+            <h3 class="card-title" *ngIf="bakim.Durum == bakimDurum.Beklemede">
+              Bekliyor
+              <mat-icon class="iconBekleme">hourglass_bottom</mat-icon>
+            </h3>
+            <h3 class="card-title" *ngIf="bakim.Durum == bakimDurum.Devam">
+              Devam Ediyor
+              <mat-icon class="iconDevam">info</mat-icon>
+            </h3>
+            <h3 class="card-title" *ngIf="bakim.Durum == bakimDurum.Tamamlandi">
+              Devam Ediyor
+              <mat-icon class="iconTamamlandi">done_all</mat-icon>
+            </h3>
+            <h3 class="card-title" *ngIf="bakim.Durum == bakimDurum.Iptal">
+              İptal
+              <div><mat-icon class="iconIptal">cancel</mat-icon></div>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons text-danger">warning</i>
+              <a>{{ bakim.Tarihi | date: 'dd.MM.yyyy' }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
+</div>
+
+</div>

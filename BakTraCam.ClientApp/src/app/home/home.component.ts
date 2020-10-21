@@ -1,41 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { BakimService } from 'app/bakim';
-import { BakimDurum, BakimModelBasic, BakimTip } from 'app/models';
+import { BakimDurum, BakimModelBasic, BakimTip, DuyuruModel } from 'app/models';
 import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/observable/interval';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
+import { DuyuruService } from 'app/duyuru/duyuru.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  animations: [
-    trigger('listAnimation', [
-      transition('* => *', [ // each time the binding value changes
-        query(':leave', [
-          stagger(250, [
-            animate('0.8s', style({ opacity: 0 }))
-          ])
-        ], { optional: true }),
-        query(':enter', [
-          style({ opacity: 0 }),
-          stagger(250, [
-            animate('0.8s', style({ opacity: 1 }))
-          ])
-        ], { optional: true })
-      ])
-    ])
-  ],
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   loading: boolean;
   bakimListe: BakimModelBasic[];
+  duyuruListe: DuyuruModel[];
   BakimTip = BakimTip;
   bakimDurum = BakimDurum;
   private _unsubscribeAll: Subject<any> = new Subject();
-  constructor(private _bService: BakimService) {
+  constructor(private _bService: BakimService, private _dService: DuyuruService, @Inject(DOCUMENT) private document: Document) {
+    setTimeout(function() {  this.document.location.reload(); }, 30000);
     this.bakimListeGetir();
+    this.duyuruListesiniGetir();
+  }
+  private duyuruListesiniGetir() {
+    this._dService.getirDuyuruListesi().pipe(
+      takeUntil(this._unsubscribeAll),
+      tap(() => this.loading = true),
+      map((resListe) => {
+        this.duyuruListe = (resListe as DuyuruModel[]);
+      }),
+      tap(() => this.loading = false),
+    ).subscribe()
   }
   bakimListeGetir(): void {
     this.bakimListe = [];

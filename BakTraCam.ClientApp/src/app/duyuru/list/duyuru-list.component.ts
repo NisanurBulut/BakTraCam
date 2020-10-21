@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit, DebugElement } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -21,7 +21,7 @@ export class DuyuruListComponent implements OnInit, OnDestroy, AfterViewInit {
   loading: boolean;
   duyuruListe: DuyuruModel[];
 
-  displayedColumns: string[] = ['Id', 'Aciklama', 'Actions'];
+  displayedColumns: string[] = ['Id', 'Aciklama', 'Tarihi', 'Actions'];
   dataSource: MatTableDataSource<DuyuruModel>;
 
   Unvan = Unvan;

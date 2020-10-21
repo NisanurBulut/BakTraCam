@@ -1,9 +1,27 @@
-
-.content {
-    padding: 16px;
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
- .card {
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+.parent-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  flex: 1 0 21%; /* explanation below */
+  margin: 5px;
+}
+
+.card {
     width: 250px;
 }
 .iconPlan{
@@ -36,5 +54,9 @@
   }
   .iconTamamlandi{
     background-color: #4dd0e1 !important;
+    color:white;
+  }
+  .iconDuyuru{
+    background-color: #ffd900 !important;
     color:white;
   }
