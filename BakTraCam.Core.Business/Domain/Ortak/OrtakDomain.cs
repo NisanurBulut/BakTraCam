@@ -28,7 +28,7 @@ namespace BakTraCam.Core.Business.Domain.Kullanici
         }
         public async Task<IEnumerable<DuyuruModel>> DuyurulariGetirAsync()
         {
-            return (await _duyuruRep.ListAsync<DuyuruModel>()).OrderBy(m => m.Id);
+            return (await _duyuruRep.ListAsync<DuyuruModel>(a=>a.Tarihi>=DateTime.Now.AddMonths(-1))).OrderBy(m => m.Id);
         }
         public async Task<DuyuruModel> KaydetDuyuruAsync(DuyuruModel model)
         {
