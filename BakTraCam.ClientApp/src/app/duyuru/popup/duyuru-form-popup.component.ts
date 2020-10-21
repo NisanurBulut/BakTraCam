@@ -19,8 +19,7 @@ export class DuyuruFormPopupComponent implements OnInit, OnDestroy {
 
   constructor(
     public dialogRef: MatDialogRef<KullaniciFormComponent>,
-    @Inject(MAT_DIALOG_DATA) private _data: any
-  ) {
+    @Inject(MAT_DIALOG_DATA) private _data: any) {
     this.duyuruId = _data.id as number;
   }
 
@@ -30,7 +29,8 @@ export class DuyuruFormPopupComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  saved(duyuruId: number): void {
+  saved(duyuruId: any): void {
+    console.log(duyuruId);
     this.dialogRef.close(duyuruId);
   }
 

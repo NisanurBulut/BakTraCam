@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DuyuruModel, EnumCategory, Unvan } from 'app/models';
 import { DuyuruService } from '../duyuru.service';
 import { DuyuruFormPopupComponent } from '../popup/duyuru-form-popup.component';
+import { SnackbarService } from 'app/shared/snackbar.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-duyuru-list',
@@ -33,7 +35,10 @@ export class DuyuruListComponent implements OnInit, OnDestroy, AfterViewInit {
   private _kullaniciSilAction = new Subject<number>();
   private _unsubscribeAll: Subject<any> = new Subject();
 
-  constructor(private _dService: DuyuruService, private _dialog: MatDialog) { }
+  constructor(private _dService: DuyuruService,
+    private _dialog: MatDialog,
+    private _translate: TranslateService,
+    private _snackbarService: SnackbarService) { }
 
   ngOnInit() {
     this.duyuruListesiniGetir();
@@ -41,12 +46,13 @@ export class DuyuruListComponent implements OnInit, OnDestroy, AfterViewInit {
       takeUntil(this._unsubscribeAll),
       mergeMap((duyuruId) => this._dService.silDuyuru(duyuruId)),
       tap((res) => {
-        console.log(res);
+        const msg = this._translate.instant('Duyuru silindi.');
+        this._snackbarService.show(msg);
         this.duyuruListesiniGetir();
       })
     ).subscribe();
   }
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
   ngOnDestroy(): void {
     this._unsubscribeAll.unsubscribe();
   }
@@ -88,9 +94,7 @@ export class DuyuruListComponent implements OnInit, OnDestroy, AfterViewInit {
     }).afterClosed().pipe(
       takeUntil(this._unsubscribeAll)
     ).subscribe((res) => {
-      if (res) {
-        this.duyuruListesiniGetir();
-      }
+      this.duyuruListesiniGetir();
     });
   }
 }

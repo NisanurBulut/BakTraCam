@@ -6,7 +6,7 @@ import { takeUntil, filter, tap, mergeMap } from 'rxjs/operators';
 import { Unvan, EnumCategory, DuyuruModel } from 'app/models';
 import { TranslateService } from '@ngx-translate/core';
 import { DuyuruService } from '../duyuru.service';
-
+import { SnackbarService } from 'app/shared/snackbar.service';
 
 @Component({
   selector: 'app-duyuru-form',
@@ -43,6 +43,7 @@ export class DuyuruFormComponent implements OnInit, AfterViewInit {
 
   constructor(private formBuilder: FormBuilder,
     private _translate: TranslateService,
+    private _snackbarService: SnackbarService,
     private _cd: ChangeDetectorRef,
     private _dService: DuyuruService) {
 
@@ -111,10 +112,13 @@ export class DuyuruFormComponent implements OnInit, AfterViewInit {
       this._dService.kaydetDuyuru(duyuru).pipe(
         takeUntil(this._unsubscribeAll),
         filter((res) => res.success),
-        tap((res) => { console.log(res) }),
         tap((res) => this._duyuruId = res.data.Id),
         tap((res) => this.result.emit(res.data.Id))
       ).subscribe();
+    } else {
+      this.result.emit(-1)
+      const msg = this._translate.instant('Duyuru bilgileri doğrulanamadı');
+      this._snackbarService.show(msg);
     }
   }
 }
