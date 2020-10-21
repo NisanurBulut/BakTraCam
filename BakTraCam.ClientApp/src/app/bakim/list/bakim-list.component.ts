@@ -68,7 +68,7 @@ export class BakimListComponent implements OnInit, OnDestroy {
   }
   filterTableByTip(tip: number) {
     switch (tip) {
-      case BakimTip.Hepsi:
+      case 0:
         this.bakimListesiniGetir();
         break;
       case BakimTip.Planli:
