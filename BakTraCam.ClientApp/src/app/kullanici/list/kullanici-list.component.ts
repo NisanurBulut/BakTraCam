@@ -88,9 +88,7 @@ export class KullaniciListComponent implements OnInit, OnDestroy, AfterViewInit 
     }).afterClosed().pipe(
       takeUntil(this._unsubscribeAll)
     ).subscribe((res) => {
-      if (res) {
-        this.kullaniciListesiniGetir();
-      }
+      this.kullaniciListesiniGetir();
     });
   }
 }
