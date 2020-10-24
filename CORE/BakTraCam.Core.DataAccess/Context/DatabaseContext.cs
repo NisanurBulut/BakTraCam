@@ -1,4 +1,5 @@
-﻿using BakTraCam.Core.DataAccess.Repositores;
+﻿using BakTraCam.Core.DataAccess.Configurations;
+using BakTraCam.Core.DataAccess.Repositores;
 using BakTraCam.Core.Entity;
 using BakTraCam.Service.DataContract;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,9 @@ namespace BakTraCam.Core.DataAccess.Context
         {
             modelBuilder.ApplyConfigurationsFromAssembly();
             modelBuilder.Entity<SelectModel>().HasNoKey().ToView("SelectModel");
+            modelBuilder.ApplyConfiguration(new BakimConfiguration());
+            modelBuilder.ApplyConfiguration(new DuyuruConfiguration());
+            modelBuilder.ApplyConfiguration(new KullaniciConfiguration());
         }
     }
 }
