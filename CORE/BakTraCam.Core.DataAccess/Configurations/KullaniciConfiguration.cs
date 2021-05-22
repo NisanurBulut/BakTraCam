@@ -11,7 +11,7 @@ namespace BakTraCam.Core.DataAccess.Configurations
     {
         public void Configure(EntityTypeBuilder<KullaniciEntity> builder)
         {
-            builder.ToTable("tDuyuru", "dbo");
+            builder.ToTable("tKullanici", "dbo");
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Ad).IsRequired().HasMaxLength(50);
             builder.Property(a => a.UnvanId).IsRequired();
